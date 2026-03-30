@@ -1,0 +1,17 @@
+# Secrets used for local testing
+validate.yaml
+secrets.yaml
+
+# macOS
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.*
