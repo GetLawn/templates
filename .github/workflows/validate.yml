@@ -1,0 +1,146 @@
+name: Validate Templates
+
+on:
+  pull_request:
+    paths:
+      - "apps/**"
+  push:
+    branches: [main]
+    paths:
+      - "apps/**"
+
+permissions:
+  contents: read
+
+env:
+  YQ_VERSION: "4.52.5"
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      apps: ${{ steps.changed.outputs.apps }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - id: changed
+        name: Detect changed apps
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            BASE="${{ github.event.before }}"
+            # Handle initial push where before is null
+            if [ "$BASE" = "0000000000000000000000000000000000000000" ]; then
+              CHANGED_APPS=$(find apps -maxdepth 1 -mindepth 1 -type d -exec basename {} \; | sort -u | jq -R -s -c 'split("\n") | map(select(. != ""))')
+              echo "apps=$CHANGED_APPS" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          else
+            BASE="${{ github.event.pull_request.base.sha }}"
+          fi
+
+          CHANGED_APPS=$(git diff --name-only "$BASE" HEAD -- apps/ \
+            | cut -d/ -f2 | sort -u | jq -R -s -c 'split("\n") | map(select(. != ""))')
+
+          echo "apps=$CHANGED_APPS" >> "$GITHUB_OUTPUT"
+
+  validate-template:
+    runs-on: ubuntu-latest
+    needs: detect-changes
+    if: needs.detect-changes.outputs.apps != '[]'
+    strategy:
+      matrix:
+        app: ${{ fromJson(needs.detect-changes.outputs.apps) }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install yq
+        run: |
+          sudo wget -qO /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_linux_amd64"
+          sudo chmod +x /usr/local/bin/yq
+
+      - name: Validate directory structure
+        run: |
+          APP_DIR="apps/${{ matrix.app }}"
+
+          if [ ! -f "$APP_DIR/manifest.yaml" ]; then
+            echo "::error::Missing manifest.yaml in $APP_DIR"
+            exit 1
+          fi
+
+          if [ ! -d "$APP_DIR/lawn-compose" ]; then
+            echo "::error::Missing lawn-compose/ directory in $APP_DIR"
+            exit 1
+          fi
+
+          if ! ls "$APP_DIR/lawn-compose/"*.yaml >/dev/null 2>&1; then
+            echo "::error::No compose files found in $APP_DIR/lawn-compose/"
+            exit 1
+          fi
+
+          echo "✓ Directory structure is valid"
+
+      - name: Validate manifest fields
+        run: |
+          MANIFEST="apps/${{ matrix.app }}/manifest.yaml"
+
+          for field in id name tagline description icon category compatibility; do
+            if ! grep -q "^${field}:" "$MANIFEST"; then
+              echo "::error::Missing required field '$field' in $MANIFEST"
+              exit 1
+            fi
+          done
+
+          # Verify id matches directory name
+          MANIFEST_ID=$(grep "^id:" "$MANIFEST" | sed 's/^id: *//')
+          if [ "$MANIFEST_ID" != "${{ matrix.app }}" ]; then
+            echo "::error::Manifest id '$MANIFEST_ID' does not match directory name '${{ matrix.app }}'"
+            exit 1
+          fi
+
+          # Verify compatibility.minLawnVersion exists
+          if ! grep -q "^  minLawnVersion:" "$MANIFEST"; then
+            echo "::error::Missing compatibility.minLawnVersion in $MANIFEST"
+            exit 1
+          fi
+
+          echo "✓ Manifest fields are valid"
+
+      - name: Validate compose files
+        run: |
+          for file in apps/${{ matrix.app }}/lawn-compose/*.yaml; do
+            BASENAME=$(basename "$file")
+
+            # Check versioned filename pattern (vX.Y.Z.yaml, vX.Y.yaml, or vX.yaml)
+            if ! echo "$BASENAME" | grep -qE '^v[0-9]+(\.[0-9]+)*\.yaml$'; then
+              echo "::error::Compose filename '$BASENAME' must match pattern vX.Y.Z.yaml"
+              exit 1
+            fi
+
+            # Validate YAML syntax
+            if ! yq '.' "$file" > /dev/null 2>&1; then
+              echo "::error::Invalid YAML in $file"
+              exit 1
+            fi
+
+            # Check for services key
+            if ! grep -q "^services:" "$file"; then
+              echo "::error::Missing 'services:' key in $file"
+              exit 1
+            fi
+
+            # Check for x-lawn-compatibility.minLawnVersion
+            if ! grep -q "^x-lawn-compatibility:" "$file"; then
+              echo "::error::Missing x-lawn-compatibility block in $file"
+              exit 1
+            fi
+
+            # Validate with docker compose
+            if ! docker compose -f "$file" config > /dev/null 2>&1; then
+              echo "::error::docker compose config failed for $file"
+              exit 1
+            fi
+
+            echo "✓ $file is valid"
+          done

@@ -1,0 +1,39 @@
+name: New App Request
+description: Request a new app to be added to the catalog
+labels: ["new-app"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: App Name
+      placeholder: e.g., Jellyfin
+    validations:
+      required: true
+  - type: input
+    id: website
+    attributes:
+      label: Website / Repository
+      placeholder: e.g., https://github.com/jellyfin/jellyfin
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What does this app do?
+      placeholder: A brief description of the app and why it's useful for self-hosting.
+    validations:
+      required: true
+  - type: input
+    id: image
+    attributes:
+      label: Docker Image
+      placeholder: e.g., docker.io/jellyfin/jellyfin:latest
+    validations:
+      required: false
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      placeholder: Any special configuration, dependencies, or considerations.
+    validations:
+      required: false

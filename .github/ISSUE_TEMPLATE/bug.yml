@@ -1,0 +1,34 @@
+name: Template Bug
+description: Report a problem with an existing template
+labels: ["bug"]
+body:
+  - type: input
+    id: app
+    attributes:
+      label: App
+      placeholder: e.g., jellyfin
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What's wrong?
+      placeholder: Describe the issue — what happens vs. what you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Install the app via Lawn
+        2. ...
+    validations:
+      required: false
+  - type: input
+    id: version
+    attributes:
+      label: Lawn version
+      placeholder: e.g., 1.2.0
+    validations:
+      required: false

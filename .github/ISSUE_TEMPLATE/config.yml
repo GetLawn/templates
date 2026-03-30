@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Lawn app issues
+    url: https://github.com/getlawn/lawn/issues
+    about: For issues with the Lawn app itself (not templates), file them here.
