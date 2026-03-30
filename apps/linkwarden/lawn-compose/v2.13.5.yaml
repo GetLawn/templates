@@ -1,0 +1,118 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+x-lawn:
+  variables:
+    POSTGRES_PASSWORD:
+      source: generatedSecret
+      length: 32
+      displayName: "Database Password"
+      description: "PostgreSQL password. Auto-generated during install."
+    SECRET_KEY:
+      source: generatedSecret
+      length: 50
+      displayName: "Secret Key"
+      description: "Secret key for session encryption and search API. Auto-generated during install."
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: linkwarden
+      POSTGRES_USER: linkwarden
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}"
+      # PGDATA must be a subdirectory of the mount point so postgres can
+      # create it with correct ownership (postgres user, not host user)
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - "./postgres:/var/lib/postgresql/data"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "linkwarden"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    x-lawn:
+      environment:
+        POSTGRES_DB:
+          description: "Name of the PostgreSQL database used by Linkwarden."
+        POSTGRES_USER:
+          description: "PostgreSQL username for Linkwarden."
+        PGDATA:
+          description: "Data directory inside the container. Do not change."
+
+  meilisearch:
+    image: getmeili/meilisearch:v1.12
+    environment:
+      MEILI_MASTER_KEY: "${SECRET_KEY:?SECRET_KEY is required}"
+      MEILI_NO_ANALYTICS: "true"
+    volumes:
+      - "./meilisearch:/meili_data"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7700/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    x-lawn:
+      environment:
+        MEILI_MASTER_KEY:
+          description: "MeiliSearch API key for full-text search. Auto-generated during install."
+        MEILI_NO_ANALYTICS:
+          description: "Disable MeiliSearch analytics telemetry."
+
+  linkwarden:
+    image: ghcr.io/linkwarden/linkwarden:v2.13.5
+    depends_on:
+      - postgres
+      - meilisearch
+    environment:
+      DATABASE_URL: "postgresql://linkwarden:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}@postgres:5432/linkwarden"
+      NEXTAUTH_SECRET: "${SECRET_KEY:?SECRET_KEY is required}"
+      NEXTAUTH_URL: "${LAWN_URL:-http://localhost:${HOST_PORT_3000:-3000}}/api/v1/auth"
+      MEILI_MASTER_KEY: "${SECRET_KEY:?SECRET_KEY is required}"
+      MEILI_HOST: "http://meilisearch:7700"
+      NEXT_PUBLIC_DISABLE_REGISTRATION: "false"
+      NEXT_PUBLIC_CREDENTIALS_ENABLED: "true"
+    volumes:
+      - "./data:/data/data"
+    ports:
+      - "3000:3000"
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+    x-lawn:
+      notices:
+        - id: first-time-setup
+          title: First-Time Setup
+          style: info
+          elements:
+            - type: text
+              content: "On first visit, you'll see a registration form. Create an account to get started."
+      healthChecks:
+        - type: http
+          description: Web UI is accessible
+          path: /
+          expectedStatus: 200
+          intervalSeconds: 10
+          timeoutSeconds: 10
+          retries: 5
+          startPeriodSeconds: 120
+      environment:
+        DATABASE_URL:
+          description: "PostgreSQL connection string. Auto-configured during install."
+        NEXTAUTH_SECRET:
+          description: "Secret key for session encryption. Auto-generated during install."
+        NEXTAUTH_URL:
+          description: "Authentication callback URL. Auto-configured from mDNS hostname when available."
+        MEILI_MASTER_KEY:
+          description: "MeiliSearch API key for full-text search. Auto-generated during install."
+        MEILI_HOST:
+          description: "MeiliSearch server URL. Auto-configured during install."
+        NEXT_PUBLIC_DISABLE_REGISTRATION:
+          description: "Disable new user registration after setup. Set to false to allow others to create accounts."
+        NEXT_PUBLIC_CREDENTIALS_ENABLED:
+          description: "Enable username and password login."

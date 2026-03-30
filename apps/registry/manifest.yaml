@@ -1,0 +1,37 @@
+id: registry
+name: Docker Registry
+tagline: Private container image registry for your local network
+description: |
+  Run your own private Docker registry to store and distribute container images on your local network.
+
+  **Why Run a Local Registry:**
+  - Push and pull images without internet access
+  - Keep proprietary images private and secure
+  - Faster image pulls for local development
+  - Cache frequently used images from Docker Hub
+
+  **Pull-Through Cache:**
+  Configure as a mirror for Docker Hub or other registries. Images are cached locally on first pull, speeding up subsequent pulls and reducing bandwidth. Set the upstream URL in environment variables to enable.
+
+  **Developer Workflow:**
+  Build images locally, push them to your registry, and pull them from any machine on your network. Perfect for home labs, development teams, or air-gapped environments.
+
+  **Simple to Use:**
+  Tag your images with `localhost:5000/myimage` and push. No authentication required by default—ideal for trusted local networks.
+icon: shippingbox.fill
+category: Development
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - docker
+  - containers
+  - development
+features:
+  - Store container images locally
+  - OCI-compliant image storage
+screenshots: []
+links:
+  - url: https://distribution.github.io/distribution/
+    type: documentation
+  - url: https://github.com/distribution/distribution
+    type: github

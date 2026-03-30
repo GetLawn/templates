@@ -1,0 +1,58 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+services:
+  radarr:
+    image: lscr.io/linuxserver/radarr:6.0.4
+    environment:
+      PUID: "${UID:-1000}"
+      PGID: "${GID:-1000}"
+      TZ: "${TIMEZONE:-UTC}"
+    volumes:
+      - "./config:/config"
+      - "./movies:/movies"
+      - "./downloads:/downloads"
+    ports:
+      - "7878:7878"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7878/ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    x-lawn:
+      notices:
+        - id: first-time-setup
+          title: First-Time Setup
+          style: info
+          elements:
+            - type: text
+              content: "On first visit, you'll be asked to set up authentication. Create a username and password to secure your Radarr instance."
+        - id: media-paths
+          title: Movie Root Folder
+          style: info
+          elements:
+            - type: text
+              content: "When adding your first movie, set `/movies` as the Root Folder. Files in that directory are persistently saved on your Mac."
+        - id: download-client
+          title: Connect a Download Client
+          style: info
+          elements:
+            - type: text
+              content: "Go to **Settings > Download Clients** to connect Radarr to NZBGet, qBittorrent, or another download client."
+      healthChecks:
+        - type: http
+          description: Radarr API is healthy
+          path: /ping
+          expectedStatus: 200
+      environment:
+        PUID:
+          description: "Host user ID for file ownership."
+        PGID:
+          description: "Host group ID for file ownership."
+        TZ:
+          description: "Timezone for Radarr (e.g. America/New_York)."

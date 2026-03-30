@@ -1,0 +1,41 @@
+id: forgejo
+name: Forgejo
+tagline: Self-hosted lightweight Git forge
+description: |
+  Forgejo is a self-hosted Git platform for managing code repositories, tracking issues, and collaborating with others. It's a lightweight, community-driven alternative to GitHub that runs entirely on your Mac.
+
+  **Your Code, Your Server:**
+  Host unlimited private and public repositories with full Git support. Create organizations, manage teams, and control who has access to your code — all without relying on a third-party service.
+
+  **More Than Just Git:**
+  Track bugs and feature requests with issues and kanban boards. Review code changes with pull requests. Write documentation with built-in wikis. Forgejo gives you a complete development workflow in one app.
+
+  **Lightweight and Fast:**
+  Forgejo is designed to run on minimal resources. It starts in seconds, uses little memory, and works great even on older hardware. Perfect for personal projects or small teams.
+icon: chevron.left.forwardslash.chevron.right
+category: Development
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - git
+  - code
+  - devops
+  - repositories
+features:
+  - Unlimited public and private Git repositories
+  - Issue tracking with labels, milestones, and kanban boards
+  - Pull requests with code review
+  - Built-in wiki for documentation
+  - Organization and team management
+  - Two-factor authentication
+  - Lightweight — runs on minimal resources
+screenshots: []
+links:
+  - url: https://codeberg.org/forgejo/forgejo
+    type: github
+  - url: https://forgejo.org/docs/latest/
+    type: documentation
+  - url: https://forgejo.org
+    type: website
+    label: Website
+webPort: 3000

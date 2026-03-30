@@ -1,0 +1,43 @@
+id: actual-budget
+name: Actual Budget
+tagline: A local-first personal finance app with envelope budgeting
+description: |
+  Actual Budget is a beautiful, fast personal finance tool built on envelope budgeting — the simple idea of giving every dollar a job. Track your spending, plan ahead, and take control of your money, all from the privacy of your own Mac.
+
+  **Envelope Budgeting Made Simple:**
+  Assign every dollar of income to a category — rent, groceries, savings, fun money. When a category runs out, you know it's time to stop spending. It's the easiest way to stay on top of your finances without spreadsheets or guesswork.
+
+  **Lightning Fast and Offline-Ready:**
+  Your budget data lives on your Mac first, not in the cloud. The app loads instantly and works even without an internet connection. Sync across devices when you're ready, but your data is always yours.
+
+  **Bank Syncing and Import:**
+  Import transactions from your bank via OFX, QFX, or CSV files. Automatic categorization learns from your spending patterns to save you time.
+
+  **Privacy First:**
+  No subscriptions, no ads, no data mining. Your financial data stays on your Mac — never sent to third-party servers or used for analytics.
+icon: banknote.fill
+category: Utilities
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - finance
+  - budgeting
+  - personal-finance
+  - money
+features:
+  - Zero-based envelope budgeting
+  - Fast local-first architecture with sync support
+  - Bank transaction import (OFX, QFX, CSV)
+  - Automatic transaction categorization
+  - Custom reports and spending insights
+  - Multi-device sync via the built-in server
+  - Mobile-friendly responsive web interface
+screenshots: []
+links:
+  - url: https://github.com/actualbudget/actual
+    type: github
+  - url: https://actualbudget.org/docs/
+    type: documentation
+  - url: https://actualbudget.org
+    type: website
+webPort: 5006

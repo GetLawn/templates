@@ -1,0 +1,42 @@
+id: mealie
+name: Mealie
+tagline: Self-hosted recipe manager and meal planner
+description: |
+  Mealie is your personal recipe manager. Save recipes from any website with one click, plan your meals for the week, and automatically create shopping lists — all from a clean, easy-to-use interface.
+
+  **Save recipes from anywhere:**
+  Paste a URL from any recipe website and Mealie will automatically import the recipe with ingredients, instructions, and photos. No more copying and pasting or losing track of bookmarks.
+
+  **Plan your meals:**
+  Use the built-in meal planner to organize breakfast, lunch, and dinner for the entire week. Drag and drop recipes to rearrange your plan.
+
+  **Shopping lists that write themselves:**
+  Generate a shopping list from your meal plan with one click. Items are organized by category so you can breeze through the store.
+
+  **Your recipes, your data:**
+  Everything stays on your Mac. No cloud accounts, no subscriptions, no ads. Your family recipes are safe and private.
+icon: fork.knife
+category: Utilities
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - recipes
+  - cooking
+  - meal-planning
+  - shopping-list
+features:
+  - Import recipes from any website by URL
+  - Meal planning with drag-and-drop calendar
+  - Automatic shopping list generation
+  - Organize recipes into cookbooks and categories
+  - Full-text search across all recipes
+  - Mobile-friendly web interface
+  - Multi-user support with household groups
+  - Recipe sharing and public links
+screenshots: []
+links:
+  - url: https://github.com/mealie-recipes/mealie
+    type: github
+  - url: https://docs.mealie.io
+    type: documentation
+webPort: 9000

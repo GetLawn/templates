@@ -1,0 +1,94 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+x-lawn:
+  variables:
+    POSTGRES_PASSWORD:
+      source: generatedSecret
+      length: 32
+      displayName: "Database Password"
+      description: "PostgreSQL password. Auto-generated during install."
+    SECRET_KEY:
+      source: generatedSecret
+      length: 50
+      displayName: "Secret Key"
+      description: "Secret used to sign login tokens. Auto-generated during install."
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: vikunja
+      POSTGRES_USER: vikunja
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}"
+      # PGDATA must be a subdirectory of the mount point so postgres can
+      # create it with correct ownership (postgres user, not host user)
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - "./postgres:/var/lib/postgresql/data"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "vikunja", "-h", "127.0.0.1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    x-lawn:
+      environment:
+        POSTGRES_DB:
+          description: "Name of the PostgreSQL database used by Vikunja."
+        POSTGRES_USER:
+          description: "PostgreSQL username for Vikunja."
+        PGDATA:
+          description: "Data directory inside the container. Do not change."
+
+  vikunja:
+    image: vikunja/vikunja:1.1.0
+    depends_on:
+      - db
+    environment:
+      VIKUNJA_DATABASE_TYPE: postgres
+      VIKUNJA_DATABASE_HOST: db
+      VIKUNJA_DATABASE_DATABASE: vikunja
+      VIKUNJA_DATABASE_USER: vikunja
+      VIKUNJA_DATABASE_PASSWORD: "${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}"
+      VIKUNJA_SERVICE_JWTSECRET: "${SECRET_KEY:?SECRET_KEY is required}"
+      VIKUNJA_SERVICE_PUBLICURL: "${LAWN_URL:-http://localhost:${HOST_PORT_3456:-3456}}/"
+      VIKUNJA_SERVICE_TIMEZONE: "${TIMEZONE:-UTC}"
+    volumes:
+      - "./files:/app/vikunja/files"
+    ports:
+      - "3456:3456"
+    x-lawn:
+      notices:
+        - id: first-time-setup
+          title: First-Time Setup
+          style: info
+          elements:
+            - type: text
+              content: "On first visit, you'll see a registration form. Create an account to get started — the first registered user becomes the admin."
+      healthChecks:
+        - type: http
+          description: Web UI is accessible
+          path: /health
+          expectedStatus: 200
+          intervalSeconds: 15
+          timeoutSeconds: 5
+          retries: 5
+          startPeriodSeconds: 30
+      environment:
+        VIKUNJA_DATABASE_TYPE:
+          description: "Database backend. Vikunja supports postgres, mysql, and sqlite."
+        VIKUNJA_DATABASE_HOST:
+          description: "Hostname of the PostgreSQL server. Auto-configured during install."
+        VIKUNJA_DATABASE_DATABASE:
+          description: "PostgreSQL database name."
+        VIKUNJA_DATABASE_USER:
+          description: "PostgreSQL username."
+        VIKUNJA_DATABASE_PASSWORD:
+          description: "PostgreSQL password. Auto-generated during install."
+        VIKUNJA_SERVICE_JWTSECRET:
+          description: "Secret used to sign login tokens. Auto-generated during install."
+        VIKUNJA_SERVICE_PUBLICURL:
+          description: "Public URL where Vikunja is reachable. Used in emails and by the frontend."
+        VIKUNJA_SERVICE_TIMEZONE:
+          description: "Timezone for due dates and reminders (e.g. America/New_York)."

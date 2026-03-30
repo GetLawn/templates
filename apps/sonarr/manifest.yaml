@@ -1,0 +1,44 @@
+id: sonarr
+name: Sonarr
+tagline: Smart TV show collection manager
+description: |
+  Sonarr automatically finds, downloads, and organizes your TV shows. Tell it which shows you follow, and it handles the rest — searching, downloading new episodes as they air, and keeping your library neatly organized.
+
+  **Never miss an episode:**
+  Sonarr monitors your shows and automatically downloads new episodes the moment they're available. Your library stays up to date without any manual effort.
+
+  **Works with your download client:**
+  Sonarr connects to popular download managers like NZBGet, SABnzbd, qBittorrent, and Transmission. It sends downloads automatically and moves finished files into your media library.
+
+  **Beautiful, organized library:**
+  Episodes are automatically renamed and sorted into season folders using your preferred naming format. Metadata and artwork is fetched automatically so Jellyfin or Plex can display your library beautifully.
+
+  **Quality upgrades:**
+  Already have a show but want a better quality version? Sonarr can automatically upgrade episodes to higher resolutions when they become available.
+icon: tv.fill
+category: Media
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - tv
+  - media
+  - automation
+  - download
+  - arr
+features:
+  - Automatic TV show episode downloading
+  - Integrates with NZBGet, SABnzbd, qBittorrent, Transmission
+  - Automatic file renaming and library organization
+  - Quality upgrades when better versions are available
+  - Calendar view of upcoming episode releases
+  - Works seamlessly with Jellyfin and Plex
+  - Multi-user support with role-based access
+screenshots: []
+links:
+  - url: https://sonarr.tv
+    type: website
+  - url: https://github.com/Sonarr/Sonarr
+    type: github
+  - url: https://wiki.servarr.com/sonarr
+    type: documentation
+webPort: 8989

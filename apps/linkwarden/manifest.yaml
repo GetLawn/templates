@@ -1,0 +1,40 @@
+id: linkwarden
+name: Linkwarden
+tagline: Collaborative bookmark manager with web archiving
+description: |
+  Linkwarden saves your favorite links and automatically preserves them — taking screenshots and saving full copies of each page so you never lose access, even if the original website goes offline.
+
+  **Save and organize anything from the web:**
+  Bookmark any page, organize links into collections, and add tags to find things quickly. Full-text search makes it easy to find that article you saved weeks ago.
+
+  **Never lose a link again:**
+  Linkwarden automatically archives every page you save — capturing screenshots, PDFs, and full page copies. If a website goes down or a page is removed, your saved copy is still there.
+
+  **Share and collaborate:**
+  Create shared collections and invite others to contribute. Great for research teams, reading groups, or just sharing interesting finds with friends.
+icon: link.circle.fill
+category: Utilities
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - bookmarks
+  - archiving
+  - collaboration
+  - read-later
+features:
+  - Automatic web page archiving (screenshots, PDFs, full copies)
+  - Organize links with collections and tags
+  - Full-text search across all saved content
+  - Collaborative shared collections
+  - Browser extension for quick saving
+  - Mobile-friendly responsive web interface
+  - Import bookmarks from browsers and other services
+screenshots: []
+links:
+  - url: https://github.com/linkwarden/linkwarden
+    type: github
+  - url: https://docs.linkwarden.app
+    type: documentation
+  - url: https://linkwarden.app
+    type: website
+webPort: 3000

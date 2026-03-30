@@ -1,0 +1,46 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:10.10
+    environment:
+      TZ: "${TIMEZONE:-UTC}"
+    volumes:
+      - "./config:/config"
+      - "./cache:/cache"
+      - "./media:/media"
+    ports:
+      - "8096:8096"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8096/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+    x-lawn:
+      notices:
+        - id: first-time-setup
+          title: First-Time Setup
+          style: info
+          elements:
+            - type: text
+              content: "On first visit, a setup wizard will guide you through creating an admin account and configuring your server."
+        - id: media-library-path
+          title: Media Library Setup
+          style: info
+          elements:
+            - type: text
+              content: "During setup, add the `/media` directory. By default, only media in that directory is persistently saved on your Mac."
+      healthChecks:
+        - type: http
+          description: Jellyfin API is healthy
+          path: /health
+          expectedStatus: 200
+      environment:
+        TZ:
+          description: "Timezone for Jellyfin (e.g. America/New_York)."

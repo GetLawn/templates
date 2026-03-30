@@ -1,0 +1,48 @@
+id: vaultwarden
+name: Vaultwarden
+tagline: A lightweight, self-hosted password manager compatible with Bitwarden
+description: |
+  Vaultwarden is a self-hosted password manager that lets you store and sync all your passwords, credit cards, and secure notes across all your devices. It's fully compatible with the official Bitwarden apps and browser extensions.
+
+  **All Your Passwords, One Place:**
+  Store unlimited passwords, credit cards, identities, and secure notes. Access them from any device using the Bitwarden app for iOS, Android, Windows, macOS, Linux, or any web browser.
+
+  **Secure by Design:**
+  Your vault is encrypted end-to-end with AES-256 — not even your server can read your data. Enable two-factor authentication with TOTP, FIDO2/WebAuthn, or YubiKey for extra protection.
+
+  **Share Securely:**
+  Create organizations to share passwords with family or team members. Use collections to organize shared credentials and control who can access what.
+
+  **Bitwarden Send:**
+  Securely share text or files with anyone using time-limited, encrypted links. Set access limits and optional passwords for extra control.
+
+  **Privacy First:**
+  Everything stays on your Mac. No cloud services, no subscriptions, no third parties. You own your data completely.
+icon: lock.shield
+category: Utilities
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - passwords
+  - security
+  - bitwarden
+  - encryption
+features:
+  - Unlimited password, card, identity, and note storage
+  - Compatible with all official Bitwarden apps and extensions
+  - End-to-end AES-256 encryption
+  - Two-factor authentication (TOTP, FIDO2, YubiKey)
+  - Organizations and collections for password sharing
+  - Bitwarden Send for secure file and text sharing
+  - Built-in admin panel for server management
+  - Lightweight — runs great on minimal hardware
+screenshots: []
+links:
+  - url: https://github.com/dani-garcia/vaultwarden
+    type: github
+  - url: https://github.com/dani-garcia/vaultwarden/wiki
+    type: documentation
+  - url: https://www.vaultwarden.net/
+    type: website
+webPort: 443
+webScheme: https

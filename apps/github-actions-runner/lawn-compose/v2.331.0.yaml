@@ -1,0 +1,78 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+x-lawn:
+  variables:
+    RUNNER_TOKEN:
+      source: userProvided
+      displayName: "Runner Token"
+      description: "Registration token from the GitHub UI. Go to Settings → Actions → Runners → New self-hosted runner and copy the token from the ./config.sh command."
+    REPO_URL:
+      source: userProvided
+      displayName: "Repository URL"
+      description: "Full GitHub repository URL (e.g. https://github.com/your-org/your-repo). Required for repo runners, leave empty for org runners."
+    ORG_NAME:
+      source: userProvided
+      displayName: "Organization Name"
+      description: "GitHub organization name (e.g. your-org). Required for org runners, leave empty for repo runners."
+
+services:
+  runner:
+    image: myoung34/github-runner:2.331.0-ubuntu-focal
+    environment:
+      RUNNER_TOKEN: "${RUNNER_TOKEN}"
+      REPO_URL: "${REPO_URL}"
+      ORG_NAME: "${ORG_NAME}"
+      RUNNER_SCOPE: "repo"
+      LABELS: "self-hosted,linux"
+      RUNNER_NAME_PREFIX: "lawn"
+      CONFIGURED_ACTIONS_RUNNER_FILES_DIR: "/runner/data"
+      RUNNER_WORKDIR: "/_work"
+      DISABLE_AUTO_UPDATE: "true"
+      UNSET_CONFIG_VARS: "true"
+      START_DOCKER_SERVICE: "false"
+      TZ: "${TIMEZONE:-UTC}"
+    volumes:
+      - "./data:/runner/data"
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+    x-lawn:
+      notices:
+        - id: github-credentials-required
+          title: GitHub Credentials Required
+          style: warning
+          elements:
+            - type: text
+              content: "Before starting, you need a **RUNNER_TOKEN** plus either **REPO_URL** (for repo runners) or **ORG_NAME** (for org runners)."
+            - type: text
+              content: "Go to **Settings → Actions → Runners → New self-hosted runner** on your repository or organization and copy the token from the `./config.sh` command. This token expires after 1 hour but the runner stays registered."
+      environment:
+        RUNNER_SCOPE:
+          description: "Scope of the runner: repo (single repository), org (entire organization), or ent (GitHub Enterprise). Defaults to repo."
+          category: advanced
+        LABELS:
+          description: "Comma-separated labels for this runner. Reference these in workflow YAML with runs-on to target this specific runner."
+          category: optional
+        RUNNER_NAME_PREFIX:
+          description: "Prefix for the auto-generated runner name. A random suffix is appended to ensure uniqueness across multiple instances."
+          category: optional
+        CONFIGURED_ACTIONS_RUNNER_FILES_DIR:
+          description: "Directory where runner registration state is persisted across restarts."
+          category: internal
+        RUNNER_WORKDIR:
+          description: "Working directory for workflow job execution inside the container."
+          category: internal
+        DISABLE_AUTO_UPDATE:
+          description: "Prevents the runner binary from self-updating, keeping the pinned image version in use."
+          category: internal
+        UNSET_CONFIG_VARS:
+          description: "Clears GitHub credential environment variables after runner registration to prevent them from leaking into workflow steps."
+          category: internal
+        START_DOCKER_SERVICE:
+          description: "Start a Docker daemon inside the runner VM, enabling container-based workflow steps and Docker actions. Safe to enable — each runner runs in its own isolated Linux VM."
+          category: advanced
+        TZ:
+          description: "Timezone for the runner container."
+          category: optional

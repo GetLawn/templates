@@ -1,0 +1,127 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+x-lawn:
+  variables:
+    POSTGRES_PASSWORD:
+      source: generatedSecret
+      length: 32
+      displayName: "Database Password"
+      description: "PostgreSQL password. Auto-generated during install."
+
+services:
+  database:
+    # Custom PostgreSQL with VectorChord extension for AI-powered vector search.
+    # Standard postgres will NOT work — Immich requires vector similarity search.
+    image: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0
+    environment:
+      POSTGRES_DB: immich
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}"
+      POSTGRES_INITDB_ARGS: "--data-checksums"
+      # PGDATA must be a subdirectory of the mount point so postgres can
+      # create it with correct ownership (postgres user, not host user)
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - "./postgres:/var/lib/postgresql/data"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres", "-d", "immich"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+    x-lawn:
+      environment:
+        POSTGRES_DB:
+          description: "Name of the PostgreSQL database for Immich."
+        POSTGRES_USER:
+          description: "PostgreSQL username."
+        POSTGRES_INITDB_ARGS:
+          description: "PostgreSQL initialization arguments. Enables data checksums for integrity."
+        PGDATA:
+          description: "Data directory inside the container. Do not change."
+
+  redis:
+    # Used as a message broker for background job processing (thumbnails, ML, transcoding).
+    # No volume mount — pending jobs are re-queued on restart, no data is lost.
+    image: valkey/valkey:9
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  immich-machine-learning:
+    # Runs CLIP, facial recognition, and OCR models for smart search.
+    # Resource-intensive on first run while downloading models (~1 GB).
+    # No healthcheck — ML starts independently and the server calls it on demand.
+    image: ghcr.io/immich-app/immich-machine-learning:v2.5.6
+    volumes:
+      - "./model-cache:/cache"
+    deploy:
+      resources:
+        limits:
+          memory: 3072M
+
+  immich-server:
+    image: ghcr.io/immich-app/immich-server:v2.5.6
+    depends_on:
+      - database
+      - redis
+    environment:
+      TZ: "${TIMEZONE:-UTC}"
+      DB_HOSTNAME: database
+      DB_PORT: "5432"
+      DB_DATABASE_NAME: immich
+      DB_USERNAME: postgres
+      DB_PASSWORD: "${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}"
+      REDIS_HOSTNAME: redis
+      REDIS_PORT: "6379"
+    volumes:
+      - "./upload:/data"
+    ports:
+      - "2283:2283"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:2283/api/server/ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+    x-lawn:
+      notices:
+        - id: first-time-setup
+          title: First-Time Setup
+          style: info
+          elements:
+            - type: text
+              content: "On first visit, you'll see a registration form. Create an admin account to get started."
+      healthChecks:
+        - type: http
+          description: Web UI is accessible
+          path: /api/server/ping
+          expectedStatus: 200
+      environment:
+        TZ:
+          description: "Timezone for Immich (e.g. America/New_York)."
+        DB_HOSTNAME:
+          description: "Hostname of the PostgreSQL database server."
+        DB_PORT:
+          description: "Port of the PostgreSQL database server."
+        DB_DATABASE_NAME:
+          description: "PostgreSQL database name."
+        DB_USERNAME:
+          description: "PostgreSQL username."
+        DB_PASSWORD:
+          description: "PostgreSQL password. Auto-generated during install."
+        REDIS_HOSTNAME:
+          description: "Hostname of the Redis server."
+        REDIS_PORT:
+          description: "Port of the Redis server."

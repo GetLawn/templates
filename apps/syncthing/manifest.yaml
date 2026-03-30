@@ -1,0 +1,46 @@
+id: syncthing
+name: Syncthing
+tagline: Continuous file synchronization between your devices
+description: |
+  Syncthing keeps your files in sync across all your devices — like your own private Dropbox, but without any cloud servers. Your data never leaves your devices and all transfers are encrypted end-to-end.
+
+  **Your Files, Your Devices:**
+  Sync folders between your Mac, PC, phone, or any other device running Syncthing. Changes on one device appear on the others within seconds. No cloud storage, no subscriptions, no file size limits.
+
+  **Private and Secure:**
+  All communication between devices is encrypted with TLS. Files are exchanged directly between your devices — no third-party servers ever see your data. Every device has a unique cryptographic identity that you verify before sharing.
+
+  **Simple to Set Up:**
+  Add a device by scanning a QR code or entering a short ID. Choose which folders to share. That's it — Syncthing handles the rest, including NAT traversal and relay connections when devices aren't on the same network.
+
+  **Conflict Handling:**
+  When the same file is changed on two devices at the same time, Syncthing keeps both versions so you never lose work. Rename the one you don't need, and you're done.
+
+  **Trusted by Millions:**
+  Syncthing is used by millions of people and backed by a vibrant open-source community. It's been battle-tested for over a decade.
+icon: arrow.triangle.2.circlepath
+category: Utilities
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - file-sync
+  - backup
+  - privacy
+features:
+  - Sync files across unlimited devices
+  - End-to-end encryption with TLS
+  - No cloud — files stay on your devices
+  - Automatic conflict resolution
+  - Works across your local network and the internet
+  - Selective folder sharing per device
+  - File versioning to recover deleted files
+  - Cross-platform (Mac, Windows, Linux, Android)
+screenshots: []
+links:
+  - url: https://github.com/syncthing/syncthing
+    type: github
+  - url: https://docs.syncthing.net
+    type: documentation
+  - url: https://syncthing.net
+    type: website
+webPort: 8384

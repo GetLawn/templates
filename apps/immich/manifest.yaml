@@ -1,0 +1,38 @@
+id: immich
+name: Immich
+tagline: Self-hosted photo and video backup
+description: |
+  A high-performance, self-hosted photo and video management solution. Immich is the privacy-focused alternative to Google Photos — back up, organize, search, and share your memories on your own Mac.
+
+  **Smart and beautiful:**
+  Browse your photos on a familiar timeline, search by what's in the picture (like "sunset at the beach"), and let Immich automatically recognize faces and group them for you.
+
+  **Your memories, your control:**
+  All your photos and videos stay on your Mac. Back up from your phone automatically using the free iOS and Android apps. No subscriptions, no cloud, no compromises.
+icon: photo.on.rectangle.angled
+category: Media
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - photos
+  - videos
+  - backup
+  - gallery
+  - machine-learning
+features:
+  - Automatic backup from iOS and Android
+  - AI-powered search by scene, object, or text
+  - Facial recognition and people grouping
+  - Timeline browsing with map view
+  - Album creation and sharing
+  - Video playback and transcoding
+  - Multi-user support
+screenshots: []
+links:
+  - url: https://immich.app
+    type: website
+  - url: https://github.com/immich-app/immich
+    type: github
+  - url: https://immich.app/docs/overview/introduction
+    type: documentation
+webPort: 2283

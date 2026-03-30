@@ -1,0 +1,50 @@
+id: radarr
+name: Radarr
+tagline: Automated movie collection manager
+description: |
+  Radarr is your personal movie librarian. Add the movies you want, and Radarr automatically monitors for new releases, downloads them through your preferred download client, and organizes everything into your media library.
+
+  **Set It and Forget It:**
+  Tell Radarr which movies you want and it does the rest. It searches, downloads, renames, and sorts your films automatically — no manual searching or renaming required.
+
+  **Smart Quality Control:**
+  Set up quality profiles to specify exactly what you want — 1080p, 4K, specific codecs, preferred release groups. Radarr will automatically upgrade to better versions when they become available.
+
+  **Always Up to Date:**
+  Radarr monitors for newly released movies and grabs them the moment they're available. It also watches for better quality releases and upgrades automatically.
+
+  **Works With Your Setup:**
+  Connects to popular download clients like NZBGet, SABnzbd, qBittorrent, and Transmission. Integrates seamlessly with Jellyfin to keep your media server library current.
+
+  **Beautiful Library View:**
+  Browse your collection with poster grids, calendar views, or tables. Track missing movies, see what's downloading, and manage your entire library from one interface.
+
+  **Part of the *arr Stack:**
+  Radarr is the movie companion to Sonarr (TV shows). Together with a download client and Jellyfin, they form a fully automated home media system.
+icon: film.fill
+category: Media
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - media
+  - movies
+  - automation
+  - download
+  - arr
+features:
+  - Automated movie downloading and organization
+  - Quality profiles with automatic upgrades
+  - Calendar view of upcoming releases
+  - Integrates with Jellyfin, Sonarr, and download clients
+  - Custom format scoring for fine-grained release selection
+  - Manual search with full control over what to download
+  - Beautiful poster-grid library browser
+screenshots: []
+links:
+  - url: https://github.com/Radarr/Radarr
+    type: github
+  - url: https://wiki.servarr.com/radarr
+    type: documentation
+  - url: https://radarr.video
+    type: website
+webPort: 7878

@@ -1,0 +1,14 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+services:
+  bentopdf:
+    image: ghcr.io/alam00000/bentopdf:2.2.1
+    ports:
+      - "8080:8080"
+    x-lawn:
+      healthChecks:
+        - type: http
+          description: Web UI is accessible
+          path: /
+          expectedStatus: 200

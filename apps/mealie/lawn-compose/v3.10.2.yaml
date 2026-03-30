@@ -1,0 +1,38 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+services:
+  mealie:
+    image: ghcr.io/mealie-recipes/mealie:v3.10.2
+    environment:
+      PUID: "${UID:-1000}"
+      PGID: "${GID:-1000}"
+      TZ: "${TIMEZONE:-UTC}"
+      ALLOW_SIGNUP: "false"
+      BASE_URL: "${LAWN_URL:-}"
+    volumes:
+      - "./data:/app/data"
+    ports:
+      - "9925:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+    x-lawn:
+      healthChecks:
+        - type: http
+          description: Web UI is accessible
+          path: /api/app/about
+          expectedStatus: 200
+          startPeriodSeconds: 90
+      environment:
+        PUID:
+          description: "User ID for file ownership inside the container."
+        PGID:
+          description: "Group ID for file ownership inside the container."
+        TZ:
+          description: "Timezone for Mealie (e.g. America/New_York)."
+        ALLOW_SIGNUP:
+          description: "Allow new users to sign up without an invite link."
+        BASE_URL:
+          description: "Base URL for notifications and links. Auto-configured from mDNS hostname when available."

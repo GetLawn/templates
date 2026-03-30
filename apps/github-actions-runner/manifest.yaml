@@ -1,0 +1,42 @@
+id: github-actions-runner
+name: GitHub Actions Runner
+tagline: Run your GitHub Actions workflows on your own hardware
+description: |
+  Stop waiting in queues for GitHub-hosted runners. Run your CI/CD workflows directly on your Mac with complete control over the environment, tools, and resources.
+
+  **Your Hardware, Your Speed:**
+  Workflows run on your Mac's CPU and memory — no shared infrastructure, no cold starts, no concurrency limits. Push a commit and your job starts immediately on hardware you own.
+
+  **Full Docker Support:**
+  Enable Docker inside the runner to run container-based workflow steps and actions. Lawn's VM-based isolation makes this safe and simple — no host socket tricks required.
+
+  **Stays Registered:**
+  Runner registration persists across restarts. The runner reconnects to GitHub automatically without re-registering each time it starts.
+
+  **Repo and Org Runners:**
+  Register as a repository runner for a specific project, or as an organization runner to handle jobs across all your repos. Both modes are supported.
+
+  **Private Builds:**
+  Your source code never leaves your Mac. Build and test private repositories without sending code to third-party build servers.
+icon: terminal.fill
+category: Development
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - ci-cd
+  - github
+  - automation
+  - devops
+  - runner
+features:
+  - Run GitHub Actions workflows on your Mac's hardware
+  - Support for repository and organization runners
+  - Docker support for container-based workflow steps
+  - Persists runner registration across restarts
+  - Customizable labels for targeting specific runners in workflow YAML
+  - Compatible with GitHub.com and GitHub Enterprise Server
+links:
+  - url: https://github.com/myoung34/docker-github-actions-runner
+    type: github
+  - url: https://docs.github.com/en/actions/hosting-your-own-runners
+    type: documentation

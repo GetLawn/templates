@@ -1,0 +1,45 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+services:
+  navidrome:
+    image: deluan/navidrome:0.60.3
+    environment:
+      ND_MUSICFOLDER: "/music"
+      ND_DATAFOLDER: "/data"
+      ND_SCANNER_SCHEDULE: "0 */12 * * *"
+    volumes:
+      - "./data:/data"
+      - "./music:/music:ro"
+    ports:
+      - "4533:4533"
+    healthcheck:
+      test: ["CMD", "wget", "-nv", "-t1", "--spider", "http://localhost:4533/ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    x-lawn:
+      notices:
+        - id: first-time-setup
+          title: First-Time Setup
+          style: info
+          elements:
+            - type: text
+              content: "On first visit, you'll need to create an admin account. Enter your desired username and password on the initial login page."
+      healthChecks:
+        - type: http
+          description: Web UI is accessible
+          path: /ping
+          expectedStatus: 200
+      environment:
+        ND_MUSICFOLDER:
+          description: "Path to the music library inside the container."
+        ND_DATAFOLDER:
+          description: "Path to Navidrome's data directory inside the container."
+        ND_SCANNER_SCHEDULE:
+          description: "Cron expression for automatic music library rescans. Default scans every 12 hours."

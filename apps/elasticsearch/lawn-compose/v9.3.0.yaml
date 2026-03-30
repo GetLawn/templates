@@ -1,0 +1,50 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.3.0
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+      xpack.security.transport.ssl.enabled: "false"
+      xpack.security.http.ssl.enabled: "false"
+      cluster.name: lawn-elasticsearch
+      http.host: "0.0.0.0"
+      cluster.routing.allocation.disk.threshold_enabled: "false"
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    volumes:
+      - "./data:/usr/share/elasticsearch/data"
+    ports:
+      - "9200:9200"
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+    x-lawn:
+      healthChecks:
+        - type: http
+          description: Elasticsearch REST API is accessible
+          path: /
+          expectedStatus: 200
+          startPeriodSeconds: 100
+          intervalSeconds: 5
+          timeoutSeconds: 5
+          retries: 30
+      environment:
+        discovery.type:
+          description: "Cluster discovery mode. Set to single-node for standalone operation."
+        xpack.security.enabled:
+          description: "Whether X-Pack security features are enabled."
+        xpack.security.transport.ssl.enabled:
+          description: "Whether TLS is enabled for inter-node transport."
+        xpack.security.http.ssl.enabled:
+          description: "Whether TLS is enabled for the HTTP API."
+        cluster.name:
+          description: "Name of the Elasticsearch cluster."
+        http.host:
+          description: "Network interface for the HTTP API. Set to 0.0.0.0 to accept external connections."
+        cluster.routing.allocation.disk.threshold_enabled:
+          description: "Disk-based shard allocation. Disabled by default because the production defaults are too aggressive for what we assume users will be running in Lawn."
+        ES_JAVA_OPTS:
+          description: "JVM options for Elasticsearch. Controls heap memory allocation."

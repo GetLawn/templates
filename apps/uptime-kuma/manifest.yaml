@@ -1,0 +1,43 @@
+id: uptime-kuma
+name: Uptime Kuma
+tagline: A fancy self-hosted monitoring tool
+description: |
+  Uptime Kuma is a beautiful, easy-to-use monitoring tool that keeps an eye on your websites, APIs, and services. Get instant notifications when something goes down.
+
+  **Monitor Everything:**
+  Track the uptime of your websites, APIs, TCP ports, DNS records, Docker containers, and more. Set check intervals as low as 20 seconds so you never miss a downtime event.
+
+  **Instant Notifications:**
+  Get alerted through 90+ notification services including Telegram, Discord, Slack, email, Pushover, and many more. Know the moment something goes wrong.
+
+  **Beautiful Dashboard:**
+  View all your monitors at a glance with a clean, responsive interface. See uptime percentages, response times, and incident history in real time.
+
+  **Privacy First:**
+  All your monitoring data stays on your Mac. No cloud services, no third-party tracking, no subscriptions required.
+icon: chart.line.uptrend.xyaxis
+category: Monitoring
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - monitoring
+  - uptime
+  - status-page
+features:
+  - Monitor HTTP(s), TCP, DNS, Docker, and more
+  - 90+ notification services (Telegram, Discord, Slack, email)
+  - Beautiful real-time dashboard with response time graphs
+  - Public status pages for sharing with users
+  - Multi-language support
+  - Ping chart and certificate expiry monitoring
+  - Two-factor authentication support
+screenshots: []
+links:
+  - url: https://github.com/louislam/uptime-kuma
+    type: github
+  - url: https://github.com/louislam/uptime-kuma/wiki
+    type: documentation
+  - url: https://uptime.kuma.pet/
+    type: website
+    label: Demo
+webPort: 3001

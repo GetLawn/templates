@@ -1,0 +1,43 @@
+id: audiobookshelf
+name: Audiobookshelf
+tagline: Self-hosted audiobook and podcast server
+description: |
+  Audiobookshelf is a self-hosted server for managing and listening to your audiobook and podcast collections. Stream your library from any device with a beautiful, easy-to-use interface.
+
+  **Your Audiobooks, Anywhere:**
+  Upload your audiobook files and listen from any browser or the free mobile apps for iOS and Android. Your listening progress syncs automatically across all your devices.
+
+  **Podcast Management:**
+  Subscribe to your favorite podcasts and have new episodes downloaded automatically. Manage your subscriptions and listen alongside your audiobook library.
+
+  **Smart Organization:**
+  Audiobookshelf automatically fetches metadata, cover art, and descriptions for your books. Create multiple libraries to keep everything organized.
+
+  **Multi-User Support:**
+  Create accounts for your family or friends with custom permissions. Everyone gets their own listening progress and bookmarks.
+icon: headphones
+category: Media
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - audiobooks
+  - podcasts
+  - media-server
+features:
+  - Stream audiobooks and podcasts from any device
+  - Free iOS and Android mobile apps with offline support
+  - Automatic metadata and cover art fetching
+  - Multi-user with individual progress tracking
+  - Automatic podcast episode downloads
+  - Chapter navigation and bookmarks
+  - Chromecast support
+  - Basic ebook support (EPUB, PDF, CBR, CBZ)
+screenshots: []
+links:
+  - url: https://github.com/advplyr/audiobookshelf
+    type: github
+  - url: https://www.audiobookshelf.org/docs
+    type: documentation
+  - url: https://www.audiobookshelf.org
+    type: website
+webPort: 80

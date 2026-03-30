@@ -1,0 +1,44 @@
+id: elasticsearch
+name: Elasticsearch
+tagline: Distributed search and analytics engine
+description: |
+  Elasticsearch is a powerful search and analytics engine that lets you store, search, and analyze large volumes of data quickly. It powers everything from website search to log analysis and business intelligence.
+
+  **Lightning-Fast Search:**
+  Find what you're looking for in milliseconds, even across millions of documents. Elasticsearch uses advanced indexing to deliver near-instant search results with full-text search, filtering, and fuzzy matching.
+
+  **Flexible Data Storage:**
+  Store any kind of structured or unstructured data — JSON documents, logs, metrics, text, and more. Elasticsearch automatically indexes your data for fast retrieval without requiring you to define schemas upfront.
+
+  **Powerful Analytics:**
+  Run complex aggregations and analytics on your data in real time. Discover trends, patterns, and anomalies across massive datasets with built-in support for histograms, percentiles, and statistical analysis.
+
+  **REST API:**
+  Interact with Elasticsearch through a simple HTTP API. Send queries, index documents, and manage your cluster using standard HTTP requests from any programming language or tool.
+
+  **Scalable Foundation:**
+  Start with a single instance on your Mac and scale to handle terabytes of data. Elasticsearch is the backbone of the Elastic Stack, used by thousands of organizations worldwide.
+icon: magnifyingglass.circle.fill
+category: Databases
+compatibility:
+  minLawnVersion: 0.2.0
+webPort: 9200
+tags:
+  - search
+  - analytics
+  - database
+  - full-text-search
+features:
+  - Full-text search with fuzzy matching
+  - Real-time data indexing and retrieval
+  - Powerful aggregation and analytics engine
+  - Simple REST API for all operations
+  - Handles structured and unstructured data
+screenshots: []
+links:
+  - url: https://github.com/elastic/elasticsearch
+    type: github
+  - url: https://www.elastic.co/docs/solutions/search
+    type: documentation
+  - url: https://www.elastic.co
+    type: website

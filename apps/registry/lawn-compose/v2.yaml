@@ -1,0 +1,37 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+services:
+  registry:
+    image: registry:2
+    environment:
+      REGISTRY_STORAGE_DELETE_ENABLED: "true"
+    volumes:
+      - "./registry:/var/lib/registry"
+    ports:
+      - "5000:5000"
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:5000/v2/"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    x-lawn:
+      healthChecks:
+        - type: http
+          description: Registry API is accessible from this Mac
+          path: /v2/
+          expectedStatus: 200
+          intervalSeconds: 10
+          timeoutSeconds: 5
+          retries: 3
+          startPeriodSeconds: 30
+      environment:
+        REGISTRY_STORAGE_DELETE_ENABLED:
+          description: "Allow deletion of image blobs and manifests."
+        REGISTRY_PROXY_REMOTEURL:
+          description: "URL of the upstream registry to mirror (e.g., https://registry-1.docker.io). Leave empty for a standalone registry."
+        REGISTRY_PROXY_USERNAME:
+          description: "Username for authenticating with the upstream registry (e.g., Docker Hub username)."
+        REGISTRY_PROXY_PASSWORD:
+          description: "Password or access token for the upstream registry."

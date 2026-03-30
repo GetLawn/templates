@@ -1,0 +1,41 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+services:
+  speedtest:
+    image: ghcr.io/librespeed/speedtest:5.5.1
+    environment:
+      MODE: "standalone"
+      TITLE: "LibreSpeed"
+      TELEMETRY: "false"
+      DISABLE_IPINFO: "true"
+      DISTANCE: "km"
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+    x-lawn:
+      healthChecks:
+        - type: http
+          description: Web UI is accessible
+          path: /
+          expectedStatus: 200
+      environment:
+        MODE:
+          description: "Operating mode. standalone serves the complete speed test in a single container."
+        TITLE:
+          description: "Title displayed on the speed test page."
+        TELEMETRY:
+          description: "Enable storing speed test results. Requires mounting a /database volume and setting EMAIL for GDPR compliance."
+        DISABLE_IPINFO:
+          description: "Disable ISP name and location display. Set to true for extra privacy."
+        DISTANCE:
+          description: "Unit for server distance display. Use km, mi, or leave empty to disable."

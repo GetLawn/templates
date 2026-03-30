@@ -1,0 +1,58 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+services:
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:4.0.16.2944-ls303
+    environment:
+      PUID: "${UID:-1000}"
+      PGID: "${GID:-1000}"
+      TZ: "${TIMEZONE:-UTC}"
+    volumes:
+      - "./config:/config"
+      - "./tv:/tv"
+      - "./downloads:/downloads"
+    ports:
+      - "8989:8989"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8989/ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    x-lawn:
+      notices:
+        - id: first-time-setup
+          title: First-Time Setup
+          style: info
+          elements:
+            - type: text
+              content: "On first visit, you'll be asked to set up authentication. Create a username and password to secure your Sonarr instance."
+        - id: media-paths
+          title: TV Root Folder
+          style: info
+          elements:
+            - type: text
+              content: "When adding your first show, set `/tv` as the Root Folder. This directory is persistently stored on your Mac."
+        - id: download-client
+          title: Connect a Download Client
+          style: info
+          elements:
+            - type: text
+              content: "Go to **Settings > Download Clients** to connect Sonarr to a download manager like NZBGet, SABnzbd, or qBittorrent. Configure it to save to `/downloads`."
+      healthChecks:
+        - type: http
+          description: Sonarr API is healthy
+          path: /ping
+          expectedStatus: 200
+      environment:
+        PUID:
+          description: "Host user ID for file ownership."
+        PGID:
+          description: "Host group ID for file ownership."
+        TZ:
+          description: "Timezone for Sonarr (e.g. America/New_York)."

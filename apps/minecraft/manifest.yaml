@@ -1,0 +1,41 @@
+id: minecraft
+name: Minecraft Server
+tagline: Run your own Minecraft Java Edition server for friends and family
+description: |
+  Minecraft Server lets you host your own private Minecraft Java Edition server right on your Mac. Invite friends, build together, and play on your own terms — no monthly subscription, no third-party hosting required.
+
+  **Your world, your rules:**
+  Configure the game difficulty, enable or disable PvP, set a custom world name, and control who can join. With whitelist support, only the players you approve can connect.
+
+  **Always up to date:**
+  Supports the latest Minecraft Java Edition versions. You can pin a specific version to keep your world stable, or always run the latest release.
+
+  **Multiple server flavors:**
+  Start with Vanilla for the pure Minecraft experience, or switch to Paper for better performance and plugin support. Forge and Fabric are also available for modded play.
+
+  **Your world is safe:**
+  All world data, player data, and server settings are stored on your Mac. Updating or reinstalling the server never touches your world.
+
+  **How to connect:**
+  After starting the server, open Minecraft on any Mac on your local network and connect to `localhost:25565`. Share your Mac's local IP address with friends on the same network.
+icon: gamecontroller.fill
+category: Utilities
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - gaming
+  - minecraft
+  - game-server
+  - multiplayer
+features:
+  - Minecraft Java Edition server — latest and legacy versions
+  - Supports Vanilla, Paper, Forge, and Fabric
+  - Whitelist and operator management
+  - Configurable difficulty, game mode, and world settings
+  - World data safely persisted across updates
+  - Works with any Minecraft Java client on your local network
+links:
+  - url: https://github.com/itzg/docker-minecraft-server
+    type: github
+  - url: https://docker-minecraft-server.readthedocs.io
+    type: documentation

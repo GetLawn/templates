@@ -1,0 +1,96 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+x-lawn:
+  variables:
+    SECRET_KEY:
+      source: generatedSecret
+      length: 50
+      displayName: "Secret Key"
+      description: "Secret key used for admin token and encryption. Auto-generated during install."
+
+services:
+  vaultwarden:
+    image: vaultwarden/server:1.35.3
+    environment:
+      TZ: "${TIMEZONE:-UTC}"
+      SIGNUPS_ALLOWED: "true"
+      ADMIN_TOKEN: "${SECRET_KEY:?SECRET_KEY is required}"
+      DOMAIN: "${LAWN_URL:-}"
+    ports:
+      - "80:80"
+    volumes:
+      - "./data:/data"
+    healthcheck:
+      test: ["CMD", "/healthcheck.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    x-lawn:
+      notices:
+        - id: admin-token
+          title: Admin Panel
+          style: info
+          elements:
+            - type: field
+              label: Admin Token
+              source: ADMIN_TOKEN
+              container: vaultwarden
+            - type: text
+              content: "Access the admin panel at `/admin` using this token."
+        - id: disable-signups
+          title: Disable Public Registration
+          style: warning
+          elements:
+            - type: text
+              content: "Public registration is enabled by default. After creating your account, set **SIGNUPS_ALLOWED** to `false` in Environment Variables to prevent others from registering."
+        - id: self-signed-cert
+          title: Self-Signed Certificate
+          style: info
+          elements:
+            - type: text
+              content: "Vaultwarden uses a self-signed HTTPS certificate. Your browser will show a security warning on first visit — this is expected. You can safely proceed past the warning."
+      environment:
+        TZ:
+          description: "Timezone for Vaultwarden (e.g. America/New_York)."
+        SIGNUPS_ALLOWED:
+          description: "Allow new user registrations. Disable after creating your account."
+        ADMIN_TOKEN:
+          description: "Token to access the admin panel at /admin. Auto-generated during install."
+        DOMAIN:
+          description: "Public URL of your Vaultwarden instance. Used for invitation emails and deep links. Auto-configured from mDNS hostname when available."
+
+  caddy:
+    image: caddy:2-alpine
+    depends_on:
+      - vaultwarden
+    environment:
+      BACKEND: "http://vaultwarden:80"
+    ports:
+      - "443:443"
+    volumes:
+      - "./caddy-data:/data"
+      - "./caddy-config:/config"
+      - "./caddy-etc:/etc/caddy"
+    healthcheck:
+      test: ["CMD", "wget", "--no-check-certificate", "--spider", "-q", "https://localhost:443/alive"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+    x-lawn:
+      initFiles:
+        - source: "Caddyfile"
+          containerPath: "/etc/caddy/Caddyfile"
+      environment:
+        BACKEND:
+          description: "Internal address of the Vaultwarden server."

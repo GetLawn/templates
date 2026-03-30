@@ -1,0 +1,44 @@
+id: n8n
+name: n8n
+tagline: Workflow automation with native AI capabilities
+description: |
+  n8n is a visual workflow automation platform that connects your apps and services together. Build powerful automations without writing code — or add custom JavaScript and Python when you need it.
+
+  **Visual Workflow Builder:**
+  Design automations by dragging and connecting nodes on a canvas. Each node represents an action — send an email, update a spreadsheet, post to Slack, query a database, and hundreds more. No programming required.
+
+  **AI-Powered Workflows:**
+  Build intelligent automations using built-in AI nodes. Connect to ChatGPT, Claude, and other LLMs to create AI agents, summarize documents, classify data, or generate content — all within your workflows.
+
+  **400+ Integrations:**
+  Connect to popular services like Google Sheets, Slack, GitHub, Notion, Airtable, Stripe, and many more. Trigger workflows from webhooks, schedules, or events in your connected apps.
+
+  **Self-Hosted and Private:**
+  Your workflows, credentials, and data stay on your Mac. No cloud dependency, no usage limits, no subscriptions. Run as many workflows as you need.
+icon: arrow.triangle.branch
+category: Utilities
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - automation
+  - workflows
+  - ai
+  - integrations
+  - low-code
+features:
+  - Visual drag-and-drop workflow builder
+  - 400+ app integrations out of the box
+  - Built-in AI and LLM nodes
+  - Custom JavaScript and Python code nodes
+  - Webhook and schedule triggers
+  - Credential encryption and secure storage
+  - Workflow templates to get started quickly
+screenshots: []
+links:
+  - url: https://github.com/n8n-io/n8n
+    type: github
+  - url: https://docs.n8n.io
+    type: documentation
+  - url: https://n8n.io
+    type: website
+webPort: 5678

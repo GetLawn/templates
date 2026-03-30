@@ -1,0 +1,38 @@
+id: librespeed
+name: LibreSpeed
+tagline: Self-hosted internet speed test for your home network
+description: |
+  LibreSpeed is a simple, privacy-respecting speed test you can run on your own Mac. No Flash, no Java, no third-party services — just open your browser and test your internet speed.
+
+  **Instant Speed Testing:**
+  Measure your download speed, upload speed, ping, and jitter in seconds. Results appear in a clean, animated gauge — no account needed, no setup required.
+
+  **Completely Private:**
+  Unlike Speedtest.net or similar services, LibreSpeed runs entirely on your Mac. Your test results never leave your home network — no data is sent to third-party servers.
+
+  **Works on Any Device:**
+  Access your speed test from any browser on your network — computers, phones, tablets. Works with Safari, Chrome, Firefox, and all modern browsers.
+
+  **Lightweight:**
+  LibreSpeed is tiny and efficient. It uses minimal resources while delivering accurate results, so it won't slow down the very connection you're testing.
+icon: network
+category: Networking
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - speed-test
+  - network
+  - bandwidth
+features:
+  - Measures download speed, upload speed, ping, and jitter
+  - Works on any device and browser on your network
+  - No account required — just open and test
+  - Completely private — no data sent to third parties
+  - Lightweight, won't interfere with test results
+links:
+  - url: https://github.com/librespeed/speedtest
+    type: github
+  - url: https://librespeed.org/
+    type: website
+    label: Website
+webPort: 8080

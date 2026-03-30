@@ -1,0 +1,44 @@
+id: bentopdf
+name: BentoPDF
+tagline: Privacy-first PDF toolkit with 50+ tools, all processed in your browser
+description: |
+  BentoPDF is a comprehensive PDF toolkit that puts privacy first — every file is processed entirely in your browser, never uploaded to any server. Install it once, use it forever, with no accounts, no subscriptions, and no data leaving your Mac.
+
+  **50+ PDF Tools:**
+  Merge, split, compress, rotate, crop, reorder pages, extract images, add watermarks, headers and footers, and much more. Everything you need for day-to-day PDF work is included.
+
+  **Edit and Convert:**
+  Annotate PDFs with highlights, comments, and signatures. Convert from 30+ formats including Word, Excel, PowerPoint, images (JPG, PNG, HEIC), EPUB, Markdown, and HTML. Convert PDFs back to those same formats.
+
+  **Complete Privacy:**
+  Your files never leave your computer. All processing happens locally in your browser using WebAssembly technology. Perfect for sensitive documents — tax returns, contracts, medical records — with no risk of data leakage.
+
+  **Works Offline:**
+  Once loaded, the core tools work without internet access. Advanced features (OCR, compression) download processing libraries the first time they're used, then work offline afterward.
+
+  **Workflow Builder:**
+  Automate repetitive PDF tasks with the visual node-based workflow builder. Chain tools together to create custom processing pipelines for documents you handle regularly.
+icon: doc.fill
+category: Documents
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - pdf
+  - documents
+  - privacy
+  - tools
+features:
+  - 50+ PDF tools including merge, split, compress, rotate, and crop
+  - Edit PDFs with annotations, highlights, and digital signatures
+  - Convert between PDF and 30+ file formats
+  - OCR for extracting text from scanned documents
+  - Visual workflow builder for automating repetitive tasks
+  - 100% client-side — files never leave your browser
+  - Works offline after initial load
+links:
+  - url: https://github.com/alam00000/bentopdf
+    type: github
+  - url: https://bentopdf.com
+    type: website
+    label: Website
+webPort: 8080

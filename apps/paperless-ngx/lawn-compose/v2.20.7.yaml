@@ -1,0 +1,130 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+x-lawn:
+  variables:
+    POSTGRES_PASSWORD:
+      source: generatedSecret
+      length: 32
+      displayName: "Database Password"
+      description: "PostgreSQL password. Auto-generated during install."
+    SECRET_KEY:
+      source: generatedSecret
+      length: 50
+      displayName: "Secret Key"
+      description: "Secret key for session security. Auto-generated during install."
+    ADMIN_PASSWORD:
+      source: generatedSecret
+      length: 32
+      displayName: "Admin Password"
+      description: "Password for the initial admin account. Auto-generated during install."
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: paperless
+      POSTGRES_USER: paperless
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}"
+      # PGDATA must be a subdirectory of the mount point so postgres can
+      # create it with correct ownership (postgres user, not host user)
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - "./postgres:/var/lib/postgresql/data"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "paperless"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    x-lawn:
+      environment:
+        POSTGRES_DB:
+          description: "Name of the PostgreSQL database used by Paperless."
+        POSTGRES_USER:
+          description: "PostgreSQL username for Paperless."
+        PGDATA:
+          description: "Data directory inside the container. Do not change."
+
+  redis:
+    # Note: No volume mount - redis is used for Celery task queue, not document storage.
+    # Pending tasks are lost on restart, but documents (in postgres/media) are safe.
+    image: redis:7
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  paperless:
+    image: ghcr.io/paperless-ngx/paperless-ngx:2.20.7
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      PAPERLESS_REDIS: redis://redis:6379
+      PAPERLESS_DBHOST: postgres
+      PAPERLESS_DBNAME: paperless
+      PAPERLESS_DBUSER: paperless
+      PAPERLESS_DBPASS: "${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}"
+      PAPERLESS_SECRET_KEY: "${SECRET_KEY:?SECRET_KEY is required}"
+      PAPERLESS_ADMIN_USER: admin
+      PAPERLESS_ADMIN_PASSWORD: "${ADMIN_PASSWORD:?ADMIN_PASSWORD is required}"
+      PAPERLESS_TIME_ZONE: "${TIMEZONE:-UTC}"
+      PAPERLESS_OCR_LANGUAGE: eng
+      USERMAP_UID: "${UID:-1000}"
+      USERMAP_GID: "${GID:-1000}"
+    volumes:
+      - "./data:/usr/src/paperless/data"
+      - "./media:/usr/src/paperless/media"
+      - "./consume:/usr/src/paperless/consume"
+      - "./export:/usr/src/paperless/export"
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+    x-lawn:
+      notices:
+        - id: login-credentials
+          title: Login Credentials
+          style: info
+          elements:
+            - type: field
+              label: Username
+              value: admin
+            - type: field
+              label: Password
+              source: PAPERLESS_ADMIN_PASSWORD
+              container: paperless
+      environment:
+        PAPERLESS_REDIS:
+          description: "Redis connection URL for the Celery task queue."
+        PAPERLESS_DBHOST:
+          description: "Hostname of the PostgreSQL database server."
+        PAPERLESS_DBNAME:
+          description: "PostgreSQL database name."
+        PAPERLESS_DBUSER:
+          description: "PostgreSQL username."
+        PAPERLESS_DBPASS:
+          description: "PostgreSQL password. Auto-generated during install."
+        PAPERLESS_SECRET_KEY:
+          description: "Secret key for session security. Auto-generated during install."
+        PAPERLESS_ADMIN_USER:
+          description: "Username for the initial admin account."
+        PAPERLESS_ADMIN_PASSWORD:
+          description: "Password for the initial admin account. Auto-generated during install."
+        PAPERLESS_TIME_ZONE:
+          description: "Timezone for date display and scheduling (e.g. America/New_York)."
+        PAPERLESS_OCR_LANGUAGE:
+          description: "OCR language for document text recognition (e.g. eng, deu, fra)."
+        USERMAP_UID:
+          description: "User ID for file ownership inside the container."
+        USERMAP_GID:
+          description: "Group ID for file ownership inside the container."

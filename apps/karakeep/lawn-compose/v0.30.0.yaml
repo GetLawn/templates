@@ -1,0 +1,128 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+x-lawn:
+  variables:
+    SECRET_KEY:
+      source: generatedSecret
+      length: 50
+      displayName: "Secret Key"
+      description: "Secret key used for Meilisearch API access and session security. Auto-generated during install."
+    DISABLE_SIGNUPS:
+      displayName: "Disable Signups"
+      description: "Prevent new users from registering. Set to true after creating your account."
+
+services:
+  meilisearch:
+    image: getmeili/meilisearch:v1.13.3
+    environment:
+      MEILI_MASTER_KEY: "${SECRET_KEY:?SECRET_KEY is required}"
+      MEILI_NO_ANALYTICS: "true"
+    volumes:
+      - "./meilisearch:/meili_data"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7700/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    x-lawn:
+      environment:
+        MEILI_MASTER_KEY:
+          description: "Master key for Meilisearch full-text search. Auto-generated during install."
+        MEILI_NO_ANALYTICS:
+          description: "Disable Meilisearch analytics telemetry."
+
+  chrome:
+    image: gcr.io/zenika-hub/alpine-chrome:124
+    # These flags enable Chrome's remote debugging protocol (CDP) so Karakeep can
+    # control the browser for JavaScript rendering and screenshots. There are no
+    # environment variables to configure CDP — command override is the only option.
+    command:
+      - chromium-browser
+      - --headless
+      - --no-sandbox
+      - --disable-gpu
+      - --disable-dev-shm-usage
+      - --remote-debugging-address=0.0.0.0
+      - --remote-debugging-port=9222
+      - --hide-scrollbars
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+
+  karakeep:
+    image: ghcr.io/karakeep-app/karakeep:0.30.0
+    depends_on:
+      - meilisearch
+      - chrome
+    environment:
+      DATA_DIR: /data
+      MEILI_ADDR: "http://meilisearch:7700"
+      MEILI_MASTER_KEY: "${SECRET_KEY:?SECRET_KEY is required}"
+      BROWSER_WEB_URL: "http://chrome:9222"
+      NEXTAUTH_SECRET: "${SECRET_KEY:?SECRET_KEY is required}"
+      NEXTAUTH_URL: "${LAWN_URL:-http://localhost:${HOST_PORT_3000:-3000}}"
+      DB_WAL_MODE: "true"
+      DISABLE_SIGNUPS: "${DISABLE_SIGNUPS:-false}"
+    volumes:
+      - "./data:/data"
+    ports:
+      - "3000:3000"
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+    x-lawn:
+      healthChecks:
+        - type: http
+          description: Web UI is accessible
+          path: /api/auth/providers
+          expectedStatus: 200
+          intervalSeconds: 15
+          timeoutSeconds: 10
+          retries: 5
+          startPeriodSeconds: 60
+      notices:
+        - id: first-run-signup
+          title: Create Your Account
+          style: info
+          elements:
+            - type: text
+              content: "On your first visit, you'll be prompted to sign up. The first account created becomes the admin."
+        - id: disable-signups
+          title: Disable New Registrations
+          style: info
+          visibleWhen:
+            variable: DISABLE_SIGNUPS
+            value: "false"
+            container: karakeep
+          elements:
+            - type: text
+              content: "After creating your account, disable new registrations to prevent others from signing up."
+            - type: variableAction
+              label: "Disable Signups"
+              variable: DISABLE_SIGNUPS
+              container: karakeep
+              value: "true"
+      environment:
+        DATA_DIR:
+          description: "Directory where Karakeep stores its database and assets."
+        MEILI_ADDR:
+          description: "Meilisearch server address. Auto-configured during install."
+        MEILI_MASTER_KEY:
+          description: "Meilisearch API key for full-text search. Auto-generated during install."
+        BROWSER_WEB_URL:
+          description: "Chrome DevTools Protocol URL for headless browser crawling. Auto-configured."
+        NEXTAUTH_SECRET:
+          description: "Secret key for session security. Auto-generated during install."
+        NEXTAUTH_URL:
+          description: "Public URL of the app. Auto-configured from mDNS hostname when available."
+        DB_WAL_MODE:
+          description: "Enable SQLite Write-Ahead Logging for better read/write performance."
+        DISABLE_SIGNUPS:
+          description: "Prevent new users from registering. Set to true after creating your account."

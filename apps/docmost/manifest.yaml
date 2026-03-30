@@ -1,0 +1,46 @@
+id: docmost
+name: Docmost
+tagline: Open-source collaborative wiki and documentation
+description: |
+  A powerful, real-time collaborative wiki and documentation platform — a self-hosted alternative to Confluence and Notion.
+
+  **Write together, in real time:**
+  Multiple people can edit the same page simultaneously. No more "someone else is editing this file" messages. Changes appear live as your team types.
+
+  **Organize your knowledge:**
+  Structure your docs with Spaces — separate areas for different teams or projects. Pages can be nested, linked, and tagged for easy navigation.
+
+  **Rich editing experience:**
+  Beyond just text: embed diagrams with Draw.io, Excalidraw, or Mermaid charts. Add tables, code blocks, images, and attachments. Include content from services like Airtable, Loom, and more.
+
+  **Your data, your rules:**
+  Everything stays on your Mac. No cloud subscription, no data leaving your network. Full-text search, page history, and permission controls included.
+icon: doc.richtext.fill
+category: Documents
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - wiki
+  - documentation
+  - collaboration
+  - knowledge-base
+  - confluence
+  - notion
+features:
+  - Real-time collaborative editing
+  - Spaces for organizing content by team or project
+  - Nested pages with full-text search
+  - Diagrams with Draw.io, Excalidraw, and Mermaid
+  - Page history and version tracking
+  - Granular permission controls
+  - File attachments and embeds
+  - 10+ language support
+screenshots: []
+links:
+  - url: https://docmost.com
+    type: website
+  - url: https://docmost.com/docs
+    type: documentation
+  - url: https://github.com/docmost/docmost
+    type: github
+webPort: 3000

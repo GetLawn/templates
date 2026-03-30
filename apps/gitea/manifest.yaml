@@ -1,0 +1,42 @@
+id: gitea
+name: Gitea
+tagline: Git with a cup of tea
+description: |
+  Gitea is a lightweight, self-hosted Git service that gives you your own private GitHub-like experience. Host your code, track issues, and collaborate — all on your Mac.
+
+  **Your Own Code Hosting:**
+  Create repositories, manage branches, review pull requests, and track issues. Everything you love about GitHub, running privately on your own machine.
+
+  **Lightweight and Fast:**
+  Written in Go, Gitea is incredibly efficient. It starts in seconds, uses minimal resources, and handles everything from personal projects to team collaboration with ease.
+
+  **Full DevOps Platform:**
+  Beyond Git hosting, Gitea includes a package registry, project boards, a wiki, and CI/CD with Gitea Actions (compatible with GitHub Actions workflows).
+
+  **Privacy First:**
+  Your source code stays on your Mac. No cloud dependency, no third-party access, no subscriptions. You own your code and your data.
+icon: arrow.triangle.branch
+category: Development
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - git
+  - code
+  - devops
+features:
+  - Git repository hosting with web interface
+  - Pull requests with code review
+  - Issue tracking and project boards
+  - Built-in CI/CD with Gitea Actions
+  - Package registry for containers, npm, and more
+  - Wiki and documentation per repository
+  - Lightweight — runs great on any Mac
+screenshots: []
+links:
+  - url: https://github.com/go-gitea/gitea
+    type: github
+  - url: https://docs.gitea.com
+    type: documentation
+  - url: https://about.gitea.com
+    type: website
+webPort: 3000

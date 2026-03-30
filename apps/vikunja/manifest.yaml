@@ -1,0 +1,46 @@
+id: vikunja
+name: Vikunja
+tagline: The open-source to-do app for everyone
+description: |
+  Vikunja is a beautiful, open-source task manager and project organizer. Think of it as your personal Todoist or Things 3 — but running entirely on your own Mac.
+
+  **Organize the way you think:**
+  View your tasks as a list, Kanban board, Gantt chart, or table. Switch between views with a click. Whether you prefer a simple to-do list or a full project timeline, Vikunja adapts to you.
+
+  **Work alone or with others:**
+  Create personal projects for yourself, or share them with family, friends, or teammates. Assign tasks, set due dates, add comments, and track who's doing what.
+
+  **Never miss a thing:**
+  Set reminders on tasks and Vikunja will notify you when it's time to act. Attach files, add labels, and use subtasks to break down complex work into manageable steps.
+
+  **Bring your data with you:**
+  Already using Todoist, Trello, TickTick, or Microsoft To-Do? Import everything into Vikunja in minutes and pick up right where you left off.
+
+  **Your data, your rules:**
+  No subscriptions. No cloud syncing your tasks to a third party. Everything lives on your Mac.
+icon: checklist
+category: Utilities
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - todo
+  - tasks
+  - productivity
+  - project-management
+features:
+  - List, Kanban, Gantt, and Table views
+  - Share projects and assign tasks to others
+  - Task reminders, labels, and file attachments
+  - Import from Todoist, Trello, TickTick, and Microsoft To-Do
+  - CalDAV support for Apple Calendar and Reminders
+  - Repeating tasks and subtasks
+  - Full-text search across all tasks
+screenshots: []
+links:
+  - url: https://vikunja.io
+    type: website
+  - url: https://github.com/go-vikunja/vikunja
+    type: github
+  - url: https://vikunja.io/docs/
+    type: documentation
+webPort: 3456

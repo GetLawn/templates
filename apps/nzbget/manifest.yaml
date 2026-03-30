@@ -1,0 +1,39 @@
+id: nzbget
+name: NZBGet
+tagline: High-performance Usenet downloader
+description: |
+  NZBGet is a fast, lightweight Usenet downloader that retrieves files from newsgroups. Paired with apps like Sonarr or Radarr, it can automatically download movies, TV shows, and music.
+
+  **Fast and Efficient:**
+  Written in C++ for maximum performance, NZBGet uses very little CPU and memory. It downloads, verifies, repairs, and extracts files automatically — no manual steps needed.
+
+  **Easy to Use:**
+  The clean web interface lets you manage downloads, configure news servers, and monitor progress from any browser. Drag and drop NZB files or set up RSS feeds for automated downloading.
+
+  **Built for Automation:**
+  NZBGet integrates seamlessly with popular media management tools. It handles post-processing including par-check, repair, and archive extraction out of the box.
+icon: arrow.down.circle.fill
+category: Media
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - usenet
+  - downloader
+  - nzb
+features:
+  - High-performance multi-threaded downloading
+  - Automatic par-check, repair, and extraction
+  - Clean web interface for managing downloads
+  - RSS feed support for automated downloading
+  - Integrates with Sonarr, Radarr, and other media tools
+  - Extension scripts for custom post-processing
+  - Very low CPU and memory usage
+screenshots: []
+links:
+  - url: https://github.com/nzbgetcom/nzbget
+    type: github
+  - url: https://nzbget.com/documentation/
+    type: documentation
+  - url: https://nzbget.com
+    type: website
+webPort: 6789

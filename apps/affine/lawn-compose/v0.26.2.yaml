@@ -1,0 +1,110 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+x-lawn:
+  variables:
+    POSTGRES_PASSWORD:
+      source: generatedSecret
+      length: 32
+      displayName: "Database Password"
+      description: "PostgreSQL password. Auto-generated during install."
+
+services:
+  postgres:
+    image: pgvector/pgvector:0.8.1-pg16
+    environment:
+      POSTGRES_DB: affine
+      POSTGRES_USER: affine
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}"
+      # PGDATA must be a subdirectory of the mount point so postgres can
+      # create it with correct ownership (postgres user, not host user)
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - "./postgres:/var/lib/postgresql/data"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "affine", "-d", "affine"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    x-lawn:
+      environment:
+        POSTGRES_DB:
+          description: "Name of the PostgreSQL database used by AFFiNE."
+        POSTGRES_USER:
+          description: "PostgreSQL username for AFFiNE."
+        PGDATA:
+          description: "Data directory inside the container. Do not change."
+
+  redis:
+    image: redis:7.4.7
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  affine_migration:
+    image: ghcr.io/toeverything/affine:0.26.2
+    # Run database migrations using the same image as the main service.
+    # AFFiNE does not provide an environment variable to trigger migration mode —
+    # this one-shot command is the only supported way to run pre-deploy migrations.
+    command: ["sh", "-c", "node ./scripts/self-host-predeploy.js"]
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      REDIS_SERVER_HOST: redis
+      DATABASE_URL: "postgresql://affine:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}@postgres:5432/affine"
+    volumes:
+      - "./storage:/root/.affine/storage"
+      - "./config:/root/.affine/config"
+    x-lawn:
+      environment:
+        REDIS_SERVER_HOST:
+          description: "Hostname of the Redis server."
+        DATABASE_URL:
+          description: "PostgreSQL connection URL for database migrations."
+
+  affine:
+    image: ghcr.io/toeverything/affine:0.26.2
+    depends_on:
+      - postgres
+      - redis
+      - affine_migration
+    environment:
+      REDIS_SERVER_HOST: redis
+      DATABASE_URL: "postgresql://affine:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}@postgres:5432/affine"
+      AFFINE_SERVER_PORT: "3010"
+      AFFINE_INDEXER_ENABLED: "false"
+    volumes:
+      - "./storage:/root/.affine/storage"
+      - "./config:/root/.affine/config"
+    ports:
+      - "3010:3010"
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+    x-lawn:
+      healthChecks:
+        - type: http
+          description: Web UI is accessible
+          path: /
+          expectedStatus: 200
+          followRedirects: true
+      notices:
+        - id: server-setup-guide
+          title: Finish Setting Up AFFiNE
+          style: info
+          elements:
+            - type: text
+              content: "After signing up, AFFiNE opens a **local** workspace stored only in your browser. To use your self-hosted server, click **Enable AFFiNE Cloud** in the banner inside any document — this connects to YOUR server, not AFFiNE's paid cloud service."
+      environment:
+        REDIS_SERVER_HOST:
+          description: "Hostname of the Redis server used for AFFiNE's sync system."
+        DATABASE_URL:
+          description: "PostgreSQL connection URL for AFFiNE."
+        AFFINE_SERVER_PORT:
+          description: "Port the AFFiNE server listens on inside the container."
+        AFFINE_INDEXER_ENABLED:
+          description: "Enable the full-text search indexer. Requires additional memory and setup."

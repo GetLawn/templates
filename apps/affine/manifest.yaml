@@ -1,0 +1,40 @@
+id: affine
+name: AFFiNE
+tagline: The all-in-one workspace for your notes, docs, and plans
+description: |
+  An open-source workspace that combines a document editor, infinite whiteboard, and project management — all in one place. Think of it as a privacy-first alternative to Notion and Miro.
+
+  **Write, draw, and plan together:**
+  Switch seamlessly between a rich document editor and a freeform canvas. Place notes, diagrams, tables, and linked pages anywhere on the infinite board.
+
+  **Your data, your Mac:**
+  Everything stays on your computer. No subscription, no cloud account required — just a fast, local workspace that's always available offline.
+
+  **Built for collaboration:**
+  Real-time sync lets multiple people work on the same document simultaneously, whether over your local network or via a shared server.
+icon: doc.richtext.fill
+category: Documents
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - notes
+  - documents
+  - whiteboard
+  - collaboration
+  - kanban
+  - workspace
+features:
+  - Infinite canvas whiteboard with freehand drawing
+  - Rich document editor with tables, databases, and embeds
+  - Kanban boards and project management views
+  - Real-time multi-user collaboration
+  - Offline-first with local data storage
+  - AI writing assistant and slide generator
+links:
+  - url: https://affine.pro
+    type: website
+  - url: https://github.com/toeverything/AFFiNE
+    type: github
+  - url: https://docs.affine.pro/docs/self-host-affine
+    type: documentation
+webPort: 3010

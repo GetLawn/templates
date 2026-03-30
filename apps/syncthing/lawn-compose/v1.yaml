@@ -1,0 +1,47 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+services:
+  syncthing:
+    image: syncthing/syncthing:1
+    environment:
+      PUID: "${UID:-1000}"
+      PGID: "${GID:-1000}"
+      STGUIADDRESS: "http://0.0.0.0:8384"
+    volumes:
+      - "./data:/var/syncthing"
+    ports:
+      - "8384:8384"
+      - "22000:22000"
+      - "22000:22000/udp"
+      - "21027:21027/udp"
+    healthcheck:
+      test: ["CMD", "curl", "-fkLsS", "-m", "2", "http://127.0.0.1:8384/rest/noauth/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    x-lawn:
+      notices:
+        - id: first-time-setup
+          title: First-Time Setup
+          style: info
+          elements:
+            - type: text
+              content: "On first visit, you'll see a 'GUI Authentication Required' warning. Go to **Actions > Settings > GUI** to set a username and password."
+      healthChecks:
+        - type: http
+          description: Web UI is accessible
+          path: /rest/noauth/health
+          expectedStatus: 200
+      environment:
+        PUID:
+          description: "User ID for file ownership inside the container."
+        PGID:
+          description: "Group ID for file ownership inside the container."
+        STGUIADDRESS:
+          description: "Address and port for the web GUI. Must bind to 0.0.0.0 to be accessible outside the container."

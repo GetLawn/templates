@@ -1,0 +1,18 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+services:
+  whoami:
+    image: traefik/whoami:v1.11.0
+    ports:
+      - "8080:80"
+    x-lawn:
+      healthChecks:
+        - type: http
+          description: HTTP API is accessible from this Mac
+          path: /
+          expectedStatus: 200
+          intervalSeconds: 10
+          timeoutSeconds: 5
+          retries: 3
+          startPeriodSeconds: 60

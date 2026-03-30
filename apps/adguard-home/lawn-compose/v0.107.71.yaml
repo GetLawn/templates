@@ -1,0 +1,41 @@
+x-lawn-compatibility:
+  minLawnVersion: 0.2.0
+
+services:
+  adguardhome:
+    image: adguard/adguardhome:v0.107.71
+    volumes:
+      - "./conf:/opt/adguardhome/conf"
+      - "./work:/opt/adguardhome/work"
+    ports:
+      - "3000:3000"
+      - "53:53"
+      - "53:53/udp"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    x-lawn:
+      healthChecks:
+        - type: http
+          description: "Web interface is reachable"
+          path: "/"
+          expectedStatus: 200
+          followRedirects: true
+          intervalSeconds: 10
+          timeoutSeconds: 5
+          retries: 5
+          startPeriodSeconds: 30
+      notices:
+        - id: setup-wizard-ports
+          title: Setup Wizard
+          style: warning
+          elements:
+            - type: text
+              content: "During initial setup, set the web interface port to **3000** (the wizard defaults to 80, but Lawn requires 3000). Keep the DNS port at **53**. Using other ports will break connectivity."

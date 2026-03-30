@@ -1,0 +1,30 @@
+id: whoami
+name: Whoami
+tagline: See your HTTP requests in real-time
+description: |
+  A tiny Go webserver that prints OS information and HTTP request details.
+
+  **Perfect for:**
+  - Testing reverse proxy configurations
+  - Debugging network issues
+  - Learning how HTTP requests work
+  - Verifying container networking
+
+  When you access the web interface, it displays headers, IP addresses, and other request metadata in a clean format.
+icon: person.crop.circle
+category: Debugging
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - networking
+  - debug
+features:
+  - Displays all HTTP headers
+  - Shows client IP address
+  - Lightweight and fast startup
+  - No configuration required
+screenshots: []
+links:
+  - url: https://github.com/traefik/whoami
+    type: github
+webPort: 80

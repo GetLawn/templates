@@ -1,0 +1,24 @@
+id: postgres
+name: PostgreSQL
+tagline: Powerful, open source object-relational database
+description: |
+  PostgreSQL is a powerful, open source object-relational database system
+  with over 35 years of active development. It supports advanced data types,
+  full-text search, and JSON querying.
+icon: cylinder.fill
+category: Databases
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - database
+  - sql
+features:
+  - ACID compliant
+  - Full-text search
+  - JSON support
+screenshots: []
+links:
+  - url: https://www.postgresql.org/docs/
+    type: documentation
+  - url: https://www.postgresql.org
+    type: website

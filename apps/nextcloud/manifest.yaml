@@ -1,0 +1,46 @@
+id: nextcloud
+name: Nextcloud
+tagline: Your own private cloud for files, calendars, and more
+description: |
+  Nextcloud is a self-hosted collaboration platform that gives you full control over your data. Store files, sync calendars and contacts, edit documents, and collaborate with others — all from your own Mac.
+
+  **Your Files, Your Rules:**
+  Replace Dropbox, Google Drive, and iCloud with your own private cloud. Access your files from any device through the web interface or sync them automatically with the desktop and mobile apps.
+
+  **More Than File Storage:**
+  Nextcloud includes a calendar, contacts, notes, and even a full office suite for editing documents right in your browser. It's like having your own Google Workspace, but private.
+
+  **Share With Confidence:**
+  Share files and folders with password protection, expiration dates, and download limits. Collaborate on documents in real time without sending data to third-party servers.
+
+  **Privacy First:**
+  All your data stays on your Mac. No cloud company scanning your files, no subscription fees, no storage limits other than your own disk space.
+icon: cloud.fill
+category: Utilities
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - cloud
+  - files
+  - sync
+  - collaboration
+  - office
+features:
+  - File sync and sharing across all your devices
+  - Built-in calendar, contacts, and notes
+  - Online document editing with Nextcloud Office
+  - Photo and video gallery with auto-upload
+  - Password-protected sharing with expiration dates
+  - Real-time collaborative editing
+  - Desktop and mobile apps available
+  - Hundreds of apps to extend functionality
+screenshots: []
+links:
+  - url: https://github.com/nextcloud/server
+    type: github
+  - url: https://docs.nextcloud.com
+    type: documentation
+  - url: https://nextcloud.com
+    type: website
+    label: Website
+webPort: 80

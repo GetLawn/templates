@@ -1,0 +1,33 @@
+id: paperless-ngx
+name: Paperless-ngx
+tagline: Your personal document management system
+description: |
+  A community-supported document management system that transforms your physical documents into a searchable online archive.
+
+  **Go paperless with confidence:**
+  Scan your documents, and Paperless-ngx will automatically organize, tag, and make them searchable using OCR (Optical Character Recognition).
+
+  **Built for privacy:**
+  Your documents stay on your Mac. No cloud services, no subscriptions, no data leaving your network.
+icon: doc.text.magnifyingglass
+category: Documents
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - documents
+  - ocr
+  - automation
+features:
+  - Automatic OCR text recognition
+  - Smart auto-tagging and categorization
+  - Full-text search across all documents
+  - Email integration for automatic imports
+  - Mobile-friendly web interface
+  - Supports PDF, images, and Office documents
+screenshots: []
+links:
+  - url: https://docs.paperless-ngx.com
+    type: documentation
+  - url: https://github.com/paperless-ngx/paperless-ngx
+    type: github
+webPort: 8000

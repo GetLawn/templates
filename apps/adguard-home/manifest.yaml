@@ -1,0 +1,47 @@
+id: adguard-home
+name: AdGuard Home
+tagline: Network-wide ad and tracker blocking
+description: |
+  AdGuard Home is a network-wide ad blocker that protects all your devices at once. Instead of installing ad blockers on every phone, tablet, and computer, you set it up once and every device on your network is protected.
+
+  **Block Ads Everywhere:**
+  AdGuard Home works at the DNS level — it intercepts requests to known advertising and tracking domains before they even reach your devices. This means faster page loads, less data usage, and no more annoying ads on any device connected to your network.
+
+  **Protect Your Privacy:**
+  Block trackers that follow you across the web. AdGuard Home prevents thousands of known tracking services from collecting data about your browsing habits. Your activity stays private.
+
+  **Keep Your Family Safe:**
+  Built-in parental controls let you block adult content and enforce safe search across all devices. Perfect for families with children.
+
+  **Beautiful Dashboard:**
+  See exactly what's happening on your network with a clean, easy-to-read dashboard. View statistics on blocked queries, top clients, and most-requested domains.
+
+  **Encrypted DNS:**
+  Supports modern encrypted DNS protocols (DNS-over-HTTPS, DNS-over-TLS) to prevent your ISP from snooping on your DNS queries.
+icon: shield.fill
+category: Networking
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - dns
+  - ad-blocking
+  - privacy
+  - parental-controls
+  - network
+features:
+  - Network-wide ad and tracker blocking for all devices
+  - Beautiful real-time dashboard with query statistics
+  - Built-in parental controls and safe search
+  - Encrypted DNS support (DNS-over-HTTPS, DNS-over-TLS)
+  - Customizable blocklists and allowlists
+  - Per-client settings and statistics
+  - Lightweight — runs great on any Mac
+screenshots: []
+links:
+  - url: https://github.com/AdguardTeam/AdGuardHome
+    type: github
+  - url: https://adguard.com/en/adguard-home/overview.html
+    type: website
+  - url: https://github.com/AdguardTeam/AdGuardHome/wiki
+    type: documentation
+webPort: 3000

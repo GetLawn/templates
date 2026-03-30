@@ -1,0 +1,45 @@
+id: karakeep
+name: Karakeep
+tagline: Save and organize everything from the web
+description: |
+  Karakeep is your personal web archive — save links, notes, images, and files, and instantly find anything you've saved.
+
+  **Bookmark anything with one click:**
+  Save a link and Karakeep automatically fetches the title, description, and a screenshot. Browser extensions for Chrome and Firefox make saving effortless from any page you're browsing.
+
+  **Find anything with AI-powered search:**
+  Karakeep uses AI to automatically tag your saved content, so you can search by topic without manually organizing everything. Full-text search lets you find that article you saved months ago.
+
+  **Never lose a link again:**
+  Pages are archived locally so your saved content stays accessible even if the original website goes offline. Link rot is no longer a problem.
+
+  **Built for privacy:**
+  Everything stays on your Mac. No cloud subscription required. Your bookmarks, notes, and archives never leave your network.
+icon: bookmark.fill
+category: Utilities
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - bookmarks
+  - read-later
+  - archiving
+  - notes
+  - ai
+features:
+  - Save links, notes, images, and files in one place
+  - Automatic AI-powered tagging and organization
+  - Full-text search across all saved content
+  - Web page archiving with screenshots
+  - Browser extension for Chrome and Firefox
+  - Mobile apps for iOS and Android
+  - RSS feed integration for automatic imports
+  - Optional local AI with Ollama (no OpenAI account needed)
+screenshots: []
+links:
+  - url: https://karakeep.app
+    type: website
+  - url: https://github.com/karakeep-app/karakeep
+    type: github
+  - url: https://docs.karakeep.app
+    type: documentation
+webPort: 3000
