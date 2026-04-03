@@ -29,7 +29,7 @@ name: My App
 tagline: A short description
 description: |
   A longer markdown description of what this app does.
-icon: https://cdn.getlawn.app/images/apps/my-app.svg
+icon: server.rack
 category: Utilities
 webPort: 8080
 ```

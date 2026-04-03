@@ -2,7 +2,7 @@ x-lawn-compatibility:
   minLawnVersion: 0.2.0
 
 x-lawn:
-  variables:
+  config:
     RUNNER_TOKEN:
       source: userProvided
       displayName: "Runner Token"

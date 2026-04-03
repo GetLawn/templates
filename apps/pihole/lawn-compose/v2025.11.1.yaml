@@ -2,7 +2,7 @@ x-lawn-compatibility:
   minLawnVersion: 0.2.0
 
 x-lawn:
-  variables:
+  config:
     ADMIN_PASSWORD:
       source: generatedSecret
       length: 32
