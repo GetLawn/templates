@@ -1,0 +1,62 @@
+{
+  "config": {
+    "RUNNER_TOKEN": {
+      "displayName": "Runner Token",
+      "description": "Registration token from the GitHub UI. Go to Settings → Actions → Runners → New self-hosted runner and copy the token from the ./config.sh command."
+    },
+    "REPO_URL": {
+      "displayName": "Repository URL",
+      "description": "Full GitHub repository URL (e.g. https://github.com/your-org/your-repo). Required for repo runners, leave empty for org runners."
+    },
+    "ORG_NAME": {
+      "displayName": "Organization Name",
+      "description": "GitHub organization name (e.g. your-org). Required for org runners, leave empty for repo runners."
+    }
+  },
+  "services": {
+    "runner": {
+      "environment": {
+        "RUNNER_SCOPE": {
+          "description": "Scope of the runner: repo (single repository), org (entire organization), or ent (GitHub Enterprise). Defaults to repo."
+        },
+        "LABELS": {
+          "description": "Comma-separated labels for this runner. Reference these in workflow YAML with runs-on to target this specific runner."
+        },
+        "RUNNER_NAME_PREFIX": {
+          "description": "Prefix for the auto-generated runner name. A random suffix is appended to ensure uniqueness across multiple instances."
+        },
+        "CONFIGURED_ACTIONS_RUNNER_FILES_DIR": {
+          "description": "Directory where runner registration state is persisted across restarts."
+        },
+        "RUNNER_WORKDIR": {
+          "description": "Working directory for workflow job execution inside the container."
+        },
+        "DISABLE_AUTO_UPDATE": {
+          "description": "Prevents the runner binary from self-updating, keeping the pinned image version in use."
+        },
+        "UNSET_CONFIG_VARS": {
+          "description": "Clears GitHub credential environment variables after runner registration to prevent them from leaking into workflow steps."
+        },
+        "START_DOCKER_SERVICE": {
+          "description": "Start a Docker daemon inside the runner VM, enabling container-based workflow steps and Docker actions. Safe to enable — each runner runs in its own isolated Linux VM."
+        },
+        "TZ": {
+          "description": "Timezone for the runner container."
+        }
+      },
+      "notices": {
+        "github-credentials-required": {
+          "title": "GitHub Credentials Required",
+          "elements": {
+            "token-instructions": {
+              "content": "Before starting, you need a **RUNNER_TOKEN** plus either **REPO_URL** (for repo runners) or **ORG_NAME** (for org runners)."
+            },
+            "setup-guide": {
+              "content": "Go to **Settings → Actions → Runners → New self-hosted runner** on your repository or organization and copy the token from the `./config.sh` command. This token expires after 1 hour but the runner stays registered."
+            }
+          }
+        }
+      }
+    }
+  }
+}

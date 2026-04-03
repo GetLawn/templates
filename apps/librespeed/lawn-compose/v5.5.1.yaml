@@ -25,18 +25,13 @@ services:
           memory: 128M
     x-lawn:
       healthChecks:
-        - type: http
-          description: Web UI is accessible
+        - id: web-ui
+          type: http
           path: /
           expectedStatus: 200
       environment:
         MODE:
-          description: "Operating mode. standalone serves the complete speed test in a single container."
         TITLE:
-          description: "Title displayed on the speed test page."
         TELEMETRY:
-          description: "Enable storing speed test results. Requires mounting a /database volume and setting EMAIL for GDPR compliance."
         DISABLE_IPINFO:
-          description: "Disable ISP name and location display. Set to true for extra privacy."
         DISTANCE:
-          description: "Unit for server distance display. Use km, mi, or leave empty to disable."

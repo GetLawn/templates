@@ -1,0 +1,41 @@
+{
+  "config": {
+    "ADMIN_PASSWORD": {
+      "displayName": "Admin Password",
+      "description": "Password for the Grafana admin account. Auto-generated during install."
+    }
+  },
+  "services": {
+    "grafana": {
+      "environment": {
+        "GF_SECURITY_ADMIN_USER": {
+          "description": "Username for the Grafana admin account."
+        },
+        "GF_USERS_ALLOW_SIGN_UP": {
+          "description": "Whether to allow new user self-registration."
+        },
+        "TZ": {
+          "description": "Timezone for Grafana (e.g. America/New_York)."
+        }
+      },
+      "healthChecks": {
+        "web-ui": {
+          "description": "Web UI is accessible"
+        }
+      },
+      "notices": {
+        "login-credentials": {
+          "title": "Login Credentials",
+          "elements": {
+            "username": {
+              "label": "Username"
+            },
+            "password": {
+              "label": "Password"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -5,8 +5,6 @@ x-lawn:
     POSTGRES_PASSWORD:
       source: generatedSecret
       length: 32
-      displayName: "Database Password"
-      description: "Superuser password for the PostgreSQL instance."
 
 services:
   postgres:
@@ -31,26 +29,19 @@ services:
     x-lawn:
       notices:
         - id: login-credentials
-          title: Connection Details
           style: info
           elements:
-            - type: field
-              label: Username
+            - id: username
+              type: field
               value: postgres
-            - type: field
-              label: Password
+            - id: password
+              type: field
               source: POSTGRES_PASSWORD
               container: postgres
-            - type: field
-              label: Database
+            - id: database
+              type: field
               value: postgres
-            - type: field
-              label: Port
+            - id: port
+              type: field
               value: "5432"
       environment:
-        POSTGRES_DB:
-          description: "Name of the default database created on first start."
-        POSTGRES_USER:
-          description: "Superuser name for the PostgreSQL instance."
-        PGDATA:
-          description: "Data directory inside the container. Do not change."

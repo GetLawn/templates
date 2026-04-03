@@ -19,22 +19,20 @@ services:
     x-lawn:
       notices:
         - id: default-credentials
-          title: Default Credentials
           style: info
           elements:
-            - type: field
-              label: Username
+            - id: username
+              type: field
               value: nzbget
-            - type: field
-              label: Password
+            - id: password
+              type: field
               value: tegbzn6789
-            - type: text
-              content: "Change these in **Settings > Security** after your first login."
+            - id: change-credentials
+              type: text
       healthChecks:
-        - type: http
-          description: Web UI is accessible
+        - id: web-ui
+          type: http
           path: /
           expectedStatus: 401
       environment:
         TZ:
-          description: "Timezone for NZBGet (e.g. America/New_York)."

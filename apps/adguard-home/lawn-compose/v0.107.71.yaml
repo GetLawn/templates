@@ -24,8 +24,8 @@ services:
           memory: 256M
     x-lawn:
       healthChecks:
-        - type: http
-          description: "Web interface is reachable"
+        - id: web-ui
+          type: http
           path: "/"
           expectedStatus: 200
           followRedirects: true
@@ -35,8 +35,7 @@ services:
           startPeriodSeconds: 30
       notices:
         - id: setup-wizard-ports
-          title: Setup Wizard
           style: warning
           elements:
-            - type: text
-              content: "During initial setup, set the web interface port to **3000** (the wizard defaults to 80, but Lawn requires 3000). Keep the DNS port at **53**. Using other ports will break connectivity."
+            - id: port-config-info
+              type: text

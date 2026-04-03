@@ -9,7 +9,7 @@ services:
       - "8080:8080"
     x-lawn:
       healthChecks:
-        - type: http
-          description: Web UI is accessible
+        - id: web-ui
+          type: http
           path: /
           expectedStatus: 200

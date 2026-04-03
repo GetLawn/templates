@@ -1,0 +1,64 @@
+{
+  "config": {
+    "POSTGRES_PASSWORD": {
+      "displayName": "Database Password",
+      "description": "PostgreSQL password. Auto-generated during install."
+    }
+  },
+  "services": {
+    "postgres": {
+      "environment": {
+        "POSTGRES_DB": {
+          "description": "Name of the PostgreSQL database used by AFFiNE."
+        },
+        "POSTGRES_USER": {
+          "description": "PostgreSQL username for AFFiNE."
+        },
+        "PGDATA": {
+          "description": "Data directory inside the container. Do not change."
+        }
+      }
+    },
+    "affine_migration": {
+      "environment": {
+        "REDIS_SERVER_HOST": {
+          "description": "Hostname of the Redis server."
+        },
+        "DATABASE_URL": {
+          "description": "PostgreSQL connection URL for database migrations."
+        }
+      }
+    },
+    "affine": {
+      "environment": {
+        "REDIS_SERVER_HOST": {
+          "description": "Hostname of the Redis server used for AFFiNE's sync system."
+        },
+        "DATABASE_URL": {
+          "description": "PostgreSQL connection URL for AFFiNE."
+        },
+        "AFFINE_SERVER_PORT": {
+          "description": "Port the AFFiNE server listens on inside the container."
+        },
+        "AFFINE_INDEXER_ENABLED": {
+          "description": "Enable the full-text search indexer. Requires additional memory and setup."
+        }
+      },
+      "healthChecks": {
+        "web-ui": {
+          "description": "Web UI is accessible"
+        }
+      },
+      "notices": {
+        "server-setup-guide": {
+          "title": "Finish Setting Up AFFiNE",
+          "elements": {
+            "cloud-setup-guide": {
+              "content": "After signing up, AFFiNE opens a **local** workspace stored only in your browser. To use your self-hosted server, click **Enable AFFiNE Cloud** in the banner inside any document — this connects to YOUR server, not AFFiNE's paid cloud service."
+            }
+          }
+        }
+      }
+    }
+  }
+}

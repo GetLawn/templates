@@ -1,0 +1,62 @@
+{
+  "config": {
+    "SECRET_KEY": {
+      "displayName": "Secret Key",
+      "description": "Secret key used for admin token and encryption. Auto-generated during install."
+    }
+  },
+  "services": {
+    "vaultwarden": {
+      "environment": {
+        "TZ": {
+          "description": "Timezone for Vaultwarden (e.g. America/New_York)."
+        },
+        "SIGNUPS_ALLOWED": {
+          "description": "Allow new user registrations. Disable after creating your account."
+        },
+        "ADMIN_TOKEN": {
+          "description": "Token to access the admin panel at /admin. Auto-generated during install."
+        },
+        "DOMAIN": {
+          "description": "Public URL of your Vaultwarden instance. Used for invitation emails and deep links. Auto-configured from mDNS hostname when available."
+        }
+      },
+      "notices": {
+        "admin-token": {
+          "title": "Admin Panel",
+          "elements": {
+            "admin-token": {
+              "label": "Admin Token"
+            },
+            "admin-panel-info": {
+              "content": "Access the admin panel at `/admin` using this token."
+            }
+          }
+        },
+        "disable-signups": {
+          "title": "Disable Public Registration",
+          "elements": {
+            "registration-warning": {
+              "content": "Public registration is enabled by default. After creating your account, set **SIGNUPS_ALLOWED** to `false` in Environment Variables to prevent others from registering."
+            }
+          }
+        },
+        "self-signed-cert": {
+          "title": "Self-Signed Certificate",
+          "elements": {
+            "cert-info": {
+              "content": "Vaultwarden uses a self-signed HTTPS certificate. Your browser will show a security warning on first visit — this is expected. You can safely proceed past the warning."
+            }
+          }
+        }
+      }
+    },
+    "caddy": {
+      "environment": {
+        "BACKEND": {
+          "description": "Internal address of the Vaultwarden server."
+        }
+      }
+    }
+  }
+}

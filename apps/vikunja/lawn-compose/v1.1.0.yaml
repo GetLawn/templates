@@ -5,13 +5,9 @@ x-lawn:
     POSTGRES_PASSWORD:
       source: generatedSecret
       length: 32
-      displayName: "Database Password"
-      description: "PostgreSQL password. Auto-generated during install."
     SECRET_KEY:
       source: generatedSecret
       length: 50
-      displayName: "Secret Key"
-      description: "Secret used to sign login tokens. Auto-generated during install."
 
 services:
   db:
@@ -33,12 +29,6 @@ services:
       start_period: 30s
     x-lawn:
       environment:
-        POSTGRES_DB:
-          description: "Name of the PostgreSQL database used by Vikunja."
-        POSTGRES_USER:
-          description: "PostgreSQL username for Vikunja."
-        PGDATA:
-          description: "Data directory inside the container. Do not change."
 
   vikunja:
     image: vikunja/vikunja:1.1.0
@@ -60,14 +50,13 @@ services:
     x-lawn:
       notices:
         - id: first-time-setup
-          title: First-Time Setup
           style: info
           elements:
-            - type: text
-              content: "On first visit, you'll see a registration form. Create an account to get started — the first registered user becomes the admin."
+            - id: setup-info
+              type: text
       healthChecks:
-        - type: http
-          description: Web UI is accessible
+        - id: web-ui
+          type: http
           path: /health
           expectedStatus: 200
           intervalSeconds: 15
@@ -76,18 +65,10 @@ services:
           startPeriodSeconds: 30
       environment:
         VIKUNJA_DATABASE_TYPE:
-          description: "Database backend. Vikunja supports postgres, mysql, and sqlite."
         VIKUNJA_DATABASE_HOST:
-          description: "Hostname of the PostgreSQL server. Auto-configured during install."
         VIKUNJA_DATABASE_DATABASE:
-          description: "PostgreSQL database name."
         VIKUNJA_DATABASE_USER:
-          description: "PostgreSQL username."
         VIKUNJA_DATABASE_PASSWORD:
-          description: "PostgreSQL password. Auto-generated during install."
         VIKUNJA_SERVICE_JWTSECRET:
-          description: "Secret used to sign login tokens. Auto-generated during install."
         VIKUNJA_SERVICE_PUBLICURL:
-          description: "Public URL where Vikunja is reachable. Used in emails and by the frontend."
         VIKUNJA_SERVICE_TIMEZONE:
-          description: "Timezone for due dates and reminders (e.g. America/New_York)."

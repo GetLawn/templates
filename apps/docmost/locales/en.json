@@ -1,0 +1,58 @@
+{
+  "config": {
+    "POSTGRES_PASSWORD": {
+      "displayName": "Database Password",
+      "description": "PostgreSQL password. Auto-generated during install."
+    },
+    "SECRET_KEY": {
+      "displayName": "Secret Key",
+      "description": "Secret key for session and token security. Auto-generated during install."
+    }
+  },
+  "services": {
+    "postgres": {
+      "environment": {
+        "POSTGRES_DB": {
+          "description": "Name of the PostgreSQL database used by Docmost."
+        },
+        "POSTGRES_USER": {
+          "description": "PostgreSQL username for Docmost."
+        },
+        "PGDATA": {
+          "description": "Data directory inside the container. Do not change."
+        }
+      }
+    },
+    "docmost": {
+      "environment": {
+        "APP_URL": {
+          "description": "Public URL of your Docmost instance. Auto-configured from mDNS hostname when available."
+        },
+        "APP_SECRET": {
+          "description": "Secret key for session and token security. Auto-generated during install."
+        },
+        "DATABASE_URL": {
+          "description": "PostgreSQL connection string. Auto-configured during install."
+        },
+        "REDIS_URL": {
+          "description": "Redis connection URL for real-time collaboration and background jobs. Auto-configured during install."
+        }
+      },
+      "healthChecks": {
+        "web-ui": {
+          "description": "Web UI is accessible"
+        }
+      },
+      "notices": {
+        "first-time-setup": {
+          "title": "First-Time Setup",
+          "elements": {
+            "setup-info": {
+              "content": "On first visit, you'll complete a brief setup to create your admin account."
+            }
+          }
+        }
+      }
+    }
+  }
+}

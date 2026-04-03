@@ -1,0 +1,44 @@
+{
+  "config": {
+    "ADMIN_PASSWORD": {
+      "displayName": "Admin Password",
+      "description": "Admin password for SilverBullet. Auto-generated during install."
+    }
+  },
+  "services": {
+    "silverbullet": {
+      "environment": {
+        "TZ": {
+          "description": "Timezone for SilverBullet (e.g. America/New_York)."
+        },
+        "PUID": {
+          "description": "User ID for file ownership. Set automatically from your Mac user account."
+        },
+        "PGID": {
+          "description": "Group ID for file ownership. Set automatically from your Mac user account."
+        },
+        "SB_USER": {
+          "description": "Login credentials in 'username:password' format. Auto-generated during install."
+        }
+      },
+      "healthChecks": {
+        "web-ui": {
+          "description": "Web UI is accessible"
+        }
+      },
+      "notices": {
+        "login-credentials": {
+          "title": "Login Credentials",
+          "elements": {
+            "username": {
+              "label": "Username"
+            },
+            "password": {
+              "label": "Password"
+            }
+          }
+        }
+      }
+    }
+  }
+}

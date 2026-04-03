@@ -5,8 +5,6 @@ x-lawn:
     POSTGRES_PASSWORD:
       source: generatedSecret
       length: 32
-      displayName: "Database Password"
-      description: "PostgreSQL password. Auto-generated during install."
 
 services:
   database:
@@ -35,14 +33,6 @@ services:
           memory: 2048M
     x-lawn:
       environment:
-        POSTGRES_DB:
-          description: "Name of the PostgreSQL database for Immich."
-        POSTGRES_USER:
-          description: "PostgreSQL username."
-        POSTGRES_INITDB_ARGS:
-          description: "PostgreSQL initialization arguments. Enables data checksums for integrity."
-        PGDATA:
-          description: "Data directory inside the container. Do not change."
 
   redis:
     # Used as a message broker for background job processing (thumbnails, ML, transcoding).
@@ -97,30 +87,21 @@ services:
     x-lawn:
       notices:
         - id: first-time-setup
-          title: First-Time Setup
           style: info
           elements:
-            - type: text
-              content: "On first visit, you'll see a registration form. Create an admin account to get started."
+            - id: setup-info
+              type: text
       healthChecks:
-        - type: http
-          description: Web UI is accessible
+        - id: web-ui
+          type: http
           path: /api/server/ping
           expectedStatus: 200
       environment:
         TZ:
-          description: "Timezone for Immich (e.g. America/New_York)."
         DB_HOSTNAME:
-          description: "Hostname of the PostgreSQL database server."
         DB_PORT:
-          description: "Port of the PostgreSQL database server."
         DB_DATABASE_NAME:
-          description: "PostgreSQL database name."
         DB_USERNAME:
-          description: "PostgreSQL username."
         DB_PASSWORD:
-          description: "PostgreSQL password. Auto-generated during install."
         REDIS_HOSTNAME:
-          description: "Hostname of the Redis server."
         REDIS_PORT:
-          description: "Port of the Redis server."

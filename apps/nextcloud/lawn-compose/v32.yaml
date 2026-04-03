@@ -5,13 +5,9 @@ x-lawn:
     POSTGRES_PASSWORD:
       source: generatedSecret
       length: 32
-      displayName: "Database Password"
-      description: "PostgreSQL password. Auto-generated during install."
     ADMIN_PASSWORD:
       source: generatedSecret
       length: 32
-      displayName: "Admin Password"
-      description: "Password for the initial admin account. Auto-generated during install."
 
 services:
   postgres:
@@ -30,12 +26,6 @@ services:
       retries: 5
     x-lawn:
       environment:
-        POSTGRES_DB:
-          description: "Name of the PostgreSQL database used by Nextcloud."
-        POSTGRES_USER:
-          description: "PostgreSQL username for Nextcloud."
-        PGDATA:
-          description: "Data directory inside the container. Do not change."
 
   redis:
     image: redis:7
@@ -77,14 +67,13 @@ services:
     x-lawn:
       notices:
         - id: login-credentials
-          title: Login Credentials
           style: info
           elements:
-            - type: field
-              label: Username
+            - id: username
+              type: field
               value: admin
-            - type: field
-              label: Password
+            - id: password
+              type: field
               source: NEXTCLOUD_ADMIN_PASSWORD
               container: nextcloud
       createDirectories:
@@ -94,18 +83,10 @@ services:
           containerPath: "/var/www/html/config/z-lawn-override.config.php"
       environment:
         POSTGRES_HOST:
-          description: "Hostname of the PostgreSQL database server."
         POSTGRES_DB:
-          description: "PostgreSQL database name."
         POSTGRES_USER:
-          description: "PostgreSQL username."
         NEXTCLOUD_ADMIN_USER:
-          description: "Username for the initial admin account."
         NEXTCLOUD_ADMIN_PASSWORD:
-          description: "Password for the initial admin account. Auto-generated during install."
         NEXTCLOUD_TRUSTED_DOMAINS:
-          description: "Space-separated list of domains allowed to access Nextcloud. Includes mDNS hostname when available."
         REDIS_HOST:
-          description: "Hostname of the Redis cache server."
         TZ:
-          description: "Timezone for Nextcloud (e.g. America/New_York)."

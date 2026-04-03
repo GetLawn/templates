@@ -1,0 +1,78 @@
+{
+  "config": {
+    "SECRET_KEY": {
+      "displayName": "Secret Key",
+      "description": "Secret key used for Meilisearch API access and session security. Auto-generated during install."
+    },
+    "DISABLE_SIGNUPS": {
+      "displayName": "Disable Signups",
+      "description": "Prevent new users from registering. Set to true after creating your account."
+    }
+  },
+  "services": {
+    "meilisearch": {
+      "environment": {
+        "MEILI_MASTER_KEY": {
+          "description": "Master key for Meilisearch full-text search. Auto-generated during install."
+        },
+        "MEILI_NO_ANALYTICS": {
+          "description": "Disable Meilisearch analytics telemetry."
+        }
+      }
+    },
+    "karakeep": {
+      "environment": {
+        "DATA_DIR": {
+          "description": "Directory where Karakeep stores its database and assets."
+        },
+        "MEILI_ADDR": {
+          "description": "Meilisearch server address. Auto-configured during install."
+        },
+        "MEILI_MASTER_KEY": {
+          "description": "Meilisearch API key for full-text search. Auto-generated during install."
+        },
+        "BROWSER_WEB_URL": {
+          "description": "Chrome DevTools Protocol URL for headless browser crawling. Auto-configured."
+        },
+        "NEXTAUTH_SECRET": {
+          "description": "Secret key for session security. Auto-generated during install."
+        },
+        "NEXTAUTH_URL": {
+          "description": "Public URL of the app. Auto-configured from mDNS hostname when available."
+        },
+        "DB_WAL_MODE": {
+          "description": "Enable SQLite Write-Ahead Logging for better read/write performance."
+        },
+        "DISABLE_SIGNUPS": {
+          "description": "Prevent new users from registering. Set to true after creating your account."
+        }
+      },
+      "healthChecks": {
+        "web-ui": {
+          "description": "Web UI is accessible"
+        }
+      },
+      "notices": {
+        "first-run-signup": {
+          "title": "Create Your Account",
+          "elements": {
+            "first-run-info": {
+              "content": "On your first visit, you'll be prompted to sign up. The first account created becomes the admin."
+            }
+          }
+        },
+        "disable-signups": {
+          "title": "Disable New Registrations",
+          "elements": {
+            "disable-registration-info": {
+              "content": "After creating your account, prevent others from registering in **Settings > Admin**."
+            },
+            "disable-action": {
+              "label": "Disable Signups"
+            }
+          }
+        }
+      }
+    }
+  }
+}

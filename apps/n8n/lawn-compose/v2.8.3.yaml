@@ -5,8 +5,6 @@ x-lawn:
     SECRET_KEY:
       source: generatedSecret
       length: 50
-      displayName: "Secret Key"
-      description: "Encryption key for stored credentials. Auto-generated during install."
 
 services:
   n8n:
@@ -34,20 +32,14 @@ services:
           memory: 1024M
     x-lawn:
       healthChecks:
-        - type: http
-          description: Web UI is accessible
+        - id: web-ui
+          type: http
           path: /healthz
           expectedStatus: 200
       environment:
         GENERIC_TIMEZONE:
-          description: "Timezone for workflow scheduling and date display (e.g. America/New_York)."
         N8N_ENCRYPTION_KEY:
-          description: "Encryption key for stored credentials. Auto-generated during install."
         N8N_SECURE_COOKIE:
-          description: "Require HTTPS for authentication cookies. Disabled for local access."
         N8N_DIAGNOSTICS_ENABLED:
-          description: "Send anonymous usage statistics to n8n. Disabled for privacy."
         N8N_PERSONALIZATION_ENABLED:
-          description: "Show personalization survey on first login. Disabled for simpler setup."
         WEBHOOK_URL:
-          description: "Public URL for webhook triggers. Auto-configured from mDNS hostname when available."

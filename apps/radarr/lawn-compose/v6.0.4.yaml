@@ -28,32 +28,26 @@ services:
     x-lawn:
       notices:
         - id: first-time-setup
-          title: First-Time Setup
           style: info
           elements:
-            - type: text
-              content: "On first visit, you'll be asked to set up authentication. Create a username and password to secure your Radarr instance."
+            - id: setup-info
+              type: text
         - id: media-paths
-          title: Movie Root Folder
           style: info
           elements:
-            - type: text
-              content: "When adding your first movie, set `/movies` as the Root Folder. Files in that directory are persistently saved on your Mac."
+            - id: root-folder-info
+              type: text
         - id: download-client
-          title: Connect a Download Client
           style: info
           elements:
-            - type: text
-              content: "Go to **Settings > Download Clients** to connect Radarr to NZBGet, qBittorrent, or another download client."
+            - id: download-client-info
+              type: text
       healthChecks:
-        - type: http
-          description: Radarr API is healthy
+        - id: radarr-api
+          type: http
           path: /ping
           expectedStatus: 200
       environment:
         PUID:
-          description: "Host user ID for file ownership."
         PGID:
-          description: "Host group ID for file ownership."
         TZ:
-          description: "Timezone for Radarr (e.g. America/New_York)."

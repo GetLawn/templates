@@ -5,8 +5,6 @@ x-lawn:
     SECRET_KEY:
       source: generatedSecret
       length: 50
-      displayName: "Secret Key"
-      description: "Secret key used for admin token and encryption. Auto-generated during install."
 
 services:
   vaultwarden:
@@ -33,36 +31,29 @@ services:
     x-lawn:
       notices:
         - id: admin-token
-          title: Admin Panel
           style: info
           elements:
-            - type: field
-              label: Admin Token
+            - id: admin-token
+              type: field
               source: ADMIN_TOKEN
               container: vaultwarden
-            - type: text
-              content: "Access the admin panel at `/admin` using this token."
+            - id: admin-panel-info
+              type: text
         - id: disable-signups
-          title: Disable Public Registration
           style: warning
           elements:
-            - type: text
-              content: "Public registration is enabled by default. After creating your account, set **SIGNUPS_ALLOWED** to `false` in Environment Variables to prevent others from registering."
+            - id: registration-warning
+              type: text
         - id: self-signed-cert
-          title: Self-Signed Certificate
           style: info
           elements:
-            - type: text
-              content: "Vaultwarden uses a self-signed HTTPS certificate. Your browser will show a security warning on first visit — this is expected. You can safely proceed past the warning."
+            - id: cert-info
+              type: text
       environment:
         TZ:
-          description: "Timezone for Vaultwarden (e.g. America/New_York)."
         SIGNUPS_ALLOWED:
-          description: "Allow new user registrations. Disable after creating your account."
         ADMIN_TOKEN:
-          description: "Token to access the admin panel at /admin. Auto-generated during install."
         DOMAIN:
-          description: "Public URL of your Vaultwarden instance. Used for invitation emails and deep links. Auto-configured from mDNS hostname when available."
 
   caddy:
     image: caddy:2-alpine
@@ -91,5 +82,3 @@ services:
         - source: "Caddyfile"
           containerPath: "/etc/caddy/Caddyfile"
       environment:
-        BACKEND:
-          description: "Internal address of the Vaultwarden server."

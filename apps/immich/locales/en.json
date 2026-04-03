@@ -1,0 +1,69 @@
+{
+  "config": {
+    "POSTGRES_PASSWORD": {
+      "displayName": "Database Password",
+      "description": "PostgreSQL password. Auto-generated during install."
+    }
+  },
+  "services": {
+    "database": {
+      "environment": {
+        "POSTGRES_DB": {
+          "description": "Name of the PostgreSQL database for Immich."
+        },
+        "POSTGRES_USER": {
+          "description": "PostgreSQL username."
+        },
+        "POSTGRES_INITDB_ARGS": {
+          "description": "PostgreSQL initialization arguments. Enables data checksums for integrity."
+        },
+        "PGDATA": {
+          "description": "Data directory inside the container. Do not change."
+        }
+      }
+    },
+    "immich-server": {
+      "environment": {
+        "TZ": {
+          "description": "Timezone for Immich (e.g. America/New_York)."
+        },
+        "DB_HOSTNAME": {
+          "description": "Hostname of the PostgreSQL database server."
+        },
+        "DB_PORT": {
+          "description": "Port of the PostgreSQL database server."
+        },
+        "DB_DATABASE_NAME": {
+          "description": "PostgreSQL database name."
+        },
+        "DB_USERNAME": {
+          "description": "PostgreSQL username."
+        },
+        "DB_PASSWORD": {
+          "description": "PostgreSQL password. Auto-generated during install."
+        },
+        "REDIS_HOSTNAME": {
+          "description": "Hostname of the Redis server."
+        },
+        "REDIS_PORT": {
+          "description": "Port of the Redis server."
+        }
+      },
+      "healthChecks": {
+        "web-ui": {
+          "description": "Web UI is accessible"
+        }
+      },
+      "notices": {
+        "first-time-setup": {
+          "title": "First-Time Setup",
+          "elements": {
+            "setup-info": {
+              "content": "On first visit, you'll see a registration form. Create an admin account to get started."
+            }
+          }
+        }
+      }
+    }
+  }
+}

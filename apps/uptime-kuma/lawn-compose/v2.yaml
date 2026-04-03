@@ -24,12 +24,10 @@ services:
           memory: 512M
     x-lawn:
       healthChecks:
-        - type: http
-          description: Web UI is accessible
+        - id: web-ui
+          type: http
           path: /
           expectedStatus: 200
       environment:
         TZ:
-          description: "Timezone for Uptime Kuma (e.g. America/New_York)."
         UPTIME_KUMA_DB_TYPE:
-          description: "Database engine. Set to sqlite to skip the database selection wizard."

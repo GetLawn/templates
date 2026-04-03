@@ -1,0 +1,11 @@
+{
+  "services": {
+    "whoami": {
+      "healthChecks": {
+        "http-api": {
+          "description": "HTTP API is accessible from this Mac"
+        }
+      }
+    }
+  }
+}

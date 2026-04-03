@@ -1,0 +1,48 @@
+{
+  "services": {
+    "sonarr": {
+      "environment": {
+        "PUID": {
+          "description": "Host user ID for file ownership."
+        },
+        "PGID": {
+          "description": "Host group ID for file ownership."
+        },
+        "TZ": {
+          "description": "Timezone for Sonarr (e.g. America/New_York)."
+        }
+      },
+      "healthChecks": {
+        "sonarr-api": {
+          "description": "Sonarr API is healthy"
+        }
+      },
+      "notices": {
+        "first-time-setup": {
+          "title": "First-Time Setup",
+          "elements": {
+            "setup-info": {
+              "content": "On first visit, you'll be asked to set up authentication. Create a username and password to secure your Sonarr instance."
+            }
+          }
+        },
+        "media-paths": {
+          "title": "TV Root Folder",
+          "elements": {
+            "root-folder-info": {
+              "content": "When adding your first show, set `/tv` as the Root Folder. This directory is persistently stored on your Mac."
+            }
+          }
+        },
+        "download-client": {
+          "title": "Connect a Download Client",
+          "elements": {
+            "download-client-info": {
+              "content": "Go to **Settings > Download Clients** to connect Sonarr to a download manager like NZBGet, SABnzbd, or qBittorrent. Configure it to save to `/downloads`."
+            }
+          }
+        }
+      }
+    }
+  }
+}

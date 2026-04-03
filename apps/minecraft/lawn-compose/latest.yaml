@@ -1,0 +1,309 @@
+# This template intentionally uses the "latest" image tag. The itzg/minecraft-server
+# container is a runtime wrapper — the actual Minecraft server JAR is downloaded at
+# startup based on the VERSION env var. Pinning the container image risks bundling an
+# outdated Java version (e.g. Java 21) while Minecraft requires a newer one (Java 25+).
+# Using "latest" ensures the Java runtime stays current as Minecraft bumps requirements.
+services:
+  minecraft:
+    image: itzg/minecraft-server:latest
+    environment:
+      EULA: "TRUE"
+      TZ: "${TIMEZONE:-UTC}"
+      VERSION: "LATEST"
+      SIMULATION_DISTANCE: "${SIMULATION_DISTANCE}"
+      VIEW_DISTANCE: "${VIEW_DISTANCE}"
+      SPAWN_PROTECTION: "${SPAWN_PROTECTION}"
+      SEED: "${SEED}"
+      LEVEL: "${LEVEL}"
+    volumes:
+      - "./data:/data"
+    ports:
+      - "25565:25565"
+    healthcheck:
+      test: ["CMD", "mc-health"]
+      interval: 15s
+      timeout: 10s
+      start_period: 120s
+      retries: 8
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+    x-lawn:
+      notices:
+        - id: connect-info
+          style: info
+          elements:
+            - id: connection-info
+              type: text
+      environment:
+        EULA:
+        TZ:
+        VERSION:
+x-lawn:
+  compatibility:
+    minLawnVersion: 0.2.0
+  config:
+    DIFFICULTY:
+      value: easy
+      weight: 10
+      options:
+        peaceful:
+          compose:
+            services:
+              minecraft:
+                environment:
+                  DIFFICULTY: peaceful
+        easy:
+          compose:
+            services:
+              minecraft:
+                environment:
+                  DIFFICULTY: easy
+        normal:
+          compose:
+            services:
+              minecraft:
+                environment:
+                  DIFFICULTY: normal
+        hard:
+          compose:
+            services:
+              minecraft:
+                environment:
+                  DIFFICULTY: hard
+    HARDCORE:
+      inputType: boolean
+      value: false
+      weight: 20
+      options:
+        "true":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  HARDCORE: "TRUE"
+        "false":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  HARDCORE: "FALSE"
+    PVP:
+      inputType: boolean
+      value: true
+      weight: 30
+      options:
+        "true":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  PVP: "TRUE"
+        "false":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  PVP: "FALSE"
+    MODE:
+      value: survival
+      weight: 40
+      options:
+        survival:
+          compose:
+            services:
+              minecraft:
+                environment:
+                  MODE: survival
+        creative:
+          compose:
+            services:
+              minecraft:
+                environment:
+                  MODE: creative
+        adventure:
+          compose:
+            services:
+              minecraft:
+                environment:
+                  MODE: adventure
+        spectator:
+          compose:
+            services:
+              minecraft:
+                environment:
+                  MODE: spectator
+    FORCE_GAMEMODE:
+      inputType: boolean
+      value: false
+      weight: 50
+      options:
+        "true":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  FORCE_GAMEMODE: "TRUE"
+        "false":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  FORCE_GAMEMODE: "FALSE"
+    ENABLE_COMMAND_BLOCK:
+      inputType: boolean
+      value: false
+      weight: 60
+      options:
+        "true":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  ENABLE_COMMAND_BLOCK: "TRUE"
+        "false":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  ENABLE_COMMAND_BLOCK: "FALSE"
+    ALLOW_NETHER:
+      inputType: boolean
+      value: true
+      weight: 70
+      options:
+        "true":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  ALLOW_NETHER: "TRUE"
+        "false":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  ALLOW_NETHER: "FALSE"
+    SPAWN_ANIMALS:
+      inputType: boolean
+      value: true
+      weight: 80
+      options:
+        "true":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  SPAWN_ANIMALS: "TRUE"
+        "false":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  SPAWN_ANIMALS: "FALSE"
+    SPAWN_MONSTERS:
+      inputType: boolean
+      value: true
+      weight: 90
+      options:
+        "true":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  SPAWN_MONSTERS: "TRUE"
+        "false":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  SPAWN_MONSTERS: "FALSE"
+    SPAWN_NPCS:
+      inputType: boolean
+      value: true
+      weight: 100
+      options:
+        "true":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  SPAWN_NPCS: "TRUE"
+        "false":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  SPAWN_NPCS: "FALSE"
+    SIMULATION_DISTANCE:
+      inputType: number
+      value: 10
+      weight: 110
+    VIEW_DISTANCE:
+      inputType: number
+      value: 10
+      weight: 120
+    SEED:
+      inputType: text
+      value: ""
+      weight: 130
+    LEVEL:
+      inputType: text
+      value: "world"
+      weight: 140
+    LEVEL_TYPE:
+      value: "minecraft:normal"
+      weight: 150
+      options:
+        "minecraft:normal":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  LEVEL_TYPE: "minecraft:normal"
+        "minecraft:flat":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  LEVEL_TYPE: "minecraft:flat"
+        "minecraft:large_biomes":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  LEVEL_TYPE: "minecraft:large_biomes"
+        "minecraft:amplified":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  LEVEL_TYPE: "minecraft:amplified"
+        "minecraft:single_biome_surface":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  LEVEL_TYPE: "minecraft:single_biome_surface"
+    GENERATE_STRUCTURES:
+      inputType: boolean
+      value: true
+      weight: 160
+      options:
+        "true":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  GENERATE_STRUCTURES: "TRUE"
+        "false":
+          compose:
+            services:
+              minecraft:
+                environment:
+                  GENERATE_STRUCTURES: "FALSE"
+    SPAWN_PROTECTION:
+      inputType: number
+      value: 16
+      weight: 170

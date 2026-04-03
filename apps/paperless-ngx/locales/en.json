@@ -1,0 +1,84 @@
+{
+  "config": {
+    "POSTGRES_PASSWORD": {
+      "displayName": "Database Password",
+      "description": "PostgreSQL password. Auto-generated during install."
+    },
+    "SECRET_KEY": {
+      "displayName": "Secret Key",
+      "description": "Secret key for session security. Auto-generated during install."
+    },
+    "ADMIN_PASSWORD": {
+      "displayName": "Admin Password",
+      "description": "Password for the initial admin account. Auto-generated during install."
+    }
+  },
+  "services": {
+    "postgres": {
+      "environment": {
+        "POSTGRES_DB": {
+          "description": "Name of the PostgreSQL database used by Paperless."
+        },
+        "POSTGRES_USER": {
+          "description": "PostgreSQL username for Paperless."
+        },
+        "PGDATA": {
+          "description": "Data directory inside the container. Do not change."
+        }
+      }
+    },
+    "paperless": {
+      "environment": {
+        "PAPERLESS_REDIS": {
+          "description": "Redis connection URL for the Celery task queue."
+        },
+        "PAPERLESS_DBHOST": {
+          "description": "Hostname of the PostgreSQL database server."
+        },
+        "PAPERLESS_DBNAME": {
+          "description": "PostgreSQL database name."
+        },
+        "PAPERLESS_DBUSER": {
+          "description": "PostgreSQL username."
+        },
+        "PAPERLESS_DBPASS": {
+          "description": "PostgreSQL password. Auto-generated during install."
+        },
+        "PAPERLESS_SECRET_KEY": {
+          "description": "Secret key for session security. Auto-generated during install."
+        },
+        "PAPERLESS_ADMIN_USER": {
+          "description": "Username for the initial admin account."
+        },
+        "PAPERLESS_ADMIN_PASSWORD": {
+          "description": "Password for the initial admin account. Auto-generated during install."
+        },
+        "PAPERLESS_TIME_ZONE": {
+          "description": "Timezone for date display and scheduling (e.g. America/New_York)."
+        },
+        "PAPERLESS_OCR_LANGUAGE": {
+          "description": "OCR language for document text recognition (e.g. eng, deu, fra)."
+        },
+        "USERMAP_UID": {
+          "description": "User ID for file ownership inside the container."
+        },
+        "USERMAP_GID": {
+          "description": "Group ID for file ownership inside the container."
+        }
+      },
+      "notices": {
+        "login-credentials": {
+          "title": "Login Credentials",
+          "elements": {
+            "username": {
+              "label": "Username"
+            },
+            "password": {
+              "label": "Password"
+            }
+          }
+        }
+      }
+    }
+  }
+}

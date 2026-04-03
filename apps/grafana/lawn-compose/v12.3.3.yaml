@@ -5,8 +5,6 @@ x-lawn:
     ADMIN_PASSWORD:
       source: generatedSecret
       length: 32
-      displayName: "Admin Password"
-      description: "Password for the Grafana admin account. Auto-generated during install."
 
 services:
   grafana:
@@ -33,25 +31,21 @@ services:
     x-lawn:
       notices:
         - id: login-credentials
-          title: Login Credentials
           style: info
           elements:
-            - type: field
-              label: Username
+            - id: username
+              type: field
               value: admin
-            - type: field
-              label: Password
+            - id: password
+              type: field
               source: GF_SECURITY_ADMIN_PASSWORD
               container: grafana
       healthChecks:
-        - type: http
-          description: Web UI is accessible
+        - id: web-ui
+          type: http
           path: /api/health
           expectedStatus: 200
       environment:
         GF_SECURITY_ADMIN_USER:
-          description: "Username for the Grafana admin account."
         GF_USERS_ALLOW_SIGN_UP:
-          description: "Whether to allow new user self-registration."
         TZ:
-          description: "Timezone for Grafana (e.g. America/New_York)."

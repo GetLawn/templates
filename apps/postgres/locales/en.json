@@ -1,0 +1,42 @@
+{
+  "config": {
+    "POSTGRES_PASSWORD": {
+      "displayName": "Database Password",
+      "description": "Superuser password for the PostgreSQL instance."
+    }
+  },
+  "services": {
+    "postgres": {
+      "environment": {
+        "POSTGRES_DB": {
+          "description": "Name of the default database created on first start."
+        },
+        "POSTGRES_USER": {
+          "description": "Superuser name for the PostgreSQL instance."
+        },
+        "PGDATA": {
+          "description": "Data directory inside the container. Do not change."
+        }
+      },
+      "notices": {
+        "login-credentials": {
+          "title": "Connection Details",
+          "elements": {
+            "username": {
+              "label": "Username"
+            },
+            "password": {
+              "label": "Password"
+            },
+            "database": {
+              "label": "Database"
+            },
+            "port": {
+              "label": "Port"
+            }
+          }
+        }
+      }
+    }
+  }
+}

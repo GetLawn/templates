@@ -26,22 +26,19 @@ services:
     x-lawn:
       notices:
         - id: first-time-setup
-          title: First-Time Setup
           style: info
           elements:
-            - type: text
-              content: "On first visit, a setup wizard will guide you through creating an admin account and configuring your server."
+            - id: setup-info
+              type: text
         - id: media-library-path
-          title: Media Library Setup
           style: info
           elements:
-            - type: text
-              content: "During setup, add the `/media` directory. By default, only media in that directory is persistently saved on your Mac."
+            - id: library-setup-info
+              type: text
       healthChecks:
-        - type: http
-          description: Jellyfin API is healthy
+        - id: jellyfin-api
+          type: http
           path: /health
           expectedStatus: 200
       environment:
         TZ:
-          description: "Timezone for Jellyfin (e.g. America/New_York)."

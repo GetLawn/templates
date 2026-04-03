@@ -1,0 +1,32 @@
+{
+  "services": {
+    "nzbget": {
+      "environment": {
+        "TZ": {
+          "description": "Timezone for NZBGet (e.g. America/New_York)."
+        }
+      },
+      "healthChecks": {
+        "web-ui": {
+          "description": "Web UI is accessible"
+        }
+      },
+      "notices": {
+        "default-credentials": {
+          "title": "Default Credentials",
+          "elements": {
+            "username": {
+              "label": "Username"
+            },
+            "password": {
+              "label": "Password"
+            },
+            "change-credentials": {
+              "content": "Change these in **Settings > Security** after your first login."
+            }
+          }
+        }
+      }
+    }
+  }
+}

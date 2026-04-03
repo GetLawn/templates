@@ -1,0 +1,32 @@
+{
+  "services": {
+    "syncthing": {
+      "environment": {
+        "PUID": {
+          "description": "User ID for file ownership inside the container."
+        },
+        "PGID": {
+          "description": "Group ID for file ownership inside the container."
+        },
+        "STGUIADDRESS": {
+          "description": "Address and port for the web GUI. Must bind to 0.0.0.0 to be accessible outside the container."
+        }
+      },
+      "notices": {
+        "first-time-setup": {
+          "title": "First-Time Setup",
+          "elements": {
+            "setup-info": {
+              "content": "On first visit, you'll see a 'GUI Authentication Required' warning. Go to **Actions > Settings > GUI** to set a username and password."
+            }
+          }
+        }
+      },
+      "healthChecks": {
+        "web-ui": {
+          "description": "Web UI is accessible"
+        }
+      }
+    }
+  }
+}

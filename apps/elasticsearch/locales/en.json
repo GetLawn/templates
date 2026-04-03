@@ -1,0 +1,37 @@
+{
+  "services": {
+    "elasticsearch": {
+      "environment": {
+        "discovery.type": {
+          "description": "Cluster discovery mode. Set to single-node for standalone operation."
+        },
+        "xpack.security.enabled": {
+          "description": "Whether X-Pack security features are enabled."
+        },
+        "xpack.security.transport.ssl.enabled": {
+          "description": "Whether TLS is enabled for inter-node transport."
+        },
+        "xpack.security.http.ssl.enabled": {
+          "description": "Whether TLS is enabled for the HTTP API."
+        },
+        "cluster.name": {
+          "description": "Name of the Elasticsearch cluster."
+        },
+        "http.host": {
+          "description": "Network interface for the HTTP API. Set to 0.0.0.0 to accept external connections."
+        },
+        "cluster.routing.allocation.disk.threshold_enabled": {
+          "description": "Disk-based shard allocation. Disabled by default because the production defaults are too aggressive for what we assume users will be running in Lawn."
+        },
+        "ES_JAVA_OPTS": {
+          "description": "JVM options for Elasticsearch. Controls heap memory allocation."
+        }
+      },
+      "healthChecks": {
+        "elasticsearch-api": {
+          "description": "Elasticsearch REST API is accessible"
+        }
+      }
+    }
+  }
+}

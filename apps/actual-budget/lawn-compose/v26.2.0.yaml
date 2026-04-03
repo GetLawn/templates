@@ -17,10 +17,9 @@ services:
           memory: 512M
     x-lawn:
       healthChecks:
-        - type: http
-          description: Web UI is accessible
+        - id: web-ui
+          type: http
           path: /health
           expectedStatus: 200
       environment:
         TZ:
-          description: "Timezone for Actual Budget (e.g. America/New_York)."

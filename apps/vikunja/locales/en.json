@@ -1,0 +1,70 @@
+{
+  "config": {
+    "POSTGRES_PASSWORD": {
+      "displayName": "Database Password",
+      "description": "PostgreSQL password. Auto-generated during install."
+    },
+    "SECRET_KEY": {
+      "displayName": "Secret Key",
+      "description": "Secret used to sign login tokens. Auto-generated during install."
+    }
+  },
+  "services": {
+    "db": {
+      "environment": {
+        "POSTGRES_DB": {
+          "description": "Name of the PostgreSQL database used by Vikunja."
+        },
+        "POSTGRES_USER": {
+          "description": "PostgreSQL username for Vikunja."
+        },
+        "PGDATA": {
+          "description": "Data directory inside the container. Do not change."
+        }
+      }
+    },
+    "vikunja": {
+      "environment": {
+        "VIKUNJA_DATABASE_TYPE": {
+          "description": "Database backend. Vikunja supports postgres, mysql, and sqlite."
+        },
+        "VIKUNJA_DATABASE_HOST": {
+          "description": "Hostname of the PostgreSQL server. Auto-configured during install."
+        },
+        "VIKUNJA_DATABASE_DATABASE": {
+          "description": "PostgreSQL database name."
+        },
+        "VIKUNJA_DATABASE_USER": {
+          "description": "PostgreSQL username."
+        },
+        "VIKUNJA_DATABASE_PASSWORD": {
+          "description": "PostgreSQL password. Auto-generated during install."
+        },
+        "VIKUNJA_SERVICE_JWTSECRET": {
+          "description": "Secret used to sign login tokens. Auto-generated during install."
+        },
+        "VIKUNJA_SERVICE_PUBLICURL": {
+          "description": "Public URL where Vikunja is reachable. Used in emails and by the frontend."
+        },
+        "VIKUNJA_SERVICE_TIMEZONE": {
+          "description": "Timezone for due dates and reminders (e.g. America/New_York)."
+        }
+      },
+      "notices": {
+        "first-time-setup": {
+          "title": "First-Time Setup",
+          "elements": {
+            "setup-info": {
+              "content": "On first visit, you'll see a registration form. Create an account to get started — the first registered user becomes the admin."
+            }
+          }
+        }
+      },
+      "healthChecks": {
+        "web-ui": {
+          "description": "Web UI is accessible"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "config": {
+    "DIFFICULTY": {
+      "displayName": "Difficulty",
+      "description": "Controls how challenging the game is, affecting mob damage, hunger drain, and natural health regeneration.",
+      "options": {
+        "peaceful": { "label": "Peaceful" },
+        "easy": { "label": "Easy" },
+        "normal": { "label": "Normal" },
+        "hard": { "label": "Hard" }
+      }
+    },
+    "HARDCORE": {
+      "displayName": "Hardcore Mode",
+      "description": "Players are banned from the server upon death. Difficulty is locked to Hard when enabled.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    },
+    "PVP": {
+      "displayName": "PvP",
+      "description": "Allow players to deal damage to each other.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    },
+    "MODE": {
+      "displayName": "Game Mode",
+      "description": "The default game mode for new players joining the server.",
+      "options": {
+        "survival": { "label": "Survival" },
+        "creative": { "label": "Creative" },
+        "adventure": { "label": "Adventure" },
+        "spectator": { "label": "Spectator" }
+      }
+    },
+    "FORCE_GAMEMODE": {
+      "displayName": "Force Game Mode on Join",
+      "description": "Force players to join in the default game mode. When disabled, players rejoin in the mode they left in.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    },
+    "ENABLE_COMMAND_BLOCK": {
+      "displayName": "Command Blocks",
+      "description": "Allow command blocks to be used on the server.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    },
+    "ALLOW_NETHER": {
+      "displayName": "Nether Dimension",
+      "description": "Allow players to travel to the Nether. When disabled, nether portals will not work.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    },
+    "SPAWN_ANIMALS": {
+      "displayName": "Spawn Animals",
+      "description": "Allow passive mobs (animals) to spawn naturally in the world.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    },
+    "SPAWN_MONSTERS": {
+      "displayName": "Spawn Monsters",
+      "description": "Allow hostile mobs (monsters) to spawn naturally. Has no effect when difficulty is set to Peaceful.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    },
+    "SPAWN_NPCS": {
+      "displayName": "Spawn Villagers",
+      "description": "Allow villagers and other NPCs to spawn naturally in villages.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    },
+    "SIMULATION_DISTANCE": {
+      "displayName": "Simulation Distance",
+      "description": "The maximum distance from players (in chunks) that living entities are updated. Lower values improve performance."
+    },
+    "VIEW_DISTANCE": {
+      "displayName": "View Distance",
+      "description": "The amount of world data sent to the client, measured in chunks. Lower values reduce bandwidth and improve performance."
+    },
+    "SEED": {
+      "displayName": "World Seed",
+      "description": "Seed for world generation. Leave empty for a random seed. Use a specific value to generate the same world layout."
+    },
+    "LEVEL": {
+      "displayName": "World Name",
+      "description": "The name of the world save directory. Changing this switches to a different world save."
+    },
+    "LEVEL_TYPE": {
+      "displayName": "World Type",
+      "description": "The type of world to generate. Only applies when a new world is created.",
+      "options": {
+        "minecraft:normal": { "label": "Normal" },
+        "minecraft:flat": { "label": "Flat" },
+        "minecraft:large_biomes": { "label": "Large Biomes" },
+        "minecraft:amplified": { "label": "Amplified" },
+        "minecraft:single_biome_surface": { "label": "Single Biome" }
+      }
+    },
+    "GENERATE_STRUCTURES": {
+      "displayName": "Generate Structures",
+      "description": "Generate structures such as villages, dungeons, and temples. Only applies when a new world is created.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    },
+    "SPAWN_PROTECTION": {
+      "displayName": "Spawn Protection Radius",
+      "description": "The radius (in blocks) around the world spawn point where non-operator players cannot build. Set to 0 to disable."
+    }
+  },
+  "services": {
+    "minecraft": {
+      "environment": {
+        "EULA": {
+          "description": "Must be TRUE to accept Mojang's End User License Agreement."
+        },
+        "TZ": {
+          "description": "Timezone for the server (e.g. America/New_York)."
+        },
+        "VERSION": {
+          "description": "Minecraft version to run (e.g. 1.21.4). Set to LATEST to always use the newest release."
+        }
+      },
+      "notices": {
+        "connect-info": {
+          "title": "How to Connect",
+          "elements": {
+            "connection-info": {
+              "content": "Open Minecraft Java Edition and add a server with address **localhost:25565**. On other computers on your local network, use your Mac's local IP address instead of localhost."
+            }
+          }
+        }
+      }
+    }
+  }
+}

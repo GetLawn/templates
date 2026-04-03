@@ -1,0 +1,34 @@
+{
+  "services": {
+    "jellyfin": {
+      "environment": {
+        "TZ": {
+          "description": "Timezone for Jellyfin (e.g. America/New_York)."
+        }
+      },
+      "healthChecks": {
+        "jellyfin-api": {
+          "description": "Jellyfin API is healthy"
+        }
+      },
+      "notices": {
+        "first-time-setup": {
+          "title": "First-Time Setup",
+          "elements": {
+            "setup-info": {
+              "content": "On first visit, a setup wizard will guide you through creating an admin account and configuring your server."
+            }
+          }
+        },
+        "media-library-path": {
+          "title": "Media Library Setup",
+          "elements": {
+            "library-setup-info": {
+              "content": "During setup, add the `/media` directory. By default, only media in that directory is persistently saved on your Mac."
+            }
+          }
+        }
+      }
+    }
+  }
+}

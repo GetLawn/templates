@@ -5,13 +5,9 @@ x-lawn:
     POSTGRES_PASSWORD:
       source: generatedSecret
       length: 32
-      displayName: "Database Password"
-      description: "PostgreSQL password. Auto-generated during install."
     SECRET_KEY:
       source: generatedSecret
       length: 50
-      displayName: "Secret Key"
-      description: "Secret key for session encryption and search API. Auto-generated during install."
 
 services:
   postgres:
@@ -32,12 +28,6 @@ services:
       retries: 5
     x-lawn:
       environment:
-        POSTGRES_DB:
-          description: "Name of the PostgreSQL database used by Linkwarden."
-        POSTGRES_USER:
-          description: "PostgreSQL username for Linkwarden."
-        PGDATA:
-          description: "Data directory inside the container. Do not change."
 
   meilisearch:
     image: getmeili/meilisearch:v1.12
@@ -57,10 +47,6 @@ services:
           memory: 512M
     x-lawn:
       environment:
-        MEILI_MASTER_KEY:
-          description: "MeiliSearch API key for full-text search. Auto-generated during install."
-        MEILI_NO_ANALYTICS:
-          description: "Disable MeiliSearch analytics telemetry."
 
   linkwarden:
     image: ghcr.io/linkwarden/linkwarden:v2.13.5
@@ -86,14 +72,13 @@ services:
     x-lawn:
       notices:
         - id: first-time-setup
-          title: First-Time Setup
           style: info
           elements:
-            - type: text
-              content: "On first visit, you'll see a registration form. Create an account to get started."
+            - id: setup-info
+              type: text
       healthChecks:
-        - type: http
-          description: Web UI is accessible
+        - id: web-ui
+          type: http
           path: /
           expectedStatus: 200
           intervalSeconds: 10
@@ -102,16 +87,9 @@ services:
           startPeriodSeconds: 120
       environment:
         DATABASE_URL:
-          description: "PostgreSQL connection string. Auto-configured during install."
         NEXTAUTH_SECRET:
-          description: "Secret key for session encryption. Auto-generated during install."
         NEXTAUTH_URL:
-          description: "Authentication callback URL. Auto-configured from mDNS hostname when available."
         MEILI_MASTER_KEY:
-          description: "MeiliSearch API key for full-text search. Auto-generated during install."
         MEILI_HOST:
-          description: "MeiliSearch server URL. Auto-configured during install."
         NEXT_PUBLIC_DISABLE_REGISTRATION:
-          description: "Disable new user registration after setup. Set to false to allow others to create accounts."
         NEXT_PUBLIC_CREDENTIALS_ENABLED:
-          description: "Enable username and password login."

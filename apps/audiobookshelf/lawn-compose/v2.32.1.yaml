@@ -26,10 +26,9 @@ services:
           memory: 512M
     x-lawn:
       healthChecks:
-        - type: http
-          description: Web UI is accessible
+        - id: web-ui
+          type: http
           path: /healthcheck
           expectedStatus: 200
       environment:
         TZ:
-          description: "Timezone for Audiobookshelf (e.g. America/New_York)."

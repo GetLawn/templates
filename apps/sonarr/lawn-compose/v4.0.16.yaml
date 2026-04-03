@@ -28,32 +28,26 @@ services:
     x-lawn:
       notices:
         - id: first-time-setup
-          title: First-Time Setup
           style: info
           elements:
-            - type: text
-              content: "On first visit, you'll be asked to set up authentication. Create a username and password to secure your Sonarr instance."
+            - id: setup-info
+              type: text
         - id: media-paths
-          title: TV Root Folder
           style: info
           elements:
-            - type: text
-              content: "When adding your first show, set `/tv` as the Root Folder. This directory is persistently stored on your Mac."
+            - id: root-folder-info
+              type: text
         - id: download-client
-          title: Connect a Download Client
           style: info
           elements:
-            - type: text
-              content: "Go to **Settings > Download Clients** to connect Sonarr to a download manager like NZBGet, SABnzbd, or qBittorrent. Configure it to save to `/downloads`."
+            - id: download-client-info
+              type: text
       healthChecks:
-        - type: http
-          description: Sonarr API is healthy
+        - id: sonarr-api
+          type: http
           path: /ping
           expectedStatus: 200
       environment:
         PUID:
-          description: "Host user ID for file ownership."
         PGID:
-          description: "Host group ID for file ownership."
         TZ:
-          description: "Timezone for Sonarr (e.g. America/New_York)."

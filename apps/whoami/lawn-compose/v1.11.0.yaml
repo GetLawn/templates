@@ -9,8 +9,8 @@ services:
       - "8080:80"
     x-lawn:
       healthChecks:
-        - type: http
-          description: HTTP API is accessible from this Mac
+        - id: http-api
+          type: http
           path: /
           expectedStatus: 200
           intervalSeconds: 10

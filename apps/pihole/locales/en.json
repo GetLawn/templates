@@ -1,0 +1,56 @@
+{
+  "config": {
+    "ADMIN_PASSWORD": {
+      "displayName": "Admin Password",
+      "description": "Password for the Pi-hole admin dashboard. Auto-generated during install."
+    }
+  },
+  "services": {
+    "pihole": {
+      "environment": {
+        "TZ": {
+          "description": "Timezone for log display and rotation (e.g. America/New_York)."
+        },
+        "FTLCONF_webserver_api_password": {
+          "description": "Password for the Pi-hole admin dashboard. Auto-generated during install."
+        },
+        "FTLCONF_dns_listeningMode": {
+          "description": "DNS listening mode. Must be 'all' for container networking."
+        },
+        "FTLCONF_files_database": {
+          "description": "Path to the FTL long-term database. Relocated to /data/pihole for virtiofs compatibility."
+        },
+        "FTLCONF_files_gravity": {
+          "description": "Path to the gravity (blocklist) database. Relocated to /data/pihole for virtiofs compatibility."
+        },
+        "FTLCONF_files_macvendor": {
+          "description": "Path to the MAC vendor lookup database. Relocated to /data/pihole for virtiofs compatibility."
+        },
+        "PIHOLE_UID": {
+          "description": "Override UID for the pihole user. Set to 0 to run as root for virtiofs compatibility."
+        },
+        "PIHOLE_GID": {
+          "description": "Override GID for the pihole group. Set to 0 to run as root for virtiofs compatibility."
+        },
+        "DNSMASQ_USER": {
+          "description": "User running the FTL DNS engine. Set to root for virtiofs compatibility."
+        }
+      },
+      "healthChecks": {
+        "admin-dashboard": {
+          "description": "Admin dashboard is accessible"
+        }
+      },
+      "notices": {
+        "login-credentials": {
+          "title": "Login Credentials",
+          "elements": {
+            "password": {
+              "label": "Password"
+            }
+          }
+        }
+      }
+    }
+  }
+}

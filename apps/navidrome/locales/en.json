@@ -1,0 +1,32 @@
+{
+  "services": {
+    "navidrome": {
+      "environment": {
+        "ND_MUSICFOLDER": {
+          "description": "Path to the music library inside the container."
+        },
+        "ND_DATAFOLDER": {
+          "description": "Path to Navidrome's data directory inside the container."
+        },
+        "ND_SCANNER_SCHEDULE": {
+          "description": "Cron expression for automatic music library rescans. Default scans every 12 hours."
+        }
+      },
+      "healthChecks": {
+        "web-ui": {
+          "description": "Web UI is accessible"
+        }
+      },
+      "notices": {
+        "first-time-setup": {
+          "title": "First-Time Setup",
+          "elements": {
+            "setup-info": {
+              "content": "On first visit, you'll need to create an admin account. Enter your desired username and password on the initial login page."
+            }
+          }
+        }
+      }
+    }
+  }
+}

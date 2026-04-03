@@ -21,19 +21,14 @@ services:
           memory: 1024M
     x-lawn:
       healthChecks:
-        - type: http
-          description: Web UI is accessible
+        - id: web-ui
+          type: http
           path: /api/app/about
           expectedStatus: 200
           startPeriodSeconds: 90
       environment:
         PUID:
-          description: "User ID for file ownership inside the container."
         PGID:
-          description: "Group ID for file ownership inside the container."
         TZ:
-          description: "Timezone for Mealie (e.g. America/New_York)."
         ALLOW_SIGNUP:
-          description: "Allow new users to sign up without an invite link."
         BASE_URL:
-          description: "Base URL for notifications and links. Auto-configured from mDNS hostname when available."

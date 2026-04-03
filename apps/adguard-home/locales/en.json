@@ -1,0 +1,21 @@
+{
+  "services": {
+    "adguardhome": {
+      "healthChecks": {
+        "web-ui": {
+          "description": "Web interface is reachable"
+        }
+      },
+      "notices": {
+        "setup-wizard-ports": {
+          "title": "Setup Wizard",
+          "elements": {
+            "port-config-info": {
+              "content": "During initial setup, set the web interface port to **3000** (the wizard defaults to 80, but Lawn requires 3000). Keep the DNS port at **53**. Using other ports will break connectivity."
+            }
+          }
+        }
+      }
+    }
+  }
+}

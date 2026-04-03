@@ -5,8 +5,6 @@ x-lawn:
     SECRET_KEY:
       source: generatedSecret
       length: 50
-      displayName: "Secret Key"
-      description: "Secret key for encryption. Auto-generated during install."
 
 services:
   gitea:
@@ -40,34 +38,23 @@ services:
     x-lawn:
       notices:
         - id: first-time-setup
-          title: First-Time Setup
           style: info
           elements:
-            - type: text
-              content: "On first visit, you'll see a registration page. The first registered user automatically becomes the administrator."
+            - id: setup-info
+              type: text
       healthChecks:
-        - type: http
-          description: Web UI is accessible
+        - id: web-ui
+          type: http
           path: /api/healthz
           expectedStatus: 200
       environment:
         GITEA__database__DB_TYPE:
-          description: "Database engine. Set to sqlite3 for zero-configuration setup."
         GITEA__server__HTTP_PORT:
-          description: "HTTP port for the web interface."
         GITEA__server__DOMAIN:
-          description: "Domain name for the Gitea server. Auto-configured from mDNS hostname when available."
         GITEA__server__ROOT_URL:
-          description: "Full public URL of the Gitea server. Auto-configured from mDNS hostname when available."
         GITEA__security__INSTALL_LOCK:
-          description: "Skip the installation wizard. Pre-configured for immediate use."
         GITEA__security__SECRET_KEY:
-          description: "Secret key for encryption. Auto-generated during install."
         GITEA__service__DISABLE_REGISTRATION:
-          description: "Whether to disable user self-registration."
         GITEA__service__REQUIRE_SIGNIN_VIEW:
-          description: "Whether to require sign-in to view any page."
         GITEA__openid__ENABLE_OPENID_SIGNIN:
-          description: "Enable OpenID sign-in."
         GITEA__openid__ENABLE_OPENID_SIGNUP:
-          description: "Enable OpenID sign-up."

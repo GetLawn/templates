@@ -1,0 +1,25 @@
+{
+  "services": {
+    "registry": {
+      "environment": {
+        "REGISTRY_STORAGE_DELETE_ENABLED": {
+          "description": "Allow deletion of image blobs and manifests."
+        },
+        "REGISTRY_PROXY_REMOTEURL": {
+          "description": "URL of the upstream registry to mirror (e.g., https://registry-1.docker.io). Leave empty for a standalone registry."
+        },
+        "REGISTRY_PROXY_USERNAME": {
+          "description": "Username for authenticating with the upstream registry (e.g., Docker Hub username)."
+        },
+        "REGISTRY_PROXY_PASSWORD": {
+          "description": "Password or access token for the upstream registry."
+        }
+      },
+      "healthChecks": {
+        "registry-api": {
+          "description": "Registry API is accessible from this Mac"
+        }
+      }
+    }
+  }
+}

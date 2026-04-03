@@ -5,8 +5,6 @@ x-lawn:
     ADMIN_PASSWORD:
       source: generatedSecret
       length: 32
-      displayName: "Admin Password"
-      description: "Admin password for SilverBullet. Auto-generated during install."
 
 services:
   silverbullet:
@@ -33,32 +31,27 @@ services:
     x-lawn:
       notices:
         - id: login-credentials
-          title: Login Credentials
           style: info
           elements:
-            - type: field
-              label: Username
+            - id: username
+              type: field
               source: SB_USER
               container: silverbullet
               separator: ":"
               position: first
-            - type: field
-              label: Password
+            - id: password
+              type: field
               source: SB_USER
               container: silverbullet
               separator: ":"
               position: last
       healthChecks:
-        - type: http
-          description: Web UI is accessible
+        - id: web-ui
+          type: http
           path: /.ping
           expectedStatus: 200
       environment:
         TZ:
-          description: "Timezone for SilverBullet (e.g. America/New_York)."
         PUID:
-          description: "User ID for file ownership. Set automatically from your Mac user account."
         PGID:
-          description: "Group ID for file ownership. Set automatically from your Mac user account."
         SB_USER:
-          description: "Login credentials in 'username:password' format. Auto-generated during install."

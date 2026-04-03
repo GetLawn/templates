@@ -1,0 +1,19 @@
+{
+  "services": {
+    "uptime-kuma": {
+      "environment": {
+        "TZ": {
+          "description": "Timezone for Uptime Kuma (e.g. America/New_York)."
+        },
+        "UPTIME_KUMA_DB_TYPE": {
+          "description": "Database engine. Set to sqlite to skip the database selection wizard."
+        }
+      },
+      "healthChecks": {
+        "web-ui": {
+          "description": "Web UI is accessible"
+        }
+      }
+    }
+  }
+}

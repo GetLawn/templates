@@ -29,20 +29,16 @@ services:
     x-lawn:
       notices:
         - id: first-time-setup
-          title: First-Time Setup
           style: info
           elements:
-            - type: text
-              content: "On first visit, you'll see a 'GUI Authentication Required' warning. Go to **Actions > Settings > GUI** to set a username and password."
+            - id: setup-info
+              type: text
       healthChecks:
-        - type: http
-          description: Web UI is accessible
+        - id: web-ui
+          type: http
           path: /rest/noauth/health
           expectedStatus: 200
       environment:
         PUID:
-          description: "User ID for file ownership inside the container."
         PGID:
-          description: "Group ID for file ownership inside the container."
         STGUIADDRESS:
-          description: "Address and port for the web GUI. Must bind to 0.0.0.0 to be accessible outside the container."

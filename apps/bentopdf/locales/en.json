@@ -1,0 +1,11 @@
+{
+  "services": {
+    "bentopdf": {
+      "healthChecks": {
+        "web-ui": {
+          "description": "Web UI is accessible"
+        }
+      }
+    }
+  }
+}
