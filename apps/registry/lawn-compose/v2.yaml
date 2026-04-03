@@ -1,5 +1,6 @@
-x-lawn-compatibility:
-  minLawnVersion: 0.2.0
+x-lawn:
+  compatibility:
+    minLawnVersion: 0.2.0
 
 services:
   registry:
