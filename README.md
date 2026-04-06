@@ -18,13 +18,15 @@
 
 ## Lawn
 
-The official app template catalog for [Lawn](https://getlawn.app) — the self-host catalog for your Mac. Each template defines everything Lawn needs to install and run a self-hosted app: metadata, container configuration, health checks, and sensible defaults.
+This is the official app template catalog for [Lawn](https://getlawn.app): hassle-free self-hosting for Mac. Lawn enables one-click installs for containerized self-hosted apps, without the need for editing config files, touching the terminal or dealing with Docker.
+
+Each template defines everything Lawn needs to install and run a self-hosted app: metadata, container configuration, health checks, and sensible defaults.
 
 Browse the full catalog at [getlawn.app](https://getlawn.app) or explore the [`apps/`](apps/) directory.
 
-## Install
+## Install an app
 
-Browse and install apps directly from the [Lawn](https://getlawn.app) app — no terminal required.
+Browse apps directly within the [Lawn](https://getlawn.app) app. See something you like? Just click Install and you're up and running within seconds.
 
 <p align="center">
   <picture>
@@ -36,7 +38,7 @@ Browse and install apps directly from the [Lawn](https://getlawn.app) app — no
 
 ## Contributing
 
-Want to add an app or improve an existing template? See [CONTRIBUTING.md](CONTRIBUTING.md) for a quick start, or read the full [template authoring guide](https://getlawn.app/docs/templates).
+Do you want to add an app or improve an existing template? That's great! See [CONTRIBUTING.md](CONTRIBUTING.md) for a quick start, or read the full [template authoring guide](https://getlawn.app/docs/templates).
 
 ## License
 
