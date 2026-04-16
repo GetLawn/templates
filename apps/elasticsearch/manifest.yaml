@@ -19,6 +19,7 @@ description: |
   **Scalable Foundation:**
   Start with a single instance on your Mac and scale to handle terabytes of data. Elasticsearch is the backbone of the Elastic Stack, used by thousands of organizations worldwide.
 icon: magnifyingglass.circle.fill
+iconURL: https://getlawn.app/images/apps/elasticsearch.svg
 category: Databases
 compatibility:
   minLawnVersion: 0.2.0

@@ -16,6 +16,8 @@ description: |
   **Built for privacy:**
   Everything stays on your Mac. No cloud subscription required. Your bookmarks, notes, and archives never leave your network.
 icon: bookmark.fill
+iconURL: https://getlawn.app/images/apps/karakeep.svg
+logoIsTemplate: true
 category: Utilities
 compatibility:
   minLawnVersion: 0.2.0

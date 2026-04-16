@@ -16,6 +16,7 @@ description: |
   **Your recipes, your data:**
   Everything stays on your Mac. No cloud accounts, no subscriptions, no ads. Your family recipes are safe and private.
 icon: fork.knife
+iconURL: https://getlawn.app/images/apps/mealie.png
 category: Utilities
 compatibility:
   minLawnVersion: 0.2.0

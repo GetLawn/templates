@@ -16,6 +16,7 @@ description: |
   **Your network, your rules:**
   Maintain full control with custom blocklists and whitelists. Block specific domains, allow exceptions for sites you trust, and fine-tune blocking behavior to your needs.
 icon: checkmark.shield.fill
+iconURL: https://getlawn.app/images/apps/pihole.svg
 category: Networking
 compatibility:
   minLawnVersion: 0.2.0
