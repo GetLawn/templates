@@ -19,6 +19,7 @@ description: |
   **Private Builds:**
   Your source code never leaves your Mac. Build and test private repositories without sending code to third-party build servers.
 icon: terminal.fill
+iconURL: https://getlawn.app/images/apps/github-actions-runner.svg
 category: Development
 compatibility:
   minLawnVersion: 0.2.0
