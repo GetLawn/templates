@@ -29,7 +29,7 @@ name: My App
 tagline: A short description
 description: |
   A longer markdown description of what this app does.
-icon: server.rack
+symbolFallback: server.rack
 category: Utilities
 webPort: 8080
 ```
@@ -55,10 +55,10 @@ services:
 ## PR checklist
 
 - [ ] App ID is lowercase and hyphenated, matches directory name and `manifest.yaml` `id`
-- [ ] `manifest.yaml` has all required fields (`id`, `name`, `description`, `icon`, `category`)
-- [ ] `icon` set to a valid SF Symbol name (used as the fallback)
+- [ ] `manifest.yaml` has all required fields (`id`, `name`, `description`, `symbolFallback`, `category`)
+- [ ] `symbolFallback` set to a valid SF Symbol name (shown when no icon image is available)
 - [ ] `iconURL` set to a hosted icon URL if one is available (SVG preferred)
-- [ ] `logoIsTemplate: true` added when the hosted icon is monochrome with a transparent background
+- [ ] `iconIsTemplate: true` added when the hosted icon is monochrome with a transparent background
 - [ ] Compose file is in `lawn-compose/` with a versioned filename
 - [ ] Compose file passes `docker compose config` validation
 - [ ] Health checks defined so Lawn knows when the app is ready

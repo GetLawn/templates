@@ -15,7 +15,7 @@ description: |
 
   **Privacy First:**
   All your monitoring data stays on your Mac. No cloud services, no third-party tracking, no subscriptions required.
-icon: chart.line.uptrend.xyaxis
+symbolFallback: chart.line.uptrend.xyaxis
 iconURL: https://getlawn.app/images/apps/uptime-kuma.svg
 category: Monitoring
 compatibility:

@@ -18,7 +18,7 @@ description: |
 
   **Encrypted DNS:**
   Supports modern encrypted DNS protocols (DNS-over-HTTPS, DNS-over-TLS) to prevent your ISP from snooping on your DNS queries.
-icon: shield.fill
+symbolFallback: shield.fill
 iconURL: https://getlawn.app/images/apps/adguard-home.svg
 category: Networking
 compatibility:

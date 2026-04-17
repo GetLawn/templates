@@ -12,7 +12,7 @@ description: |
 
   **Lightweight and Fast:**
   Forgejo is designed to run on minimal resources. It starts in seconds, uses little memory, and works great even on older hardware. Perfect for personal projects or small teams.
-icon: chevron.left.forwardslash.chevron.right
+symbolFallback: chevron.left.forwardslash.chevron.right
 iconURL: https://getlawn.app/images/apps/forgejo.svg
 category: Development
 compatibility:

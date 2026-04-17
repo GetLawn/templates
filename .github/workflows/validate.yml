@@ -85,7 +85,7 @@ jobs:
         run: |
           MANIFEST="apps/${{ matrix.app }}/manifest.yaml"
 
-          for field in id name tagline description icon category compatibility; do
+          for field in id name tagline description symbolFallback category compatibility; do
             if ! grep -q "^${field}:" "$MANIFEST"; then
               echo "::error::Missing required field '$field' in $MANIFEST"
               exit 1

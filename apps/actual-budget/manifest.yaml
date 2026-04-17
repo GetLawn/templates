@@ -15,7 +15,7 @@ description: |
 
   **Privacy First:**
   No subscriptions, no ads, no data mining. Your financial data stays on your Mac — never sent to third-party servers or used for analytics.
-icon: banknote.fill
+symbolFallback: banknote.fill
 iconURL: https://getlawn.app/images/apps/actual-budget.svg
 category: Utilities
 compatibility:

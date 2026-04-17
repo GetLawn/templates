@@ -15,7 +15,7 @@ description: |
 
   **Privacy First:**
   All your data stays on your Mac. No cloud company scanning your files, no subscription fees, no storage limits other than your own disk space.
-icon: cloud.fill
+symbolFallback: cloud.fill
 iconURL: https://getlawn.app/images/apps/nextcloud.svg
 category: Utilities
 compatibility:

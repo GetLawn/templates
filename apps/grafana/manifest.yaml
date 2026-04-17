@@ -15,7 +15,7 @@ description: |
 
   **Privacy First:**
   All your monitoring data stays on your Mac. No cloud subscriptions, no data leaving your network.
-icon: chart.bar.xaxis
+symbolFallback: chart.bar.xaxis
 iconURL: https://getlawn.app/images/apps/grafana.svg
 category: Monitoring
 compatibility:

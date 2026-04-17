@@ -15,7 +15,7 @@ description: |
 
   **Keep everything in one place:**
   Write meeting notes, journal entries, task lists, project docs, and reference materials — all organized in a single searchable space. The plain Markdown format means your notes are readable by any text editor, forever.
-icon: note.text
+symbolFallback: note.text
 iconURL: https://getlawn.app/images/apps/silverbullet.png
 category: Documents
 compatibility:

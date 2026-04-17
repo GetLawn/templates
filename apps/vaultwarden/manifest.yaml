@@ -18,9 +18,9 @@ description: |
 
   **Privacy First:**
   Everything stays on your Mac. No cloud services, no subscriptions, no third parties. You own your data completely.
-icon: lock.shield
+symbolFallback: lock.shield
 iconURL: https://getlawn.app/images/apps/vaultwarden.svg
-logoIsTemplate: true
+iconIsTemplate: true
 category: Utilities
 compatibility:
   minLawnVersion: 0.2.0

@@ -15,7 +15,7 @@ description: |
 
   **Your data, your rules:**
   Everything stays on your Mac. No cloud subscription, no data leaving your network. Full-text search, page history, and permission controls included.
-icon: doc.richtext.fill
+symbolFallback: doc.richtext.fill
 iconURL: https://getlawn.app/images/apps/docmost.png
 category: Documents
 compatibility:

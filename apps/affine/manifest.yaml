@@ -12,9 +12,9 @@ description: |
 
   **Built for collaboration:**
   Real-time sync lets multiple people work on the same document simultaneously, whether over your local network or via a shared server.
-icon: doc.richtext.fill
+symbolFallback: doc.richtext.fill
 iconURL: https://getlawn.app/images/apps/affine.svg
-logoIsTemplate: true
+iconIsTemplate: true
 category: Documents
 compatibility:
   minLawnVersion: 0.2.0

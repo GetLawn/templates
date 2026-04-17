@@ -9,7 +9,7 @@ description: |
 
   **Built for privacy:**
   Your documents stay on your Mac. No cloud services, no subscriptions, no data leaving your network.
-icon: doc.text.magnifyingglass
+symbolFallback: doc.text.magnifyingglass
 iconURL: https://getlawn.app/images/apps/paperless-ngx.png
 category: Documents
 compatibility:
