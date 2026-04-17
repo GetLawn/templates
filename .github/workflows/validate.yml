@@ -130,9 +130,9 @@ jobs:
               exit 1
             fi
 
-            # Check for x-lawn-compatibility.minLawnVersion
-            if ! grep -q "^x-lawn-compatibility:" "$file"; then
-              echo "::error::Missing x-lawn-compatibility block in $file"
+            # Check for x-lawn.compatibility.minLawnVersion
+            if ! yq -e '.x-lawn.compatibility.minLawnVersion' "$file" > /dev/null 2>&1; then
+              echo "::error::Missing x-lawn.compatibility.minLawnVersion in $file"
               exit 1
             fi
 
