@@ -11,7 +11,9 @@ description: |
   - Verifying container networking
 
   When you access the web interface, it displays headers, IP addresses, and other request metadata in a clean format.
-icon: person.crop.circle
+symbolFallback: person.crop.circle
+iconURL: https://getlawn.app/images/apps/whoami.pdf
+iconIsTemplate: true
 category: Debugging
 compatibility:
   minLawnVersion: 0.2.0

@@ -5,7 +5,8 @@ description: |
   PostgreSQL is a powerful, open source object-relational database system
   with over 35 years of active development. It supports advanced data types,
   full-text search, and JSON querying.
-icon: cylinder.fill
+symbolFallback: cylinder.fill
+iconURL: https://getlawn.app/images/apps/postgres.png
 category: Databases
 compatibility:
   minLawnVersion: 0.2.0

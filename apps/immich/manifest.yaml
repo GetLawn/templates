@@ -9,7 +9,8 @@ description: |
 
   **Your memories, your control:**
   All your photos and videos stay on your Mac. Back up from your phone automatically using the free iOS and Android apps. No subscriptions, no cloud, no compromises.
-icon: photo.on.rectangle.angled
+symbolFallback: photo.on.rectangle.angled
+iconURL: https://getlawn.app/images/apps/immich.svg
 category: Media
 compatibility:
   minLawnVersion: 0.2.0

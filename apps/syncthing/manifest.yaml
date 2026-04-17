@@ -18,7 +18,8 @@ description: |
 
   **Trusted by Millions:**
   Syncthing is used by millions of people and backed by a vibrant open-source community. It's been battle-tested for over a decade.
-icon: arrow.triangle.2.circlepath
+symbolFallback: arrow.triangle.2.circlepath
+iconURL: https://getlawn.app/images/apps/syncthing.svg
 category: Utilities
 compatibility:
   minLawnVersion: 0.2.0

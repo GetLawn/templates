@@ -18,7 +18,7 @@ description: |
 
   **Simple to Use:**
   Tag your images with `localhost:5000/myimage` and push. No authentication required by default—ideal for trusted local networks.
-icon: shippingbox.fill
+symbolFallback: shippingbox.fill
 category: Development
 compatibility:
   minLawnVersion: 0.2.0

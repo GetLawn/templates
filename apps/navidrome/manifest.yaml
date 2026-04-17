@@ -15,7 +15,8 @@ description: |
 
   **Light on Resources:**
   Navidrome is designed to run on minimal hardware. It uses an embedded database, so there's nothing extra to set up or maintain.
-icon: music.note.house.fill
+symbolFallback: music.note.house.fill
+iconURL: https://getlawn.app/images/apps/navidrome.svg
 category: Media
 compatibility:
   minLawnVersion: 0.2.0

@@ -18,7 +18,8 @@ description: |
 
   **Your data, your rules:**
   No subscriptions. No cloud syncing your tasks to a third party. Everything lives on your Mac.
-icon: checklist
+symbolFallback: checklist
+iconURL: https://getlawn.app/images/apps/vikunja.svg
 category: Utilities
 compatibility:
   minLawnVersion: 0.2.0

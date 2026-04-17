@@ -15,7 +15,8 @@ description: |
 
   **Multi-User Support:**
   Create accounts for your family or friends with custom permissions. Everyone gets their own listening progress and bookmarks.
-icon: headphones
+symbolFallback: headphones
+iconURL: https://getlawn.app/images/apps/audiobookshelf.svg
 category: Media
 compatibility:
   minLawnVersion: 0.2.0

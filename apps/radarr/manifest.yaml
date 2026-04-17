@@ -21,7 +21,8 @@ description: |
 
   **Part of the *arr Stack:**
   Radarr is the movie companion to Sonarr (TV shows). Together with a download client and Jellyfin, they form a fully automated home media system.
-icon: film.fill
+symbolFallback: film.fill
+iconURL: https://getlawn.app/images/apps/radarr.png
 category: Media
 compatibility:
   minLawnVersion: 0.2.0

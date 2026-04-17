@@ -85,7 +85,7 @@ jobs:
         run: |
           MANIFEST="apps/${{ matrix.app }}/manifest.yaml"
 
-          for field in id name tagline description icon category compatibility; do
+          for field in id name tagline description symbolFallback category compatibility; do
             if ! grep -q "^${field}:" "$MANIFEST"; then
               echo "::error::Missing required field '$field' in $MANIFEST"
               exit 1
@@ -112,9 +112,13 @@ jobs:
           for file in apps/${{ matrix.app }}/lawn-compose/*.yaml; do
             BASENAME=$(basename "$file")
 
-            # Check versioned filename pattern (vX.Y.Z.yaml, vX.Y.yaml, or vX.yaml)
-            if ! echo "$BASENAME" | grep -qE '^v[0-9]+(\.[0-9]+)*\.yaml$'; then
-              echo "::error::Compose filename '$BASENAME' must match pattern vX.Y.Z.yaml"
+            # Check versioned filename pattern: vX.Y.Z.yaml (also vX.Y.yaml,
+            # vX.yaml) or the literal "latest.yaml" for templates whose
+            # upstream image is a thin launcher that resolves the real
+            # version at runtime (e.g. minecraft — see comment inside its
+            # compose file).
+            if ! echo "$BASENAME" | grep -qE '^(v[0-9]+(\.[0-9]+)*|latest)\.yaml$'; then
+              echo "::error::Compose filename '$BASENAME' must match pattern vX.Y.Z.yaml or latest.yaml"
               exit 1
             fi
 
@@ -130,14 +134,25 @@ jobs:
               exit 1
             fi
 
-            # Check for x-lawn-compatibility.minLawnVersion
-            if ! grep -q "^x-lawn-compatibility:" "$file"; then
-              echo "::error::Missing x-lawn-compatibility block in $file"
+            # Check for x-lawn.compatibility.minLawnVersion
+            if ! yq -e '.x-lawn.compatibility.minLawnVersion' "$file" > /dev/null 2>&1; then
+              echo "::error::Missing x-lawn.compatibility.minLawnVersion in $file"
               exit 1
             fi
 
-            # Validate with docker compose
-            if ! docker compose -f "$file" config > /dev/null 2>&1; then
+            # Validate with docker compose. Compose files use ${VAR:?...} for
+            # runtime secrets that Lawn injects at install time — CI has no
+            # real values for them. Synthesize placeholders from the vars the
+            # manifest itself declares under x-lawn.config so interpolation
+            # succeeds; any ${VAR} reference in the compose file that isn't
+            # declared there will still fail validation (undeclared-var check).
+            # Subshell keeps the exports scoped to this one file.
+            if ! (
+              while IFS= read -r key; do
+                [ -n "$key" ] && export "$key=x"
+              done < <(yq -r '(.x-lawn.config // {}) | keys | .[]' "$file")
+              docker compose -f "$file" config --quiet
+            ); then
               echo "::error::docker compose config failed for $file"
               exit 1
             fi

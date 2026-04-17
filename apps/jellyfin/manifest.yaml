@@ -18,7 +18,8 @@ description: |
 
   **Active Community:**
   Backed by a passionate open-source community with regular updates, new features, and a growing ecosystem of clients and plugins.
-icon: play.rectangle.fill
+symbolFallback: play.rectangle.fill
+iconURL: https://getlawn.app/images/apps/jellyfin.svg
 category: Media
 compatibility:
   minLawnVersion: 0.2.0

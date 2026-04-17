@@ -12,7 +12,8 @@ description: |
 
   **Share and collaborate:**
   Create shared collections and invite others to contribute. Great for research teams, reading groups, or just sharing interesting finds with friends.
-icon: link.circle.fill
+symbolFallback: link.circle.fill
+iconURL: https://getlawn.app/images/apps/linkwarden.png
 category: Utilities
 compatibility:
   minLawnVersion: 0.2.0

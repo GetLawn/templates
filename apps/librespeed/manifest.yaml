@@ -15,7 +15,8 @@ description: |
 
   **Lightweight:**
   LibreSpeed is tiny and efficient. It uses minimal resources while delivering accurate results, so it won't slow down the very connection you're testing.
-icon: network
+symbolFallback: network
+iconURL: https://getlawn.app/images/apps/librespeed.png
 category: Networking
 compatibility:
   minLawnVersion: 0.2.0

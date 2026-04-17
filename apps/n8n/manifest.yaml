@@ -15,7 +15,8 @@ description: |
 
   **Self-Hosted and Private:**
   Your workflows, credentials, and data stay on your Mac. No cloud dependency, no usage limits, no subscriptions. Run as many workflows as you need.
-icon: arrow.triangle.branch
+symbolFallback: arrow.triangle.branch
+iconURL: https://getlawn.app/images/apps/n8n.png
 category: Utilities
 compatibility:
   minLawnVersion: 0.2.0

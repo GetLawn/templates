@@ -15,7 +15,8 @@ description: |
 
   **Privacy First:**
   Your source code stays on your Mac. No cloud dependency, no third-party access, no subscriptions. You own your code and your data.
-icon: arrow.triangle.branch
+symbolFallback: arrow.triangle.branch
+iconURL: https://getlawn.app/images/apps/gitea.svg
 category: Development
 compatibility:
   minLawnVersion: 0.2.0
