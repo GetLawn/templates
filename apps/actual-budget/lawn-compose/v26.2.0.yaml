@@ -1,6 +1,24 @@
 x-lawn:
   compatibility:
     minLawnVersion: 0.2.0
+  config:
+    MULTIUSER:
+      inputType: boolean
+      value: false
+      weight: 10
+      options:
+        "true":
+          compose:
+            services:
+              actual-budget:
+                environment:
+                  ACTUAL_MULTIUSER: "true"
+        "false":
+          compose:
+            services:
+              actual-budget:
+                environment:
+                  ACTUAL_MULTIUSER: "false"
 
 services:
   actual-budget:
