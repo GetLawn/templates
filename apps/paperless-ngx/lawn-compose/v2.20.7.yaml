@@ -47,6 +47,42 @@ x-lawn:
         - ind
         - ukr
         - cat
+    OCR_LANGUAGES:
+      inputType: list
+      separator: " "
+      value: ""
+      weight: 20
+      availableOptions:
+        - eng
+        - deu
+        - fra
+        - spa
+        - ita
+        - por
+        - nld
+        - pol
+        - rus
+        - jpn
+        - chi_sim
+        - chi_tra
+        - kor
+        - ara
+        - hin
+        - tur
+        - swe
+        - dan
+        - nor
+        - fin
+        - ces
+        - ron
+        - hun
+        - ell
+        - heb
+        - tha
+        - vie
+        - ind
+        - ukr
+        - cat
 
 services:
   postgres:
@@ -94,6 +130,7 @@ services:
       PAPERLESS_ADMIN_PASSWORD: "${ADMIN_PASSWORD:?ADMIN_PASSWORD is required}"
       PAPERLESS_TIME_ZONE: "${TIMEZONE:-UTC}"
       PAPERLESS_OCR_LANGUAGE: "${OCR_LANGUAGE}"
+      PAPERLESS_OCR_LANGUAGES: "${OCR_LANGUAGES}"
       USERMAP_UID: "${UID:-1000}"
       USERMAP_GID: "${GID:-1000}"
     volumes:
@@ -136,5 +173,6 @@ services:
         PAPERLESS_ADMIN_PASSWORD:
         PAPERLESS_TIME_ZONE:
         PAPERLESS_OCR_LANGUAGE:
+        PAPERLESS_OCR_LANGUAGES:
         USERMAP_UID:
         USERMAP_GID:
