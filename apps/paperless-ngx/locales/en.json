@@ -11,6 +11,42 @@
     "ADMIN_PASSWORD": {
       "displayName": "Admin Password",
       "description": "Password for the initial admin account. Auto-generated during install."
+    },
+    "OCR_LANGUAGE": {
+      "displayName": "Document Languages",
+      "description": "Languages for reading text from scanned documents. First language is primary. Additional languages improve recognition for multilingual documents.",
+      "availableOptions": {
+        "eng": { "label": "English" },
+        "deu": { "label": "German" },
+        "fra": { "label": "French" },
+        "spa": { "label": "Spanish" },
+        "ita": { "label": "Italian" },
+        "por": { "label": "Portuguese" },
+        "nld": { "label": "Dutch" },
+        "pol": { "label": "Polish" },
+        "rus": { "label": "Russian" },
+        "jpn": { "label": "Japanese" },
+        "chi_sim": { "label": "Chinese (Simplified)" },
+        "chi_tra": { "label": "Chinese (Traditional)" },
+        "kor": { "label": "Korean" },
+        "ara": { "label": "Arabic" },
+        "hin": { "label": "Hindi" },
+        "tur": { "label": "Turkish" },
+        "swe": { "label": "Swedish" },
+        "dan": { "label": "Danish" },
+        "nor": { "label": "Norwegian" },
+        "fin": { "label": "Finnish" },
+        "ces": { "label": "Czech" },
+        "ron": { "label": "Romanian" },
+        "hun": { "label": "Hungarian" },
+        "ell": { "label": "Greek" },
+        "heb": { "label": "Hebrew" },
+        "tha": { "label": "Thai" },
+        "vie": { "label": "Vietnamese" },
+        "ind": { "label": "Indonesian" },
+        "ukr": { "label": "Ukrainian" },
+        "cat": { "label": "Catalan" }
+      }
     }
   },
   "services": {

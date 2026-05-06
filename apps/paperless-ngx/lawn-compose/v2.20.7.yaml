@@ -11,6 +11,42 @@ x-lawn:
     ADMIN_PASSWORD:
       source: generatedSecret
       length: 32
+    OCR_LANGUAGE:
+      inputType: list
+      separator: "+"
+      value: "eng"
+      weight: 10
+      availableOptions:
+        - eng
+        - deu
+        - fra
+        - spa
+        - ita
+        - por
+        - nld
+        - pol
+        - rus
+        - jpn
+        - chi_sim
+        - chi_tra
+        - kor
+        - ara
+        - hin
+        - tur
+        - swe
+        - dan
+        - nor
+        - fin
+        - ces
+        - ron
+        - hun
+        - ell
+        - heb
+        - tha
+        - vie
+        - ind
+        - ukr
+        - cat
 
 services:
   postgres:
@@ -57,7 +93,7 @@ services:
       PAPERLESS_ADMIN_USER: admin
       PAPERLESS_ADMIN_PASSWORD: "${ADMIN_PASSWORD:?ADMIN_PASSWORD is required}"
       PAPERLESS_TIME_ZONE: "${TIMEZONE:-UTC}"
-      PAPERLESS_OCR_LANGUAGE: eng
+      PAPERLESS_OCR_LANGUAGE: "${OCR_LANGUAGE}"
       USERMAP_UID: "${UID:-1000}"
       USERMAP_GID: "${GID:-1000}"
     volumes:
