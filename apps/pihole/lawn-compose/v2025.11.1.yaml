@@ -55,30 +55,35 @@ x-lawn:
       weight: 30
       options:
         "NULL":
+          weight: 10
           compose:
             services:
               pihole:
                 environment:
                   FTLCONF_dns_blocking_mode: "NULL"
         "NXDOMAIN":
+          weight: 20
           compose:
             services:
               pihole:
                 environment:
                   FTLCONF_dns_blocking_mode: "NXDOMAIN"
         "NODATA":
+          weight: 30
           compose:
             services:
               pihole:
                 environment:
                   FTLCONF_dns_blocking_mode: "NODATA"
         "IP":
+          weight: 40
           compose:
             services:
               pihole:
                 environment:
                   FTLCONF_dns_blocking_mode: "IP"
         "IP_NODATA_AAAA":
+          weight: 50
           compose:
             services:
               pihole:
