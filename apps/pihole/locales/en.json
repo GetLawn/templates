@@ -24,13 +24,13 @@
     },
     "BLOCKING_MODE": {
       "displayName": "Blocking Mode",
-      "description": "How Pi-hole responds to blocked domains. NULL (the default) returns 0.0.0.0 and works well for most setups.",
+      "description": "How Pi-hole responds to blocked domains. The default works well for most setups.",
       "options": {
-        "NULL": { "label": "NULL — Return 0.0.0.0 (recommended)" },
-        "NXDOMAIN": { "label": "NXDOMAIN — Return non-existent domain" },
-        "NODATA": { "label": "NODATA — Return empty response" },
-        "IP": { "label": "IP — Return Pi-hole's IP" },
-        "IP_NODATA_AAAA": { "label": "IP_NODATA_AAAA — Pi-hole IPv4, no IPv6" }
+        "NULL": { "label": "Return 0.0.0.0 (recommended)" },
+        "NXDOMAIN": { "label": "Return non-existent domain" },
+        "NODATA": { "label": "Return empty response" },
+        "IP": { "label": "Return Pi-hole's IP" },
+        "IP_NODATA_AAAA": { "label": "Return Pi-hole IPv4 only" }
       }
     },
     "QUERY_LOGGING": {
