@@ -5,6 +5,130 @@ x-lawn:
     ADMIN_PASSWORD:
       source: generatedSecret
       length: 32
+    UPSTREAM_DNS:
+      value: cloudflare
+      weight: 10
+      options:
+        cloudflare:
+          compose:
+            services:
+              pihole:
+                environment:
+                  FTLCONF_dns_upstreams: "1.1.1.1;1.0.0.1"
+        google:
+          compose:
+            services:
+              pihole:
+                environment:
+                  FTLCONF_dns_upstreams: "8.8.8.8;8.8.4.4"
+        quad9:
+          compose:
+            services:
+              pihole:
+                environment:
+                  FTLCONF_dns_upstreams: "9.9.9.9;149.112.112.112"
+        opendns:
+          compose:
+            services:
+              pihole:
+                environment:
+                  FTLCONF_dns_upstreams: "208.67.222.222;208.67.220.220"
+    DNSSEC:
+      inputType: boolean
+      value: false
+      weight: 20
+      options:
+        "true":
+          compose:
+            services:
+              pihole:
+                environment:
+                  FTLCONF_dns_dnssec: "true"
+        "false":
+          compose:
+            services:
+              pihole:
+                environment:
+                  FTLCONF_dns_dnssec: "false"
+    BLOCKING_MODE:
+      value: "NULL"
+      weight: 30
+      options:
+        "NULL":
+          compose:
+            services:
+              pihole:
+                environment:
+                  FTLCONF_dns_blocking_mode: "NULL"
+        "NXDOMAIN":
+          compose:
+            services:
+              pihole:
+                environment:
+                  FTLCONF_dns_blocking_mode: "NXDOMAIN"
+        "NODATA":
+          compose:
+            services:
+              pihole:
+                environment:
+                  FTLCONF_dns_blocking_mode: "NODATA"
+        "IP":
+          compose:
+            services:
+              pihole:
+                environment:
+                  FTLCONF_dns_blocking_mode: "IP"
+        "IP_NODATA_AAAA":
+          compose:
+            services:
+              pihole:
+                environment:
+                  FTLCONF_dns_blocking_mode: "IP_NODATA_AAAA"
+    QUERY_LOGGING:
+      inputType: boolean
+      value: true
+      weight: 40
+      options:
+        "true":
+          compose:
+            services:
+              pihole:
+                environment:
+                  FTLCONF_dns_queryLogging: "true"
+        "false":
+          compose:
+            services:
+              pihole:
+                environment:
+                  FTLCONF_dns_queryLogging: "false"
+    PRIVACY_LEVEL:
+      value: "0"
+      weight: 50
+      options:
+        "0":
+          compose:
+            services:
+              pihole:
+                environment:
+                  FTLCONF_misc_privacylevel: "0"
+        "1":
+          compose:
+            services:
+              pihole:
+                environment:
+                  FTLCONF_misc_privacylevel: "1"
+        "2":
+          compose:
+            services:
+              pihole:
+                environment:
+                  FTLCONF_misc_privacylevel: "2"
+        "3":
+          compose:
+            services:
+              pihole:
+                environment:
+                  FTLCONF_misc_privacylevel: "3"
 
 services:
   pihole:
