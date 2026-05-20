@@ -1,0 +1,89 @@
+{
+  "config": {
+    "FETCH_WORKERS": {
+      "displayName": "Parallel Fetchers",
+      "description": "How many page checks can run at the same time. Higher values can monitor large watch lists faster but use more memory and network bandwidth."
+    },
+    "MINIMUM_SECONDS_RECHECK_TIME": {
+      "displayName": "Minimum Recheck Interval",
+      "description": "Shortest allowed time, in seconds, between checks for a watch. Keep this above zero to avoid accidentally hammering websites."
+    },
+    "HIDE_REFERER": {
+      "displayName": "Hide Referrer",
+      "description": "Prevent monitored websites from seeing the changedetection.io address in the HTTP Referer header.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    },
+    "DISABLE_VERSION_CHECK": {
+      "displayName": "Disable Version Check",
+      "description": "Stop changedetection.io from checking upstream for newer versions. Lawn manages the installed app version through this template.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    },
+    "LOGGER_LEVEL": {
+      "displayName": "Log Level",
+      "description": "How much detail changedetection.io writes to its logs.",
+      "options": {
+        "INFO": { "label": "Info" },
+        "DEBUG": { "label": "Debug" },
+        "WARNING": { "label": "Warning" },
+        "ERROR": { "label": "Error" }
+      }
+    }
+  },
+  "services": {
+    "changedetection-io": {
+      "environment": {
+        "TZ": {
+          "description": "Timezone used for watch schedules and timestamps."
+        },
+        "LC_ALL": {
+          "description": "UTF-8 locale used by the application process."
+        },
+        "BASE_URL": {
+          "description": "Public URL used in RSS links and notifications. Auto-configured from the Lawn hostname when available."
+        },
+        "USE_X_SETTINGS": {
+          "description": "Respect reverse proxy headers such as forwarded host and scheme."
+        },
+        "SOCKETIO_CORS_ORIGINS": {
+          "description": "Allowed Socket.IO origins for realtime UI updates through Lawn's local proxy."
+        },
+        "FETCH_WORKERS": {
+          "description": "Maximum number of page checks that can run in parallel."
+        },
+        "MINIMUM_SECONDS_RECHECK_TIME": {
+          "description": "Minimum number of seconds allowed between checks for a watch."
+        },
+        "HIDE_REFERER": {
+          "description": "Hide the changedetection.io URL from monitored websites."
+        },
+        "DISABLE_VERSION_CHECK": {
+          "description": "Disable upstream version checks."
+        },
+        "LOGGER_LEVEL": {
+          "description": "Logging detail level."
+        }
+      },
+      "healthChecks": {
+        "web-ui": {
+          "description": "Web UI is accessible"
+        }
+      },
+      "notices": {
+        "set-password": {
+          "title": "Set a Password",
+          "elements": {
+            "set-password-info": {
+              "content": "changedetection.io starts without a password. Open **Settings** after first launch and set a password before sharing access beyond your own Mac."
+            }
+          }
+        }
+      }
+    }
+  }
+}

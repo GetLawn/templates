@@ -1,0 +1,135 @@
+x-lawn:
+  compatibility:
+    minLawnVersion: 0.2.0
+  config:
+    FETCH_WORKERS:
+      inputType: number
+      value: 10
+      weight: 10
+    MINIMUM_SECONDS_RECHECK_TIME:
+      inputType: number
+      value: 3
+      weight: 20
+    HIDE_REFERER:
+      inputType: boolean
+      value: true
+      weight: 30
+      options:
+        "true":
+          compose:
+            services:
+              changedetection-io:
+                environment:
+                  HIDE_REFERER: "true"
+        "false":
+          compose:
+            services:
+              changedetection-io:
+                environment:
+                  HIDE_REFERER: "false"
+    DISABLE_VERSION_CHECK:
+      inputType: boolean
+      value: true
+      weight: 40
+      options:
+        "true":
+          compose:
+            services:
+              changedetection-io:
+                environment:
+                  DISABLE_VERSION_CHECK: "true"
+        "false":
+          compose:
+            services:
+              changedetection-io:
+                environment:
+                  DISABLE_VERSION_CHECK: "false"
+    LOGGER_LEVEL:
+      inputType: select
+      value: INFO
+      weight: 50
+      options:
+        INFO:
+          weight: 10
+          compose:
+            services:
+              changedetection-io:
+                environment:
+                  LOGGER_LEVEL: INFO
+        DEBUG:
+          weight: 20
+          compose:
+            services:
+              changedetection-io:
+                environment:
+                  LOGGER_LEVEL: DEBUG
+        WARNING:
+          weight: 30
+          compose:
+            services:
+              changedetection-io:
+                environment:
+                  LOGGER_LEVEL: WARNING
+        ERROR:
+          weight: 40
+          compose:
+            services:
+              changedetection-io:
+                environment:
+                  LOGGER_LEVEL: ERROR
+
+services:
+  changedetection-io:
+    image: ghcr.io/dgtlmoon/changedetection.io:0.55.5
+    environment:
+      TZ: "${TIMEZONE:-UTC}"
+      LC_ALL: C.UTF-8
+      BASE_URL: "${LAWN_URL:-http://localhost:${HOST_PORT_5000:-5000}}"
+      USE_X_SETTINGS: "1"
+      SOCKETIO_CORS_ORIGINS: "*"
+      FETCH_WORKERS: "${FETCH_WORKERS}"
+      MINIMUM_SECONDS_RECHECK_TIME: "${MINIMUM_SECONDS_RECHECK_TIME}"
+      HIDE_REFERER: "true"
+      DISABLE_VERSION_CHECK: "true"
+      LOGGER_LEVEL: INFO
+    volumes:
+      - "./data:/datastore"
+    ports:
+      - "5000:5000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5000/', timeout=10).read()"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    x-lawn:
+      healthChecks:
+        - id: web-ui
+          type: http
+          path: /
+          expectedStatus: 200
+          intervalSeconds: 15
+          timeoutSeconds: 10
+          retries: 5
+          startPeriodSeconds: 60
+      notices:
+        - id: set-password
+          style: info
+          elements:
+            - id: set-password-info
+              type: text
+      environment:
+        TZ:
+        LC_ALL:
+        BASE_URL:
+        USE_X_SETTINGS:
+        SOCKETIO_CORS_ORIGINS:
+        FETCH_WORKERS:
+        MINIMUM_SECONDS_RECHECK_TIME:
+        HIDE_REFERER:
+        DISABLE_VERSION_CHECK:
+        LOGGER_LEVEL:
