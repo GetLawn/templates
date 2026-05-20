@@ -1,0 +1,181 @@
+x-lawn:
+  compatibility:
+    minLawnVersion: 0.2.0
+  config:
+    ADMIN_PASSWORD:
+      source: generatedSecret
+      length: 32
+    LOGIN_ENABLED:
+      inputType: boolean
+      value: true
+      weight: 10
+      options:
+        "true":
+          compose:
+            services:
+              stirling-pdf:
+                environment:
+                  SECURITY_ENABLELOGIN: "true"
+        "false":
+          compose:
+            services:
+              stirling-pdf:
+                environment:
+                  SECURITY_ENABLELOGIN: "false"
+    DEFAULT_LOCALE:
+      inputType: select
+      value: en-US
+      weight: 20
+      options:
+        en-US:
+          compose:
+            services:
+              stirling-pdf:
+                environment:
+                  SYSTEM_DEFAULTLOCALE: en-US
+        en-GB:
+          compose:
+            services:
+              stirling-pdf:
+                environment:
+                  SYSTEM_DEFAULTLOCALE: en-GB
+        de-DE:
+          compose:
+            services:
+              stirling-pdf:
+                environment:
+                  SYSTEM_DEFAULTLOCALE: de-DE
+        fr-FR:
+          compose:
+            services:
+              stirling-pdf:
+                environment:
+                  SYSTEM_DEFAULTLOCALE: fr-FR
+        es-ES:
+          compose:
+            services:
+              stirling-pdf:
+                environment:
+                  SYSTEM_DEFAULTLOCALE: es-ES
+        it-IT:
+          compose:
+            services:
+              stirling-pdf:
+                environment:
+                  SYSTEM_DEFAULTLOCALE: it-IT
+        pt-BR:
+          compose:
+            services:
+              stirling-pdf:
+                environment:
+                  SYSTEM_DEFAULTLOCALE: pt-BR
+        nl-NL:
+          compose:
+            services:
+              stirling-pdf:
+                environment:
+                  SYSTEM_DEFAULTLOCALE: nl-NL
+        pl-PL:
+          compose:
+            services:
+              stirling-pdf:
+                environment:
+                  SYSTEM_DEFAULTLOCALE: pl-PL
+        sv-SE:
+          compose:
+            services:
+              stirling-pdf:
+                environment:
+                  SYSTEM_DEFAULTLOCALE: sv-SE
+    MAX_FILE_SIZE_MB:
+      inputType: number
+      value: 2000
+      weight: 30
+    ENABLE_ANALYTICS:
+      inputType: boolean
+      value: false
+      weight: 40
+      options:
+        "true":
+          compose:
+            services:
+              stirling-pdf:
+                environment:
+                  SYSTEM_ENABLEANALYTICS: "true"
+        "false":
+          compose:
+            services:
+              stirling-pdf:
+                environment:
+                  SYSTEM_ENABLEANALYTICS: "false"
+    SHOW_UPDATE_NOTICES:
+      inputType: boolean
+      value: true
+      weight: 50
+      options:
+        "true":
+          compose:
+            services:
+              stirling-pdf:
+                environment:
+                  SYSTEM_SHOWUPDATE: "true"
+        "false":
+          compose:
+            services:
+              stirling-pdf:
+                environment:
+                  SYSTEM_SHOWUPDATE: "false"
+
+services:
+  stirling-pdf:
+    image: stirlingtools/stirling-pdf:2.11.0
+    environment:
+      DISABLE_ADDITIONAL_FEATURES: "false"
+      SECURITY_INITIALLOGIN_USERNAME: admin
+      SECURITY_INITIALLOGIN_PASSWORD: "${ADMIN_PASSWORD:?ADMIN_PASSWORD is required}"
+      SYSTEM_MAXFILESIZE: "${MAX_FILE_SIZE_MB}"
+      SPRING_SERVLET_MULTIPART_MAX_FILE_SIZE: "${MAX_FILE_SIZE_MB}MB"
+      SPRING_SERVLET_MULTIPART_MAX_REQUEST_SIZE: "${MAX_FILE_SIZE_MB}MB"
+      TZ: "${TIMEZONE:-UTC}"
+    volumes:
+      - "./tessdata:/usr/share/tessdata"
+      - "./configs:/configs"
+      - "./logs:/logs"
+      - "./pipeline:/pipeline"
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fs --max-time 10 http://localhost:8080/api/v1/info/status | grep -q UP"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
+      start_period: 120s
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+    x-lawn:
+      notices:
+        - id: login-credentials
+          style: info
+          elements:
+            - id: username
+              type: field
+              value: admin
+            - id: password
+              type: field
+              source: SECURITY_INITIALLOGIN_PASSWORD
+              container: stirling-pdf
+      healthChecks:
+        - id: app-health
+          type: http
+          path: /api/v1/info/status
+          expectedStatus: 200
+      environment:
+        DISABLE_ADDITIONAL_FEATURES:
+        SECURITY_INITIALLOGIN_USERNAME:
+        SECURITY_INITIALLOGIN_PASSWORD:
+        SYSTEM_MAXFILESIZE:
+        SPRING_SERVLET_MULTIPART_MAX_FILE_SIZE:
+        SPRING_SERVLET_MULTIPART_MAX_REQUEST_SIZE:
+        TZ:

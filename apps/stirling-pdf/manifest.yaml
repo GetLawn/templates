@@ -1,0 +1,45 @@
+id: stirling-pdf
+name: Stirling PDF
+tagline: Self-hosted PDF editing, conversion, and automation
+description: |
+  Stirling PDF is a powerful local PDF toolkit for editing, converting, signing, securing, and automating documents from your browser.
+
+  **Everyday PDF tools:**
+  Merge, split, rotate, crop, compress, watermark, page-number, redact, and reorganize PDFs without uploading files to a third-party service.
+
+  **Convert and extract:**
+  Convert PDFs to images, text, HTML, Word, presentations, XML, and PDF/A. OCR support helps turn scanned documents into searchable text.
+
+  **Private by default:**
+  Files are processed on your Mac in your own container. Lawn enables login and creates an admin password for the first account automatically.
+
+  **Automation-ready:**
+  Build reusable pipelines for multi-step PDF workflows and keep the configuration, logs, OCR data, and pipelines persisted across updates.
+symbolFallback: doc.fill
+iconURL: https://raw.githubusercontent.com/Stirling-Tools/Stirling-PDF/main/frontend/public/classic-logo/StirlingPDFLogoNoTextLight.svg
+category: Documents
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - pdf
+  - documents
+  - conversion
+  - ocr
+  - automation
+features:
+  - Merge, split, rotate, crop, and compress PDFs
+  - Convert between PDFs, images, Office documents, HTML, text, and PDF/A
+  - OCR for searchable scanned documents
+  - Password protection, signatures, redaction, and sanitization tools
+  - Reusable pipeline automation for repeated workflows
+  - Local processing with generated admin credentials
+screenshots: []
+links:
+  - url: https://www.stirling.com/
+    type: website
+    label: Website
+  - url: https://docs.stirlingpdf.com
+    type: documentation
+  - url: https://github.com/Stirling-Tools/Stirling-PDF
+    type: github
+webPort: 8080

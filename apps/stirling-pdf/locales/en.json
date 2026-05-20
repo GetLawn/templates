@@ -1,0 +1,97 @@
+{
+  "config": {
+    "ADMIN_PASSWORD": {
+      "displayName": "Admin Password",
+      "description": "Password for the initial admin account. Auto-generated during install."
+    },
+    "LOGIN_ENABLED": {
+      "displayName": "User Login",
+      "description": "Require users to sign in before using Stirling PDF. Recommended for private documents.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    },
+    "DEFAULT_LOCALE": {
+      "displayName": "Default Language",
+      "description": "Default interface language for first-time visitors. Users can still choose a different language in the app.",
+      "options": {
+        "en-US": { "label": "English (US)" },
+        "en-GB": { "label": "English (UK)" },
+        "de-DE": { "label": "German" },
+        "fr-FR": { "label": "French" },
+        "es-ES": { "label": "Spanish" },
+        "it-IT": { "label": "Italian" },
+        "pt-BR": { "label": "Portuguese (Brazil)" },
+        "nl-NL": { "label": "Dutch" },
+        "pl-PL": { "label": "Polish" },
+        "sv-SE": { "label": "Swedish" }
+      }
+    },
+    "MAX_FILE_SIZE_MB": {
+      "displayName": "File Upload Limit",
+      "description": "Maximum size, in MB, for uploaded PDF and conversion files."
+    },
+    "ENABLE_ANALYTICS": {
+      "displayName": "Usage Analytics",
+      "description": "Allow Stirling PDF analytics after users consent in the app. Keep off for maximum privacy.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    },
+    "SHOW_UPDATE_NOTICES": {
+      "displayName": "Update Notices",
+      "description": "Show in-app notifications when Stirling PDF detects that a newer version is available.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    }
+  },
+  "services": {
+    "stirling-pdf": {
+      "environment": {
+        "DISABLE_ADDITIONAL_FEATURES": {
+          "description": "Keep Stirling PDF's additional features enabled in the Docker image."
+        },
+        "SECURITY_INITIALLOGIN_USERNAME": {
+          "description": "Username for the initial admin account."
+        },
+        "SECURITY_INITIALLOGIN_PASSWORD": {
+          "description": "Password for the initial admin account. Auto-generated during install."
+        },
+        "SYSTEM_MAXFILESIZE": {
+          "description": "Maximum file size accepted by Stirling PDF, in MB."
+        },
+        "SPRING_SERVLET_MULTIPART_MAX_FILE_SIZE": {
+          "description": "Spring upload limit for a single file."
+        },
+        "SPRING_SERVLET_MULTIPART_MAX_REQUEST_SIZE": {
+          "description": "Spring upload limit for a complete request."
+        },
+        "TZ": {
+          "description": "Timezone for logs and scheduled tasks (e.g. America/New_York)."
+        }
+      },
+      "healthChecks": {
+        "app-health": {
+          "description": "Stirling PDF health endpoint is accessible"
+        }
+      },
+      "notices": {
+        "login-credentials": {
+          "title": "Login Credentials",
+          "elements": {
+            "username": {
+              "label": "Username"
+            },
+            "password": {
+              "label": "Password"
+            }
+          }
+        }
+      }
+    }
+  }
+}
