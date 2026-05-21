@@ -123,11 +123,6 @@ services:
           elements:
             - id: setup-info
               type: text
-        - id: local-http
-          style: warning
-          elements:
-            - id: local-http-info
-              type: text
       healthChecks:
         - id: web-ui
           type: http

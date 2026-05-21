@@ -74,14 +74,6 @@
               "content": "Create the first ConvertX account when the web interface opens. Keep account registration disabled unless you want additional local users to sign up."
             }
           }
-        },
-        "local-http": {
-          "title": "Local HTTP Access",
-          "elements": {
-            "local-http-info": {
-              "content": "ConvertX is configured to allow Lawn's local HTTP URLs. Keep this app private to your Mac or trusted local network."
-            }
-          }
         }
       }
     }
