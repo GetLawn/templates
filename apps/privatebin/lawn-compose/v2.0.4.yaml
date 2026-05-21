@@ -10,9 +10,6 @@ services:
       PHP_TZ: "${TIMEZONE:-UTC}"
     volumes:
       - "./data:/srv/data"
-      - "./run:/run"
-      - "./tmp:/tmp"
-      - "./nginx-tmp:/var/lib/nginx/tmp"
     ports:
       - "8080:8080"
     deploy:
