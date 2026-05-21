@@ -19,7 +19,7 @@
           "title": "Transport Security",
           "elements": {
             "warning": {
-              "content": "PrivateBin encrypts content in the browser, but the project recommends HTTPS for sensitive use. Treat plain HTTP access as suitable only for trusted local-network testing."
+              "content": "PrivateBin relies on browser Web Crypto. Many browsers only enable it on HTTPS or localhost, so the .local address may show an insecure-context warning until app-domain HTTPS is available. Use the assigned localhost port for local testing."
             }
           }
         }
