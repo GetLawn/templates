@@ -1,0 +1,41 @@
+id: speedtest-tracker
+name: Speedtest Tracker
+tagline: Track your internet speed over time
+description: |
+  Speedtest Tracker runs recurring Ookla speed tests and keeps the results in a local dashboard, so you can spot slowdowns, outages, and ISP performance trends over time.
+
+  **Scheduled Speed Tests:**
+  Run tests manually or configure a cron schedule for automatic download, upload, ping, and jitter measurements.
+
+  **Historical Dashboard:**
+  Review charts and tables for recent and long-term connection performance. Keep an eye on whether your connection is holding up at different times of day.
+
+  **Notifications and Integrations:**
+  Send alerts through supported notification providers when results cross your configured thresholds.
+
+  **Local Data:**
+  Your speed test history, settings, and account data are stored locally in Lawn-managed storage.
+symbolFallback: speedometer
+category: Monitoring
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - speed-test
+  - monitoring
+  - network
+  - bandwidth
+features:
+  - Scheduled and manual Ookla speed tests
+  - Tracks download, upload, ping, and jitter over time
+  - Historical charts and result tables
+  - Optional public dashboard
+  - Notification support for threshold alerts
+links:
+  - url: https://github.com/alexjustesen/speedtest-tracker
+    type: github
+  - url: https://docs.speedtest-tracker.dev/
+    type: documentation
+  - url: https://speedtest-tracker.dev/
+    type: website
+    label: Website
+webPort: 80
