@@ -1,0 +1,80 @@
+{
+  "config": {
+    "WEBSITE_TITLE": {
+      "displayName": "Website Title",
+      "description": "Title shown in the UpSnap web interface."
+    },
+    "PING_INTERVAL": {
+      "displayName": "Device Ping Interval",
+      "description": "How often UpSnap checks whether devices are online.",
+      "options": {
+        "every-10-seconds": { "label": "Every 10 Seconds" },
+        "every-30-seconds": { "label": "Every 30 Seconds" },
+        "every-minute": { "label": "Every Minute" },
+        "every-five-minutes": { "label": "Every 5 Minutes" }
+      }
+    },
+    "SCAN_TIMEOUT": {
+      "displayName": "Scan Timeout",
+      "description": "How long network scans wait for each host before timing out.",
+      "options": {
+        "500ms": { "label": "500 ms" },
+        "1s": { "label": "1 second" },
+        "3s": { "label": "3 seconds" }
+      }
+    }
+  },
+  "services": {
+    "upsnap": {
+      "environment": {
+        "TZ": {
+          "description": "Timezone for schedules and timestamps (e.g. America/New_York)."
+        },
+        "PUID": {
+          "description": "User ID used by the UpSnap process."
+        },
+        "PGID": {
+          "description": "Group ID used by the UpSnap process."
+        },
+        "UPSNAP_HTTP_LISTEN": {
+          "description": "Address and port used by the UpSnap web server."
+        },
+        "UPSNAP_WEBSITE_TITLE": {
+          "description": "Title shown in the UpSnap web interface."
+        },
+        "UPSNAP_INTERVAL": {
+          "description": "Cron expression used to check device status."
+        },
+        "UPSNAP_SCAN_TIMEOUT": {
+          "description": "Timeout for network discovery scans."
+        },
+        "UPSNAP_PING_PRIVILEGED": {
+          "description": "Use privileged ping for device status checks."
+        }
+      },
+      "healthChecks": {
+        "web-ui": {
+          "description": "UpSnap health endpoint is accessible"
+        }
+      },
+      "notices": {
+        "first-time-setup": {
+          "title": "First-Time Setup",
+          "elements": {
+            "setup-info": {
+              "content": "Create the initial UpSnap admin account when the web interface opens."
+            }
+          }
+        },
+        "local-network": {
+          "title": "Local Network Use",
+          "elements": {
+            "local-network-info": {
+              "content": "Wake-on-LAN and network scanning depend on local network access. Keep UpSnap private or access it through a VPN."
+            }
+          }
+        }
+      }
+    }
+  }
+}
