@@ -1,0 +1,73 @@
+{
+  "config": {
+    "ADMIN_PASSWORD": {
+      "displayName": "Admin Password",
+      "description": "Password for the FreshRSS admin account. Auto-generated during install."
+    },
+    "ADMIN_API_PASSWORD": {
+      "displayName": "API Password",
+      "description": "Password for mobile apps and Google Reader compatible API clients. Auto-generated during install."
+    },
+    "REFRESH_SCHEDULE": {
+      "displayName": "Feed Refresh Schedule",
+      "description": "How often FreshRSS refreshes feeds in the background using its built-in cron job.",
+      "options": {
+        "disabled": { "label": "Off" },
+        "hourly": { "label": "Hourly" },
+        "twice-hourly": { "label": "Twice Hourly" },
+        "every-twenty-minutes": { "label": "Every 20 Minutes" }
+      }
+    }
+  },
+  "services": {
+    "freshrss": {
+      "environment": {
+        "TZ": {
+          "description": "Timezone for FreshRSS (e.g. America/New_York)."
+        },
+        "CRON_MIN": {
+          "description": "Minute schedule for the built-in feed refresh cron job."
+        },
+        "ADMIN_PASSWORD": {
+          "description": "Password for the FreshRSS admin account. Auto-generated during install."
+        },
+        "ADMIN_API_PASSWORD": {
+          "description": "Password for API clients. Auto-generated during install."
+        },
+        "FRESHRSS_ENV": {
+          "description": "FreshRSS runtime environment. Production is recommended for normal use."
+        },
+        "FRESHRSS_INSTALL": {
+          "description": "First-run install arguments passed to FreshRSS."
+        },
+        "FRESHRSS_USER": {
+          "description": "First-run user creation arguments passed to FreshRSS."
+        }
+      },
+      "healthChecks": {
+        "web-ui": {
+          "description": "FreshRSS API page is accessible"
+        }
+      },
+      "notices": {
+        "login-credentials": {
+          "title": "Login Credentials",
+          "elements": {
+            "username": {
+              "label": "Username"
+            },
+            "password": {
+              "label": "Password"
+            },
+            "api-password": {
+              "label": "API Password"
+            },
+            "api-password-info": {
+              "content": "Use the API password with mobile apps and other Google Reader compatible clients."
+            }
+          }
+        }
+      }
+    }
+  }
+}

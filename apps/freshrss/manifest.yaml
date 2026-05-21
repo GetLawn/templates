@@ -1,0 +1,45 @@
+id: freshrss
+name: FreshRSS
+tagline: A lightweight, self-hosted RSS and Atom feed reader
+description: |
+  FreshRSS is a self-hosted RSS and Atom feed aggregator for following websites, blogs, podcasts, and video channels from one private reader. It is lightweight, fast, and designed to run comfortably on a small home server.
+
+  **Feed Reading Built for Daily Use:**
+  Read, search, star, and organize articles in a responsive web interface. FreshRSS supports OPML import and export, saved searches, article filters, and feed categories so you can bring an existing feed collection with you.
+
+  **Automatic Refreshing:**
+  Built-in scheduled refresh keeps feeds updated in the background. The included template lets you choose a refresh cadence during setup.
+
+  **Mobile and API Friendly:**
+  FreshRSS includes a Google Reader compatible API for mobile apps and desktop clients, plus WebSub support for real-time updates from compatible publishers.
+
+  **Extensible and Private:**
+  Data stays on your Mac using the built-in SQLite database. Themes and extensions can be installed into the persistent extensions directory when you want to customize the reader further.
+symbolFallback: dot.radiowaves.left.and.right
+iconURL: https://github.com/FreshRSS.png
+category: Utilities
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - rss
+  - atom
+  - feed-reader
+  - news
+  - self-hosted
+features:
+  - Self-hosted RSS and Atom feed reader
+  - Responsive web interface
+  - Scheduled feed refresh
+  - OPML import and export
+  - Google Reader compatible API
+  - WebSub support
+  - Themes and extensions
+screenshots: []
+links:
+  - url: https://github.com/FreshRSS/FreshRSS
+    type: github
+  - url: https://freshrss.github.io/FreshRSS/
+    type: documentation
+  - url: https://freshrss.org/
+    type: website
+webPort: 80
