@@ -1,0 +1,150 @@
+x-lawn:
+  compatibility:
+    minLawnVersion: 0.2.0
+  config:
+    JWT_SECRET:
+      source: generatedSecret
+      length: 48
+    ACCOUNT_REGISTRATION:
+      inputType: boolean
+      value: false
+      weight: 10
+      options:
+        "true":
+          compose:
+            services:
+              convertx:
+                environment:
+                  ACCOUNT_REGISTRATION: "true"
+        "false":
+          compose:
+            services:
+              convertx:
+                environment:
+                  ACCOUNT_REGISTRATION: "false"
+    ALLOW_UNAUTHENTICATED:
+      inputType: boolean
+      value: false
+      weight: 20
+      options:
+        "true":
+          compose:
+            services:
+              convertx:
+                environment:
+                  ALLOW_UNAUTHENTICATED: "true"
+        "false":
+          compose:
+            services:
+              convertx:
+                environment:
+                  ALLOW_UNAUTHENTICATED: "false"
+    AUTO_DELETE_EVERY_N_HOURS:
+      inputType: select
+      value: after-24-hours
+      weight: 30
+      options:
+        after-6-hours:
+          weight: 10
+          compose:
+            services:
+              convertx:
+                environment:
+                  AUTO_DELETE_EVERY_N_HOURS: "6"
+        after-24-hours:
+          weight: 20
+          compose:
+            services:
+              convertx:
+                environment:
+                  AUTO_DELETE_EVERY_N_HOURS: "24"
+        after-72-hours:
+          weight: 30
+          compose:
+            services:
+              convertx:
+                environment:
+                  AUTO_DELETE_EVERY_N_HOURS: "72"
+        never:
+          weight: 40
+          compose:
+            services:
+              convertx:
+                environment:
+                  AUTO_DELETE_EVERY_N_HOURS: "0"
+    MAX_CONVERT_PROCESS:
+      inputType: number
+      value: 2
+      weight: 40
+    HIDE_HISTORY:
+      inputType: boolean
+      value: false
+      weight: 50
+      options:
+        "true":
+          compose:
+            services:
+              convertx:
+                environment:
+                  HIDE_HISTORY: "true"
+        "false":
+          compose:
+            services:
+              convertx:
+                environment:
+                  HIDE_HISTORY: "false"
+
+services:
+  convertx:
+    image: c4illin/convertx:v0.17.0
+    environment:
+      JWT_SECRET: "${JWT_SECRET:?JWT_SECRET is required}"
+      TZ: "${TIMEZONE:-UTC}"
+      HTTP_ALLOWED: "true"
+      ACCOUNT_REGISTRATION: "false"
+      ALLOW_UNAUTHENTICATED: "false"
+      AUTO_DELETE_EVERY_N_HOURS: "24"
+      MAX_CONVERT_PROCESS: "${MAX_CONVERT_PROCESS:-2}"
+      HIDE_HISTORY: "false"
+      LANGUAGE: en
+      UNAUTHENTICATED_USER_SHARING: "false"
+    volumes:
+      - "./data:/app/data"
+    ports:
+      - "3000:3000"
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+    x-lawn:
+      notices:
+        - id: first-account
+          style: info
+          elements:
+            - id: setup-info
+              type: text
+        - id: local-http
+          style: warning
+          elements:
+            - id: local-http-info
+              type: text
+      healthChecks:
+        - id: web-ui
+          type: http
+          path: /
+          expectedStatus: 200
+          intervalSeconds: 10
+          timeoutSeconds: 5
+          retries: 6
+          startPeriodSeconds: 30
+      environment:
+        JWT_SECRET:
+        TZ:
+        HTTP_ALLOWED:
+        ACCOUNT_REGISTRATION:
+        ALLOW_UNAUTHENTICATED:
+        AUTO_DELETE_EVERY_N_HOURS:
+        MAX_CONVERT_PROCESS:
+        HIDE_HISTORY:
+        LANGUAGE:
+        UNAUTHENTICATED_USER_SHARING:
