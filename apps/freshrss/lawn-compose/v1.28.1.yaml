@@ -58,12 +58,6 @@ services:
       - "./extensions:/var/www/FreshRSS/extensions"
     ports:
       - "80:80"
-    healthcheck:
-      test: ["CMD", "cli/health.php"]
-      interval: 75s
-      timeout: 10s
-      retries: 3
-      start_period: 60s
     deploy:
       resources:
         limits:
