@@ -16,7 +16,7 @@ description: |
   **Extensible and Private:**
   Data stays on your Mac using the built-in SQLite database. Themes and extensions can be installed into the persistent extensions directory when you want to customize the reader further.
 symbolFallback: dot.radiowaves.left.and.right
-iconURL: https://github.com/FreshRSS.png
+iconURL: https://getlawn.app/images/apps/freshrss.svg
 category: Utilities
 compatibility:
   minLawnVersion: 0.2.0
