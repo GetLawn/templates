@@ -4,7 +4,7 @@
       "displayName": "Admin Password",
       "description": "Password for the Grafana admin account. Auto-generated during install."
     },
-    "ANONYMOUS_ACCESS": {
+    "ANONYMOUS_MODE": {
       "displayName": "Anonymous Access",
       "description": "Let people view dashboards without logging in. Useful for displaying dashboards on a kitchen iPad or shared screen.",
       "options": {
@@ -12,7 +12,7 @@
         "false": { "label": "Off" }
       }
     },
-    "PUBLIC_SIGNUPS": {
+    "ALLOW_SIGN_UP": {
       "displayName": "Allow Public Signups",
       "description": "Let new users register their own accounts from the login page. Keep off for a private instance.",
       "options": {
@@ -20,7 +20,7 @@
         "false": { "label": "Off" }
       }
     },
-    "THEME": {
+    "DEFAULT_THEME": {
       "displayName": "Default Theme",
       "description": "The default UI theme for new users. System follows your operating system's appearance setting.",
       "options": {
@@ -29,7 +29,7 @@
         "light": { "label": "Light" }
       }
     },
-    "USAGE_STATISTICS": {
+    "ANALYTICS_REPORTING": {
       "displayName": "Send Usage Statistics",
       "description": "Share anonymous usage statistics with Grafana Labs to help improve the product.",
       "options": {
@@ -37,7 +37,7 @@
         "false": { "label": "Off" }
       }
     },
-    "UPDATE_CHECKS": {
+    "CHECK_FOR_UPDATES": {
       "displayName": "Check for Updates",
       "description": "Let Grafana check for new versions of itself and its plugins. Disable for fully offline operation.",
       "options": {
