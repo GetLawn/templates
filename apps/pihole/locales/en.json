@@ -27,7 +27,7 @@
       "description": "How Pi-hole responds to blocked domains. The default works well for most setups.",
       "options": {
         "NULL": { "label": "Return 0.0.0.0 (recommended)" },
-        "NXDOMAIN": { "label": "Return non-existent domain" },
+        "NX": { "label": "Return non-existent domain" },
         "NODATA": { "label": "Return empty response" },
         "IP": { "label": "Return Pi-hole's IP" },
         "IP_NODATA_AAAA": { "label": "Return Pi-hole IPv4 only" }

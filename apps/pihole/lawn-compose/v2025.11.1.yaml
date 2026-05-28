@@ -61,13 +61,13 @@ x-lawn:
               pihole:
                 environment:
                   FTLCONF_dns_blocking_mode: "NULL"
-        "NXDOMAIN":
+        "NX":
           weight: 20
           compose:
             services:
               pihole:
                 environment:
-                  FTLCONF_dns_blocking_mode: "NXDOMAIN"
+                  FTLCONF_dns_blocking_mode: "NX"
         "NODATA":
           weight: 30
           compose:
