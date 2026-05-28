@@ -5,7 +5,7 @@ x-lawn:
     ADMIN_PASSWORD:
       source: generatedSecret
       length: 32
-    DNS_PROVIDER:
+    UPSTREAM_DNS:
       value: cloudflare
       weight: 10
       options:
@@ -33,7 +33,7 @@ x-lawn:
               pihole:
                 environment:
                   FTLCONF_dns_upstreams: "208.67.222.222;208.67.220.220"
-    DNSSEC_VALIDATION:
+    DNSSEC:
       inputType: boolean
       value: false
       weight: 20
@@ -50,7 +50,7 @@ x-lawn:
               pihole:
                 environment:
                   FTLCONF_dns_dnssec: "false"
-    BLOCKING_BEHAVIOR:
+    BLOCKING_MODE:
       value: "NULL"
       weight: 30
       options:
@@ -89,7 +89,7 @@ x-lawn:
               pihole:
                 environment:
                   FTLCONF_dns_blocking_mode: "IP_NODATA_AAAA"
-    QUERY_HISTORY:
+    QUERY_LOGGING:
       inputType: boolean
       value: true
       weight: 40
@@ -106,7 +106,7 @@ x-lawn:
               pihole:
                 environment:
                   FTLCONF_dns_queryLogging: "false"
-    PRIVACY_MODE:
+    PRIVACY_LEVEL:
       value: "0"
       weight: 50
       options:
