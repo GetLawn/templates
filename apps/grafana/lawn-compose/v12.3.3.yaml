@@ -5,7 +5,7 @@ x-lawn:
     ADMIN_PASSWORD:
       source: generatedSecret
       length: 32
-    ANONYMOUS_MODE:
+    ANONYMOUS_ACCESS:
       inputType: boolean
       value: false
       weight: 10
@@ -22,7 +22,7 @@ x-lawn:
               grafana:
                 environment:
                   GF_AUTH_ANONYMOUS_ENABLED: "false"
-    ALLOW_SIGN_UP:
+    PUBLIC_SIGNUPS:
       inputType: boolean
       value: false
       weight: 20
@@ -39,7 +39,7 @@ x-lawn:
               grafana:
                 environment:
                   GF_USERS_ALLOW_SIGN_UP: "false"
-    DEFAULT_THEME:
+    THEME:
       value: system
       weight: 30
       options:
@@ -64,7 +64,7 @@ x-lawn:
               grafana:
                 environment:
                   GF_USERS_DEFAULT_THEME: "light"
-    ANALYTICS_REPORTING:
+    USAGE_STATISTICS:
       inputType: boolean
       value: true
       weight: 40
@@ -81,7 +81,7 @@ x-lawn:
               grafana:
                 environment:
                   GF_ANALYTICS_REPORTING_ENABLED: "false"
-    CHECK_FOR_UPDATES:
+    UPDATE_CHECKS:
       inputType: boolean
       value: true
       weight: 50
