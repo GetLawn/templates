@@ -11,7 +11,7 @@ x-lawn:
     ADMIN_PASSWORD:
       source: generatedSecret
       length: 32
-    OCR_LANGUAGE:
+    DOCUMENT_LANGUAGES:
       inputType: list
       separator: "+"
       value: "eng"
@@ -47,7 +47,7 @@ x-lawn:
         - ind
         - ukr
         - cat
-    OCR_LANGUAGES:
+    LANGUAGE_PACKS:
       inputType: list
       separator: " "
       value: ""
@@ -129,8 +129,8 @@ services:
       PAPERLESS_ADMIN_USER: admin
       PAPERLESS_ADMIN_PASSWORD: "${ADMIN_PASSWORD:?ADMIN_PASSWORD is required}"
       PAPERLESS_TIME_ZONE: "${TIMEZONE:-UTC}"
-      PAPERLESS_OCR_LANGUAGE: "${OCR_LANGUAGE}"
-      PAPERLESS_OCR_LANGUAGES: "${OCR_LANGUAGES}"
+      PAPERLESS_OCR_LANGUAGE: "${DOCUMENT_LANGUAGES}"
+      PAPERLESS_OCR_LANGUAGES: "${LANGUAGE_PACKS}"
       USERMAP_UID: "${UID:-1000}"
       USERMAP_GID: "${GID:-1000}"
     volumes:
