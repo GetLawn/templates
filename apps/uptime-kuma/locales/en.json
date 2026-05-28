@@ -1,6 +1,6 @@
 {
   "config": {
-    "ALLOW_EMBEDDING": {
+    "EMBEDDING": {
       "displayName": "Allow Embedding in Dashboards",
       "description": "Allow Uptime Kuma's status page to be embedded as an iframe in other dashboards (e.g. Homarr, Homepage).",
       "options": {
@@ -8,7 +8,7 @@
         "false": { "label": "Off" }
       }
     },
-    "BYPASS_WS_ORIGIN_CHECK": {
+    "WEBSOCKET_ORIGIN_CHECK": {
       "displayName": "Bypass WebSocket Origin Check",
       "description": "Disable the WebSocket origin check. Enable only if you access Uptime Kuma through a reverse proxy that rewrites the Origin header and the dashboard fails to connect.",
       "options": {
@@ -16,7 +16,7 @@
         "false": { "label": "Off" }
       }
     },
-    "ACCEPT_SELF_SIGNED_CERTS": {
+    "SELF_SIGNED_CERTIFICATES": {
       "displayName": "Accept Self-Signed Certificates",
       "description": "Allow monitors to check services that use self-signed or invalid TLS certificates. Useful for monitoring internal services on your network.",
       "options": {
