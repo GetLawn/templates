@@ -12,7 +12,7 @@
       "displayName": "Admin Password",
       "description": "Password for the initial admin account. Auto-generated during install."
     },
-    "DOCUMENT_LANGUAGES": {
+    "OCR_LANGUAGE": {
       "displayName": "Document Languages",
       "description": "Languages for reading text from scanned documents. First language is primary. Additional languages improve recognition for multilingual documents.",
       "availableOptions": {
@@ -48,7 +48,7 @@
         "cat": { "label": "Catalan" }
       }
     },
-    "LANGUAGE_PACKS": {
+    "OCR_LANGUAGES": {
       "displayName": "Installed Language Packs",
       "description": "Language packs to install at startup. English, German, French, Italian and Spanish are pre-installed. Add any other languages you need here.",
       "availableOptions": {
