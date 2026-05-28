@@ -2,7 +2,7 @@ x-lawn:
   compatibility:
     minLawnVersion: 0.2.0
   config:
-    ALLOW_SIGNUP:
+    PUBLIC_SIGNUPS:
       inputType: boolean
       value: false
       weight: 10

@@ -1,6 +1,6 @@
 {
   "config": {
-    "ALLOW_SIGNUP": {
+    "PUBLIC_SIGNUPS": {
       "displayName": "Allow Public Signups",
       "description": "Let new users register without an invite link. Keep off for a private household instance; turn on temporarily to add family members.",
       "options": {
