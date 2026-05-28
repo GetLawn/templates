@@ -9,7 +9,6 @@ x-lawn:
       source: generatedSecret
       length: 32
     DEFAULT_PHONE_REGION:
-      inputType: select
       value: US
       weight: 10
       options:
