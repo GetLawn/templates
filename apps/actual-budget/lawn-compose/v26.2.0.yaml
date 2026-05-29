@@ -2,23 +2,22 @@ x-lawn:
   compatibility:
     minLawnVersion: 0.2.0
   config:
-    MULTIUSER:
-      inputType: boolean
-      value: false
+    LOGIN_METHOD:
+      value: password
       weight: 10
       options:
-        "true":
+        password:
           compose:
             services:
               actual-budget:
                 environment:
-                  ACTUAL_MULTIUSER: "true"
-        "false":
+                  ACTUAL_LOGIN_METHOD: password
+        openid:
           compose:
             services:
               actual-budget:
                 environment:
-                  ACTUAL_MULTIUSER: "false"
+                  ACTUAL_LOGIN_METHOD: openid
 
 services:
   actual-budget:

@@ -1,11 +1,11 @@
 {
   "config": {
-    "MULTIUSER": {
-      "displayName": "Multi-User Mode",
-      "description": "Allow multiple users to create separate accounts and manage their own budgets independently.",
+    "LOGIN_METHOD": {
+      "displayName": "Login Method",
+      "description": "Choose how users authenticate with Actual. OpenID enables Actual's multi-user mode and requires a configured OpenID provider.",
       "options": {
-        "true": { "label": "On" },
-        "false": { "label": "Off" }
+        "password": { "label": "Password" },
+        "openid": { "label": "OpenID / Multi-User" }
       }
     }
   },
