@@ -1,12 +1,16 @@
 {
   "config": {
-    "LOGIN_METHOD": {
-      "displayName": "Login Method",
-      "description": "Choose how users authenticate with Actual. OpenID enables Actual's multi-user mode and requires a configured OpenID provider.",
-      "options": {
-        "password": { "label": "Password" },
-        "openid": { "label": "OpenID / Multi-User" }
-      }
+    "GENERAL_UPLOAD_LIMIT_MB": {
+      "displayName": "General Upload Limit",
+      "description": "Maximum request size, in MB, for regular Actual API uploads."
+    },
+    "SYNC_UPLOAD_LIMIT_MB": {
+      "displayName": "Sync File Upload Limit",
+      "description": "Maximum request size, in MB, for standard Actual sync files."
+    },
+    "ENCRYPTED_SYNC_UPLOAD_LIMIT_MB": {
+      "displayName": "Encrypted Sync Upload Limit",
+      "description": "Maximum request size, in MB, for encrypted Actual sync files."
     }
   },
   "services": {
