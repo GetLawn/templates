@@ -36,23 +36,6 @@ x-lawn:
               uptime-kuma:
                 environment:
                   UPTIME_KUMA_WS_ORIGIN_CHECK: "cors-like"
-    ACCEPT_SELF_SIGNED_CERTS:
-      inputType: boolean
-      value: false
-      weight: 30
-      options:
-        "true":
-          compose:
-            services:
-              uptime-kuma:
-                environment:
-                  NODE_TLS_REJECT_UNAUTHORIZED: "0"
-        "false":
-          compose:
-            services:
-              uptime-kuma:
-                environment:
-                  NODE_TLS_REJECT_UNAUTHORIZED: "1"
 
 services:
   uptime-kuma:

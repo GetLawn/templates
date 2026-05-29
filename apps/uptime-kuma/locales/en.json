@@ -15,14 +15,6 @@
         "true": { "label": "On" },
         "false": { "label": "Off" }
       }
-    },
-    "ACCEPT_SELF_SIGNED_CERTS": {
-      "displayName": "Accept Self-Signed Certificates",
-      "description": "Allow monitors to check services that use self-signed or invalid TLS certificates. Useful for monitoring internal services on your network.",
-      "options": {
-        "true": { "label": "On" },
-        "false": { "label": "Off" }
-      }
     }
   },
   "services": {
