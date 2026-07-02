@@ -7,8 +7,8 @@ description: |
   **Your Hardware, Your Speed:**
   Workflows run on your Mac's CPU and memory — no shared infrastructure, no cold starts, no concurrency limits. Push a commit and your job starts immediately on hardware you own.
 
-  **Full Docker Support:**
-  Enable Docker inside the runner to run container-based workflow steps and actions. Lawn's VM-based isolation makes this safe and simple — no host socket tricks required.
+  **Docker Support:**
+  Enable Docker inside the runner to use Docker-based actions, `docker run`, and `docker compose` in workflows. The runner starts its own Docker daemon inside Lawn's isolated Linux environment.
 
   **Stays Registered:**
   Runner registration persists across restarts. The runner reconnects to GitHub automatically without re-registering each time it starts.
@@ -22,7 +22,7 @@ symbolFallback: terminal.fill
 iconURL: https://getlawn.app/images/apps/github-actions-runner.svg
 category: Development
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.4.0
 tags:
   - ci-cd
   - github
@@ -32,7 +32,7 @@ tags:
 features:
   - Run GitHub Actions workflows on your Mac's hardware
   - Support for repository and organization runners
-  - Docker support for container-based workflow steps
+  - Docker support for container-based workflow steps when enabled
   - Persists runner registration across restarts
   - Customizable labels for targeting specific runners in workflow YAML
   - Compatible with GitHub.com and GitHub Enterprise Server

@@ -2,15 +2,43 @@
   "config": {
     "RUNNER_TOKEN": {
       "displayName": "Runner Token",
-      "description": "Registration token from the GitHub UI. Go to Settings → Actions → Runners → New self-hosted runner and copy the token from the ./config.sh command."
+      "description": "Registration token from GitHub's new self-hosted runner flow. Create it for the organization or repository you choose below."
+    },
+    "RUNNER_SCOPE": {
+      "displayName": "Runner Scope",
+      "description": "Choose whether this runner belongs to an organization or a single repository.",
+      "options": {
+        "org": {
+          "label": "Organization"
+        },
+        "repo": {
+          "label": "Repository"
+        }
+      }
+    },
+    "LABELS": {
+      "displayName": "Runner Labels",
+      "description": "Comma-separated labels for this runner. Reference these in workflow YAML with runs-on to target this runner."
+    },
+    "RUNNER_NAME_PREFIX": {
+      "displayName": "Runner Name Prefix",
+      "description": "Prefix for the generated runner name. Lawn adds a unique suffix so multiple runners can coexist."
+    },
+    "START_DOCKER_SERVICE": {
+      "displayName": "Docker Service",
+      "description": "Start Docker inside the runner so workflows can use Docker-based actions, docker run, and docker compose. Disable this only if you do not run container-based workflow steps.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
     },
     "REPO_URL": {
       "displayName": "Repository URL",
-      "description": "Full GitHub repository URL (e.g. https://github.com/your-org/your-repo). Required for repo runners, leave empty for org runners."
+      "description": "Full GitHub repository URL, such as https://github.com/your-org/your-repo. Required only for repository runners."
     },
     "ORG_NAME": {
       "displayName": "Organization Name",
-      "description": "GitHub organization name (e.g. your-org). Required for org runners, leave empty for repo runners."
+      "description": "GitHub organization name, such as your-org. Required only for organization runners."
     }
   },
   "services": {
@@ -25,6 +53,9 @@
         "RUNNER_NAME_PREFIX": {
           "description": "Prefix for the auto-generated runner name. A random suffix is appended to ensure uniqueness across multiple instances."
         },
+        "START_DOCKER_SERVICE": {
+          "description": "Starts Docker inside the runner so workflows can use Docker-based actions, docker run, and docker compose."
+        },
         "CONFIGURED_ACTIONS_RUNNER_FILES_DIR": {
           "description": "Directory where runner registration state is persisted across restarts."
         },
@@ -34,11 +65,11 @@
         "DISABLE_AUTO_UPDATE": {
           "description": "Prevents the runner binary from self-updating, keeping the pinned image version in use."
         },
+        "DISABLE_AUTOMATIC_DEREGISTRATION": {
+          "description": "Keeps the registered runner attached to GitHub when Lawn stops or restarts it."
+        },
         "UNSET_CONFIG_VARS": {
           "description": "Clears GitHub credential environment variables after runner registration to prevent them from leaking into workflow steps."
-        },
-        "START_DOCKER_SERVICE": {
-          "description": "Start a Docker daemon inside the runner VM, enabling container-based workflow steps and Docker actions. Safe to enable — each runner runs in its own isolated Linux VM."
         },
         "TZ": {
           "description": "Timezone for the runner container."
@@ -49,10 +80,10 @@
           "title": "GitHub Credentials Required",
           "elements": {
             "token-instructions": {
-              "content": "Before starting, you need a **RUNNER_TOKEN** plus either **REPO_URL** (for repo runners) or **ORG_NAME** (for org runners)."
+              "content": "Before starting, choose whether this runner belongs to an organization or a repository, then provide the matching runner token plus the organization name or repository URL."
             },
             "setup-guide": {
-              "content": "Go to **Settings → Actions → Runners → New self-hosted runner** on your repository or organization and copy the token from the `./config.sh` command. This token expires after 1 hour but the runner stays registered."
+              "content": "In GitHub, open the organization or repository runner settings, choose **New self-hosted runner**, and copy the token from the setup command. The runner registration is stored by Lawn and reused across restarts."
             }
           }
         }
