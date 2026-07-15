@@ -1,0 +1,112 @@
+x-lawn:
+  compatibility:
+    minLawnVersion: 0.4.0
+  config:
+    RUNNER_TOKEN:
+      source: userProvided
+      weight: 10
+    LABELS:
+      source: userProvided
+      value: self-hosted,linux
+      inputType: text
+      weight: 20
+    RUNNER_NAME_PREFIX:
+      source: userProvided
+      value: lawn
+      inputType: text
+      weight: 30
+    START_DOCKER_SERVICE:
+      source: userProvided
+      value: true
+      inputType: boolean
+      weight: 35
+      options:
+        "true":
+          weight: 10
+          compose:
+            services:
+              runner:
+                environment:
+                  START_DOCKER_SERVICE: "true"
+        "false":
+          weight: 20
+          compose:
+            services:
+              runner:
+                environment:
+                  START_DOCKER_SERVICE: "false"
+    RUNNER_SCOPE:
+      source: userProvided
+      value: org
+      inputType: choice
+      weight: 40
+      options:
+        org:
+          weight: 10
+          compose:
+            services:
+              runner:
+                environment:
+                  RUNNER_SCOPE: "org"
+                  ORG_NAME: "${ORG_NAME}"
+            x-lawn:
+              config:
+                REPO_URL: !reset {}
+        repo:
+          weight: 20
+          compose:
+            services:
+              runner:
+                environment:
+                  RUNNER_SCOPE: "repo"
+                  REPO_URL: "${REPO_URL}"
+            x-lawn:
+              config:
+                ORG_NAME: !reset {}
+    REPO_URL:
+      source: userProvided
+      weight: 50
+    ORG_NAME:
+      source: userProvided
+      weight: 50
+
+services:
+  runner:
+    image: myoung34/github-runner:2.335.1-ubuntu-noble
+    environment:
+      RUNNER_TOKEN: "${RUNNER_TOKEN}"
+      LABELS: "${LABELS}"
+      RUNNER_NAME_PREFIX: "${RUNNER_NAME_PREFIX}"
+      START_DOCKER_SERVICE: "${START_DOCKER_SERVICE}"
+      CONFIGURED_ACTIONS_RUNNER_FILES_DIR: "/runner/data"
+      RUNNER_WORKDIR: "/_work"
+      DISABLE_AUTO_UPDATE: "true"
+      DISABLE_AUTOMATIC_DEREGISTRATION: "true"
+      UNSET_CONFIG_VARS: "true"
+      TZ: "${TIMEZONE:-UTC}"
+    volumes:
+      - "./data:/runner/data"
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+    x-lawn:
+      notices:
+        - id: github-credentials-required
+          style: warning
+          elements:
+            - id: token-instructions
+              type: text
+            - id: setup-guide
+              type: text
+      environment:
+        RUNNER_SCOPE:
+        LABELS:
+        RUNNER_NAME_PREFIX:
+        START_DOCKER_SERVICE:
+        CONFIGURED_ACTIONS_RUNNER_FILES_DIR:
+        RUNNER_WORKDIR:
+        DISABLE_AUTO_UPDATE:
+        DISABLE_AUTOMATIC_DEREGISTRATION:
+        UNSET_CONFIG_VARS:
+        TZ:
