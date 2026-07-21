@@ -11,6 +11,78 @@
     "ADMIN_PASSWORD": {
       "displayName": "Admin Password",
       "description": "Password for the initial admin account. Auto-generated during install."
+    },
+    "OCR_LANGUAGE": {
+      "displayName": "Document Languages",
+      "description": "Languages for reading text from scanned documents. First language is primary. Additional languages improve recognition for multilingual documents.",
+      "availableOptions": {
+        "eng": { "label": "English" },
+        "deu": { "label": "German" },
+        "fra": { "label": "French" },
+        "spa": { "label": "Spanish" },
+        "ita": { "label": "Italian" },
+        "por": { "label": "Portuguese" },
+        "nld": { "label": "Dutch" },
+        "pol": { "label": "Polish" },
+        "rus": { "label": "Russian" },
+        "jpn": { "label": "Japanese" },
+        "chi_sim": { "label": "Chinese (Simplified)" },
+        "chi_tra": { "label": "Chinese (Traditional)" },
+        "kor": { "label": "Korean" },
+        "ara": { "label": "Arabic" },
+        "hin": { "label": "Hindi" },
+        "tur": { "label": "Turkish" },
+        "swe": { "label": "Swedish" },
+        "dan": { "label": "Danish" },
+        "nor": { "label": "Norwegian" },
+        "fin": { "label": "Finnish" },
+        "ces": { "label": "Czech" },
+        "ron": { "label": "Romanian" },
+        "hun": { "label": "Hungarian" },
+        "ell": { "label": "Greek" },
+        "heb": { "label": "Hebrew" },
+        "tha": { "label": "Thai" },
+        "vie": { "label": "Vietnamese" },
+        "ind": { "label": "Indonesian" },
+        "ukr": { "label": "Ukrainian" },
+        "cat": { "label": "Catalan" }
+      }
+    },
+    "OCR_LANGUAGES": {
+      "displayName": "Installed Language Packs",
+      "description": "Language packs to install at startup. English, German, French, Italian and Spanish are pre-installed. Add any other languages you need here.",
+      "availableOptions": {
+        "eng": { "label": "English" },
+        "deu": { "label": "German" },
+        "fra": { "label": "French" },
+        "spa": { "label": "Spanish" },
+        "ita": { "label": "Italian" },
+        "por": { "label": "Portuguese" },
+        "nld": { "label": "Dutch" },
+        "pol": { "label": "Polish" },
+        "rus": { "label": "Russian" },
+        "jpn": { "label": "Japanese" },
+        "chi_sim": { "label": "Chinese (Simplified)" },
+        "chi_tra": { "label": "Chinese (Traditional)" },
+        "kor": { "label": "Korean" },
+        "ara": { "label": "Arabic" },
+        "hin": { "label": "Hindi" },
+        "tur": { "label": "Turkish" },
+        "swe": { "label": "Swedish" },
+        "dan": { "label": "Danish" },
+        "nor": { "label": "Norwegian" },
+        "fin": { "label": "Finnish" },
+        "ces": { "label": "Czech" },
+        "ron": { "label": "Romanian" },
+        "hun": { "label": "Hungarian" },
+        "ell": { "label": "Greek" },
+        "heb": { "label": "Hebrew" },
+        "tha": { "label": "Thai" },
+        "vie": { "label": "Vietnamese" },
+        "ind": { "label": "Indonesian" },
+        "ukr": { "label": "Ukrainian" },
+        "cat": { "label": "Catalan" }
+      }
     }
   },
   "services": {
@@ -58,6 +130,9 @@
         },
         "PAPERLESS_OCR_LANGUAGE": {
           "description": "OCR language for document text recognition (e.g. eng, deu, fra)."
+        },
+        "PAPERLESS_OCR_LANGUAGES": {
+          "description": "Additional Tesseract language packs to install at container startup."
         },
         "USERMAP_UID": {
           "description": "User ID for file ownership inside the container."

@@ -1,4 +1,14 @@
 {
+  "config": {
+    "MULTIUSER": {
+      "displayName": "Multi-User Mode",
+      "description": "Allow multiple users to create separate accounts and manage their own budgets independently.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    }
+  },
   "services": {
     "actual-budget": {
       "environment": {

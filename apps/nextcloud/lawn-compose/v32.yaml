@@ -8,6 +8,161 @@ x-lawn:
     ADMIN_PASSWORD:
       source: generatedSecret
       length: 32
+    DEFAULT_PHONE_REGION:
+      inputType: select
+      value: US
+      weight: 10
+      options:
+        US:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: US
+        GB:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: GB
+        DE:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: DE
+        FR:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: FR
+        NL:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: NL
+        ES:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: ES
+        IT:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: IT
+        PT:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: PT
+        BE:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: BE
+        AT:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: AT
+        CH:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: CH
+        SE:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: SE
+        NO:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: NO
+        DK:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: DK
+        PL:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: PL
+        AU:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: AU
+        CA:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: CA
+        BR:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: BR
+        IN:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: IN
+        JP:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: JP
+        KR:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: KR
+        CN:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: CN
+        RU:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: RU
+        TR:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: TR
+        MX:
+          compose:
+            services:
+              nextcloud:
+                environment:
+                  NEXTCLOUD_DEFAULT_PHONE_REGION: MX
 
 services:
   postgres:

@@ -3,6 +3,53 @@
     "ADMIN_PASSWORD": {
       "displayName": "Admin Password",
       "description": "Password for the Pi-hole admin dashboard. Auto-generated during install."
+    },
+    "UPSTREAM_DNS": {
+      "displayName": "Upstream DNS Provider",
+      "description": "Which DNS resolver Pi-hole forwards non-blocked queries to. Cloudflare is fast and privacy-focused; Quad9 also blocks known malicious domains.",
+      "options": {
+        "cloudflare": { "label": "Cloudflare (1.1.1.1)" },
+        "google": { "label": "Google (8.8.8.8)" },
+        "quad9": { "label": "Quad9 (9.9.9.9)" },
+        "opendns": { "label": "OpenDNS" }
+      }
+    },
+    "DNSSEC": {
+      "displayName": "DNSSEC Validation",
+      "description": "Validate DNS responses cryptographically to detect tampering. Requires an upstream resolver that supports DNSSEC.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    },
+    "BLOCKING_MODE": {
+      "displayName": "Blocking Mode",
+      "description": "How Pi-hole responds to blocked domains. The default works well for most setups.",
+      "options": {
+        "NULL": { "label": "Return 0.0.0.0 (recommended)" },
+        "NXDOMAIN": { "label": "Return non-existent domain" },
+        "NODATA": { "label": "Return empty response" },
+        "IP": { "label": "Return Pi-hole's IP" },
+        "IP_NODATA_AAAA": { "label": "Return Pi-hole IPv4 only" }
+      }
+    },
+    "QUERY_LOGGING": {
+      "displayName": "Query Logging",
+      "description": "Record DNS queries to the long-term database for the dashboard and statistics. Disable for maximum privacy.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    },
+    "PRIVACY_LEVEL": {
+      "displayName": "Privacy Level",
+      "description": "How much detail is recorded in DNS query logs. Higher levels hide more information from the dashboard.",
+      "options": {
+        "0": { "label": "Show everything" },
+        "1": { "label": "Hide domains" },
+        "2": { "label": "Hide domains and clients" },
+        "3": { "label": "Anonymous mode" }
+      }
     }
   },
   "services": {

@@ -7,6 +7,37 @@
     "ADMIN_PASSWORD": {
       "displayName": "Admin Password",
       "description": "Password for the initial admin account. Auto-generated during install."
+    },
+    "DEFAULT_PHONE_REGION": {
+      "displayName": "Default Phone Region",
+      "description": "Country code used for phone number formatting. Nextcloud shows a warning if this is not set.",
+      "options": {
+        "US": { "label": "United States" },
+        "GB": { "label": "United Kingdom" },
+        "DE": { "label": "Germany" },
+        "FR": { "label": "France" },
+        "NL": { "label": "Netherlands" },
+        "ES": { "label": "Spain" },
+        "IT": { "label": "Italy" },
+        "PT": { "label": "Portugal" },
+        "BE": { "label": "Belgium" },
+        "AT": { "label": "Austria" },
+        "CH": { "label": "Switzerland" },
+        "SE": { "label": "Sweden" },
+        "NO": { "label": "Norway" },
+        "DK": { "label": "Denmark" },
+        "PL": { "label": "Poland" },
+        "AU": { "label": "Australia" },
+        "CA": { "label": "Canada" },
+        "BR": { "label": "Brazil" },
+        "IN": { "label": "India" },
+        "JP": { "label": "Japan" },
+        "KR": { "label": "South Korea" },
+        "CN": { "label": "China" },
+        "RU": { "label": "Russia" },
+        "TR": { "label": "Turkey" },
+        "MX": { "label": "Mexico" }
+      }
     }
   },
   "services": {
