@@ -8,13 +8,13 @@ description: |
   Replace Dropbox, Google Drive, and iCloud with your own private cloud. Access your files from any device through the web interface or sync them automatically with the desktop and mobile apps.
 
   **More Than File Storage:**
-  Nextcloud includes a calendar, contacts, notes, and even a full office suite for editing documents right in your browser. It's like having your own Google Workspace, but private.
+  Nextcloud supports apps for calendars, contacts, notes, and browser-based document editing. Some capabilities require additional Nextcloud apps or companion services.
 
   **Share With Confidence:**
-  Share files and folders with password protection, expiration dates, and download limits. Collaborate on documents in real time without sending data to third-party servers.
+  Share files and folders with password protection, expiration dates, and download limits. Data is sent to the users and any companion services you explicitly connect.
 
   **Privacy First:**
-  All your data stays on your Mac. No cloud company scanning your files, no subscription fees, no storage limits other than your own disk space.
+  Nextcloud stores its copy of your data on your Mac. Files also travel to the people, devices, apps, and external services you choose to connect, and available storage depends on your disk space.
 symbolFallback: cloud.fill
 iconURL: https://getlawn.app/images/apps/nextcloud.svg
 category: Utilities

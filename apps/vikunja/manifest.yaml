@@ -10,14 +10,14 @@ description: |
   **Work alone or with others:**
   Create personal projects for yourself, or share them with family, friends, or teammates. Assign tasks, set due dates, add comments, and track who's doing what.
 
-  **Never miss a thing:**
+  **Stay on schedule:**
   Set reminders on tasks and Vikunja will notify you when it's time to act. Attach files, add labels, and use subtasks to break down complex work into manageable steps.
 
   **Bring your data with you:**
-  Already using Todoist, Trello, TickTick, or Microsoft To-Do? Import everything into Vikunja in minutes and pick up right where you left off.
+  Import supported data from Todoist, Trello, TickTick, or Microsoft To Do. Import completeness and duration depend on the source service and size of your workspace.
 
   **Your data, your rules:**
-  No subscriptions. No cloud syncing your tasks to a third party. Everything lives on your Mac.
+  Your Vikunja workspace lives on your Mac without a hosted subscription. People, calendar clients, and integrations you connect can access the task data you share with them.
 symbolFallback: checklist
 iconURL: https://getlawn.app/images/apps/vikunja.svg
 category: Utilities

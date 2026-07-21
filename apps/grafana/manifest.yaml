@@ -1,20 +1,20 @@
 id: grafana
 name: Grafana
-tagline: Beautiful dashboards for all your data
+tagline: Dashboards and alerts for your data sources
 description: |
-  Grafana is a powerful, open-source dashboard tool that turns your data into beautiful, easy-to-read visualizations. Create graphs, charts, and alerts to monitor everything running on your Mac.
+  Grafana is a powerful, open-source dashboard tool that turns data from supported sources into clear visualizations. Create graphs, charts, and alerts for the systems and services you choose to monitor.
 
-  **See Everything at a Glance:**
+  **See Key Metrics at a Glance:**
   Build customizable dashboards with drag-and-drop panels. Track system performance, network activity, application metrics, and more — all in one place.
 
-  **Connect Any Data Source:**
+  **Connect Supported Data Sources:**
   Works with popular data sources like Prometheus, InfluxDB, PostgreSQL, MySQL, and many more. Grafana brings all your data together so you can correlate and explore across sources.
 
   **Smart Alerts:**
   Set up alert rules to get notified when something goes wrong. Grafana can send notifications to email, Slack, Telegram, PagerDuty, and dozens of other services.
 
   **Privacy First:**
-  All your monitoring data stays on your Mac. No cloud subscriptions, no data leaving your network.
+  Dashboards and settings live on your Mac without Grafana Cloud. Grafana still connects to the data sources, alert destinations, and plugins you add.
 symbolFallback: chart.bar.xaxis
 iconURL: https://getlawn.app/images/apps/grafana.svg
 category: Monitoring

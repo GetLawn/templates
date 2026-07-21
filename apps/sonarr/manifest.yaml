@@ -2,10 +2,10 @@ id: sonarr
 name: Sonarr
 tagline: Smart TV show collection manager
 description: |
-  Sonarr automatically finds, downloads, and organizes your TV shows. Tell it which shows you follow, and it handles the rest — searching, downloading new episodes as they air, and keeping your library neatly organized.
+  Sonarr monitors television series you select and coordinates searches and file handling through compatible services. It can send results to a configured download client, rename completed files, and organize your media library.
 
-  **Never miss an episode:**
-  Sonarr monitors your shows and automatically downloads new episodes the moment they're available. Your library stays up to date without any manual effort.
+  **Monitor your library:**
+  Follow selected series, view upcoming releases on a calendar, and track files that match the quality profiles you configure.
 
   **Works with your download client:**
   Sonarr connects to popular download managers like NZBGet, SABnzbd, qBittorrent, and Transmission. It sends downloads automatically and moves finished files into your media library.
@@ -14,7 +14,7 @@ description: |
   Episodes are automatically renamed and sorted into season folders using your preferred naming format. Metadata and artwork is fetched automatically so Jellyfin or Plex can display your library beautifully.
 
   **Quality upgrades:**
-  Already have a show but want a better quality version? Sonarr can automatically upgrade episodes to higher resolutions when they become available.
+  Sonarr can replace an existing file when a configured source finds a version that better matches your quality profile.
 symbolFallback: tv.fill
 iconURL: https://getlawn.app/images/apps/sonarr.svg
 category: Media
@@ -27,10 +27,10 @@ tags:
   - download
   - arr
 features:
-  - Automatic TV show episode downloading
+  - Automated monitoring and media-library organization
   - Integrates with NZBGet, SABnzbd, qBittorrent, Transmission
   - Automatic file renaming and library organization
-  - Quality upgrades when better versions are available
+  - Configurable quality profiles and file replacement
   - Calendar view of upcoming episode releases
   - Works seamlessly with Jellyfin and Plex
   - Multi-user support with role-based access

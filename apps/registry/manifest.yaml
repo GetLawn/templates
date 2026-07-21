@@ -14,10 +14,10 @@ description: |
   Configure as a mirror for Docker Hub or other registries. Images are cached locally on first pull, speeding up subsequent pulls and reducing bandwidth. Set the upstream URL in environment variables to enable.
 
   **Developer Workflow:**
-  Build images locally, push them to your registry, and pull them from any machine on your network. Perfect for home labs, development teams, or air-gapped environments.
+  Build images locally, push them to your registry, and pull them from authorized machines on your network. It can support home labs, development teams, and disconnected environments.
 
   **Simple to Use:**
-  Tag your images with `localhost:5000/myimage` and push. No authentication required by default—ideal for trusted local networks.
+  Tag images with the registry address Lawn provides and push them using an OCI-compatible client. Authentication is not enabled by default, so keep the registry on a trusted network or configure appropriate access controls before exposing it.
 symbolFallback: shippingbox.fill
 category: Development
 compatibility:

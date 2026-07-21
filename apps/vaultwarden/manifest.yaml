@@ -2,10 +2,10 @@ id: vaultwarden
 name: Vaultwarden
 tagline: A lightweight, self-hosted password manager compatible with Bitwarden
 description: |
-  Vaultwarden is a self-hosted password manager that lets you store and sync all your passwords, credit cards, and secure notes across all your devices. It's fully compatible with the official Bitwarden apps and browser extensions.
+  Vaultwarden is an unofficial, self-hosted server compatible with Bitwarden clients. It lets you store and synchronize passwords, payment cards, identities, and secure notes across your devices.
 
   **All Your Passwords, One Place:**
-  Store unlimited passwords, credit cards, identities, and secure notes. Access them from any device using the Bitwarden app for iOS, Android, Windows, macOS, Linux, or any web browser.
+  Store passwords, payment cards, identities, and secure notes within your configured limits and available storage. Access them from supported Bitwarden clients or the web vault.
 
   **Secure by Design:**
   Your vault is encrypted end-to-end with AES-256 — not even your server can read your data. Enable two-factor authentication with TOTP, FIDO2/WebAuthn, or YubiKey for extra protection.
@@ -17,7 +17,7 @@ description: |
   Securely share text or files with anyone using time-limited, encrypted links. Set access limits and optional passwords for extra control.
 
   **Privacy First:**
-  Everything stays on your Mac. No cloud services, no subscriptions, no third parties. You own your data completely.
+  Encrypted vault data lives on your Mac without Bitwarden's hosted service. Vaultwarden sends it only to the clients and integrations you connect.
 symbolFallback: lock.shield
 iconURL: https://getlawn.app/images/apps/vaultwarden.svg
 iconIsTemplate: true
@@ -30,8 +30,8 @@ tags:
   - bitwarden
   - encryption
 features:
-  - Unlimited password, card, identity, and note storage
-  - Compatible with all official Bitwarden apps and extensions
+  - Password, card, identity, and secure-note storage
+  - Compatible with official Bitwarden apps and extensions
   - End-to-end AES-256 encryption
   - Two-factor authentication (TOTP, FIDO2, YubiKey)
   - Organizations and collections for password sharing

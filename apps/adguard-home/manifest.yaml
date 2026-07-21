@@ -2,22 +2,22 @@ id: adguard-home
 name: AdGuard Home
 tagline: Network-wide ad and tracker blocking
 description: |
-  AdGuard Home is a network-wide ad blocker that protects all your devices at once. Instead of installing ad blockers on every phone, tablet, and computer, you set it up once and every device on your network is protected.
+  AdGuard Home is a network-wide DNS filtering service. Configure your router or individual devices to use it, and matching advertising, tracking, and malicious domains can be blocked without installing a browser extension on every device.
 
-  **Block Ads Everywhere:**
-  AdGuard Home works at the DNS level — it intercepts requests to known advertising and tracking domains before they even reach your devices. This means faster page loads, less data usage, and no more annoying ads on any device connected to your network.
+  **Filter Requests Across Your Network:**
+  AdGuard Home compares DNS requests with the blocklists you select. DNS filtering can reduce ads and trackers across configured devices, although it cannot remove content served from the same domains as the sites or apps you use.
 
   **Protect Your Privacy:**
-  Block trackers that follow you across the web. AdGuard Home prevents thousands of known tracking services from collecting data about your browsing habits. Your activity stays private.
+  Block requests to known tracking domains and review query activity from the local dashboard. Filtering reduces exposure to listed trackers but does not make browsing anonymous.
 
   **Keep Your Family Safe:**
-  Built-in parental controls let you block adult content and enforce safe search across all devices. Perfect for families with children.
+  Built-in parental controls can block listed adult-content domains and enable supported safe-search modes for configured devices.
 
   **Beautiful Dashboard:**
   See exactly what's happening on your network with a clean, easy-to-read dashboard. View statistics on blocked queries, top clients, and most-requested domains.
 
   **Encrypted DNS:**
-  Supports modern encrypted DNS protocols (DNS-over-HTTPS, DNS-over-TLS) to prevent your ISP from snooping on your DNS queries.
+  Supports modern encrypted DNS protocols, including DNS-over-HTTPS and DNS-over-TLS, for encrypting DNS traffic to compatible upstream resolvers.
 symbolFallback: shield.fill
 iconURL: https://getlawn.app/images/apps/adguard-home.svg
 category: Networking
@@ -30,7 +30,7 @@ tags:
   - parental-controls
   - network
 features:
-  - Network-wide ad and tracker blocking for all devices
+  - Network-wide DNS filtering for configured devices
   - Beautiful real-time dashboard with query statistics
   - Built-in parental controls and safe search
   - Encrypted DNS support (DNS-over-HTTPS, DNS-over-TLS)

@@ -2,7 +2,7 @@ id: nzbget
 name: NZBGet
 tagline: High-performance Usenet downloader
 description: |
-  NZBGet is a fast, lightweight Usenet downloader that retrieves files from newsgroups. Paired with apps like Sonarr or Radarr, it can automatically download movies, TV shows, and music.
+  NZBGet is a fast, lightweight Usenet download client that retrieves files from news servers you configure. It supports NZB files, RSS feeds, and integrations with automation tools such as Sonarr and Radarr.
 
   **Fast and Efficient:**
   Written in C++ for maximum performance, NZBGet uses very little CPU and memory. It downloads, verifies, repairs, and extracts files automatically — no manual steps needed.

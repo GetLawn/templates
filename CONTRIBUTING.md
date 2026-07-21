@@ -56,6 +56,8 @@ services:
 
 - [ ] App ID is lowercase and hyphenated, matches directory name and `manifest.yaml` `id`
 - [ ] `manifest.yaml` has all required fields (`id`, `name`, `description`, `symbolFallback`, `category`)
+- [ ] Catalog copy describes verifiable capabilities and avoids unsupported absolute guarantees
+- [ ] Privacy and local-storage claims account for clients, integrations, external APIs, and services the user may configure
 - [ ] `symbolFallback` set to a valid SF Symbol name (shown when no icon image is available)
 - [ ] `iconURL` set to a hosted icon URL if one is available (SVG preferred)
 - [ ] `iconIsTemplate: true` added when the hosted icon is monochrome with a transparent background

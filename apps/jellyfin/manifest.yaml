@@ -2,7 +2,7 @@ id: jellyfin
 name: Jellyfin
 tagline: The free software media system
 description: |
-  Jellyfin is a free, open-source media server that lets you collect, manage, and stream your personal media library. Enjoy your movies, TV shows, music, and photos on any device.
+  Jellyfin is a free, open-source server for organizing and streaming your personal media collection. Enjoy movies, TV shows, music, and photos on supported devices.
 
   **Your Media, Your Way:**
   Organize your entire media collection in one place. Jellyfin automatically fetches artwork, descriptions, and metadata for your movies and TV shows, creating a beautiful library that's easy to browse.
@@ -10,11 +10,11 @@ description: |
   **Stream Anywhere:**
   Watch on your phone, tablet, TV, or computer. Jellyfin apps are available for Android, iOS, Roku, Fire TV, Apple TV, and more. Your media follows you wherever you go on your home network.
 
-  **No Subscriptions, No Tracking:**
-  Unlike Plex or Emby, Jellyfin is completely free with no premium tiers, no account requirements, and no usage tracking. Your viewing habits stay private.
+  **No Required Online Account:**
+  Jellyfin has no premium tiers or required online account. Your library and viewing activity stay on your server unless you add a plugin or service that sends data elsewhere.
 
   **Live TV & DVR:**
-  Connect a TV tuner and watch live television through Jellyfin. Set up recordings and never miss your favorite shows.
+  Connect a compatible TV tuner to watch live television and schedule recordings.
 
   **Active Community:**
   Backed by a passionate open-source community with regular updates, new features, and a growing ecosystem of clients and plugins.
@@ -34,7 +34,7 @@ features:
   - Beautiful auto-fetched artwork and metadata
   - Apps for mobile, TV, and desktop
   - Live TV and DVR with tuner support
-  - No subscriptions or tracking
+  - No premium tiers or required online account
   - Hardware-accelerated transcoding
   - Plugin system for extra features
   - Multi-user support with parental controls

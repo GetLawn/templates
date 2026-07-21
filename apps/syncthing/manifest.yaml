@@ -2,22 +2,22 @@ id: syncthing
 name: Syncthing
 tagline: Continuous file synchronization between your devices
 description: |
-  Syncthing keeps your files in sync across all your devices — like your own private Dropbox, but without any cloud servers. Your data never leaves your devices and all transfers are encrypted end-to-end.
+  Syncthing keeps selected folders synchronized directly between devices without using a central file-storage service. Connections between authenticated devices are encrypted with TLS.
 
   **Your Files, Your Devices:**
-  Sync folders between your Mac, PC, phone, or any other device running Syncthing. Changes on one device appear on the others within seconds. No cloud storage, no subscriptions, no file size limits.
+  Sync folders between supported Macs, PCs, phones, and other devices running Syncthing. Transfer time and practical file-size limits depend on your devices, network, and available storage.
 
   **Private and Secure:**
-  All communication between devices is encrypted with TLS. Files are exchanged directly between your devices — no third-party servers ever see your data. Every device has a unique cryptographic identity that you verify before sharing.
+  Communication between devices is encrypted with TLS. Relay and discovery services may help devices connect, but relays cannot read encrypted file contents. Every device has a cryptographic identity that you verify before sharing.
 
   **Simple to Set Up:**
   Add a device by scanning a QR code or entering a short ID. Choose which folders to share. That's it — Syncthing handles the rest, including NAT traversal and relay connections when devices aren't on the same network.
 
   **Conflict Handling:**
-  When the same file is changed on two devices at the same time, Syncthing keeps both versions so you never lose work. Rename the one you don't need, and you're done.
+  When the same file changes independently on two devices, Syncthing preserves a conflict copy for you to review instead of silently choosing one version.
 
-  **Trusted by Millions:**
-  Syncthing is used by millions of people and backed by a vibrant open-source community. It's been battle-tested for over a decade.
+  **Established Open Source Project:**
+  Syncthing has been developed in the open for more than a decade and is supported by an active contributor community.
 symbolFallback: arrow.triangle.2.circlepath
 iconURL: https://getlawn.app/images/apps/syncthing.svg
 category: Utilities
@@ -28,10 +28,10 @@ tags:
   - backup
   - privacy
 features:
-  - Sync files across unlimited devices
+  - Sync files directly across your devices
   - End-to-end encryption with TLS
   - No cloud — files stay on your devices
-  - Automatic conflict resolution
+  - Conflict-copy preservation for concurrent edits
   - Works across your local network and the internet
   - Selective folder sharing per device
   - File versioning to recover deleted files

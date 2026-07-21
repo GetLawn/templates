@@ -2,19 +2,19 @@ id: uptime-kuma
 name: Uptime Kuma
 tagline: A fancy self-hosted monitoring tool
 description: |
-  Uptime Kuma is a beautiful, easy-to-use monitoring tool that keeps an eye on your websites, APIs, and services. Get instant notifications when something goes down.
+  Uptime Kuma is an easy-to-use monitoring tool for websites, APIs, and services. Receive notifications through the channels you configure when a check detects a problem.
 
-  **Monitor Everything:**
-  Track the uptime of your websites, APIs, TCP ports, DNS records, Docker containers, and more. Set check intervals as low as 20 seconds so you never miss a downtime event.
+  **Monitor Different Services:**
+  Track websites, APIs, TCP ports, DNS records, containers, and more. Configure check intervals based on how quickly you need to detect an outage and the load each check creates.
 
   **Instant Notifications:**
-  Get alerted through 90+ notification services including Telegram, Discord, Slack, email, Pushover, and many more. Know the moment something goes wrong.
+  Send alerts through supported services including Telegram, Discord, Slack, email, and Pushover. Delivery timing depends on the check interval and notification provider.
 
   **Beautiful Dashboard:**
   View all your monitors at a glance with a clean, responsive interface. See uptime percentages, response times, and incident history in real time.
 
   **Privacy First:**
-  All your monitoring data stays on your Mac. No cloud services, no third-party tracking, no subscriptions required.
+  Monitor configuration and history are stored on your Mac. Monitored endpoints and notification providers receive the requests and alert data needed for the features you configure.
 symbolFallback: chart.line.uptrend.xyaxis
 iconURL: https://getlawn.app/images/apps/uptime-kuma.svg
 category: Monitoring

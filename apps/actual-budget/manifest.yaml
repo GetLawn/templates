@@ -8,13 +8,13 @@ description: |
   Assign every dollar of income to a category — rent, groceries, savings, fun money. When a category runs out, you know it's time to stop spending. It's the easiest way to stay on top of your finances without spreadsheets or guesswork.
 
   **Lightning Fast and Offline-Ready:**
-  Your budget data lives on your Mac first, not in the cloud. The app loads instantly and works even without an internet connection. Sync across devices when you're ready, but your data is always yours.
+  Your budget data lives on your Mac first, not in the cloud. The app works without an internet connection, and the built-in server supports synchronization across your devices when you enable it.
 
-  **Bank Syncing and Import:**
-  Import transactions from your bank via OFX, QFX, or CSV files. Automatic categorization learns from your spending patterns to save you time.
+  **Transaction Import:**
+  Import transactions from your bank via OFX, QFX, or CSV files. Custom rules can categorize recurring transactions and reduce repetitive work.
 
   **Privacy First:**
-  No subscriptions, no ads, no data mining. Your financial data stays on your Mac — never sent to third-party servers or used for analytics.
+  Your budget lives on your Mac, with no advertising or data mining. If you connect a bank-sync provider, that provider receives the account data needed to sync transactions.
 symbolFallback: banknote.fill
 iconURL: https://getlawn.app/images/apps/actual-budget.svg
 category: Utilities
@@ -29,7 +29,7 @@ features:
   - Zero-based envelope budgeting
   - Fast local-first architecture with sync support
   - Bank transaction import (OFX, QFX, CSV)
-  - Automatic transaction categorization
+  - Rule-based transaction categorization
   - Custom reports and spending insights
   - Multi-device sync via the built-in server
   - Mobile-friendly responsive web interface

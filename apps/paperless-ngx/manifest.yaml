@@ -8,7 +8,7 @@ description: |
   Scan your documents, and Paperless-ngx will automatically organize, tag, and make them searchable using OCR (Optical Character Recognition).
 
   **Built for privacy:**
-  Your documents stay on your Mac. No cloud services, no subscriptions, no data leaving your network.
+  Your document archive lives on your Mac without a hosted service. Email import and other integrations still connect to the services you add.
 symbolFallback: doc.text.magnifyingglass
 iconURL: https://getlawn.app/images/apps/paperless-ngx.png
 category: Documents
