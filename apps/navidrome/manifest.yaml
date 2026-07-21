@@ -2,7 +2,7 @@ id: navidrome
 name: Navidrome
 tagline: Your personal music streaming server
 description: |
-  Navidrome is a lightweight, self-hosted music server that lets you stream your entire music collection from any browser or phone. Think of it as your own personal Spotify, but with music you already own.
+  Navidrome is a lightweight, self-hosted server for streaming your personal music collection. Listen from supported browsers and compatible mobile clients.
 
   **Stream Your Music Anywhere:**
   Access your music library from any web browser, or use one of many compatible mobile apps for iOS and Android. Navidrome supports CarPlay and Android Auto, so your music goes wherever you do.
@@ -11,7 +11,7 @@ description: |
   Point Navidrome at your existing music folder and it handles the rest. It supports virtually every audio format and automatically organizes your library with album art, artist info, and metadata.
 
   **Multi-User Support:**
-  Each family member gets their own account with personal playlists, favorites, play history, and listening statistics. Share your music library without sharing your taste.
+  Create separate accounts for other listeners, each with personal playlists, favorites, play history, and listening statistics.
 
   **Light on Resources:**
   Navidrome is designed to run on minimal hardware. It uses an embedded database, so there's nothing extra to set up or maintain.

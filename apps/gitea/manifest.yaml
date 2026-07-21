@@ -14,7 +14,7 @@ description: |
   Beyond Git hosting, Gitea includes a package registry, project boards, a wiki, and CI/CD with Gitea Actions (compatible with GitHub Actions workflows).
 
   **Privacy First:**
-  Your source code stays on your Mac. No cloud dependency, no third-party access, no subscriptions. You own your code and your data.
+  Your repositories live on your Mac without a hosted Gitea subscription. When you add collaborators, mirrors, webhooks, or other integrations, Gitea shares the relevant repository data with them.
 symbolFallback: arrow.triangle.branch
 iconURL: https://getlawn.app/images/apps/gitea.svg
 category: Development

@@ -14,7 +14,7 @@ description: |
   Connect to popular services like Google Sheets, Slack, GitHub, Notion, Airtable, Stripe, and many more. Trigger workflows from webhooks, schedules, or events in your connected apps.
 
   **Self-Hosted and Private:**
-  Your workflows, credentials, and data stay on your Mac. No cloud dependency, no usage limits, no subscriptions. Run as many workflows as you need.
+  Workflow definitions and credentials are stored on your Mac without requiring n8n Cloud. Connected apps, AI providers, and other services receive the data your workflows send to them, and their own limits or charges may apply.
 symbolFallback: arrow.triangle.branch
 iconURL: https://getlawn.app/images/apps/n8n.png
 category: Utilities

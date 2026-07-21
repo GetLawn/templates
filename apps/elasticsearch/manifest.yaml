@@ -5,7 +5,7 @@ description: |
   Elasticsearch is a powerful search and analytics engine that lets you store, search, and analyze large volumes of data quickly. It powers everything from website search to log analysis and business intelligence.
 
   **Lightning-Fast Search:**
-  Find what you're looking for in milliseconds, even across millions of documents. Elasticsearch uses advanced indexing to deliver near-instant search results with full-text search, filtering, and fuzzy matching.
+  Elasticsearch uses indexes to support responsive full-text search, filtering, and fuzzy matching across large document collections. Performance depends on your data, queries, and available hardware.
 
   **Flexible Data Storage:**
   Store any kind of structured or unstructured data — JSON documents, logs, metrics, text, and more. Elasticsearch automatically indexes your data for fast retrieval without requiring you to define schemas upfront.
@@ -17,7 +17,7 @@ description: |
   Interact with Elasticsearch through a simple HTTP API. Send queries, index documents, and manage your cluster using standard HTTP requests from any programming language or tool.
 
   **Scalable Foundation:**
-  Start with a single instance on your Mac and scale to handle terabytes of data. Elasticsearch is the backbone of the Elastic Stack, used by thousands of organizations worldwide.
+  Start with a single instance on your Mac and expand to a distributed deployment when your workload requires it. Elasticsearch is the search and analytics foundation of the Elastic Stack.
 symbolFallback: magnifyingglass.circle.fill
 iconURL: https://getlawn.app/images/apps/elasticsearch.svg
 category: Databases

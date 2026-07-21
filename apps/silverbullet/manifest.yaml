@@ -4,8 +4,8 @@ tagline: A self-hosted, offline-capable personal knowledge base
 description: |
   SilverBullet is a personal knowledge base that runs entirely on your own hardware. Think of it as a private wiki: write notes in Markdown, link them together, and organize your thoughts without sending anything to a third-party cloud.
 
-  **Everything stays on your Mac:**
-  Your notes are stored as plain Markdown files on your own computer. No subscriptions, no data sharing, no accounts with anyone else. You own your notes completely.
+  **Local Markdown storage:**
+  Your notes live on your Mac as plain Markdown files, with no hosted SilverBullet account required. Data leaves your Mac only when you enable syncing, sharing, or an external integration.
 
   **Works like a wiki:**
   Link notes to each other to build a connected knowledge base. SilverBullet makes it easy to connect related ideas and navigate between them — like a personal Wikipedia that lives on your Mac.
@@ -14,7 +14,7 @@ description: |
   Once opened in your browser, SilverBullet works even without an internet connection. Install it to your Dock like a native app for instant access.
 
   **Keep everything in one place:**
-  Write meeting notes, journal entries, task lists, project docs, and reference materials — all organized in a single searchable space. The plain Markdown format means your notes are readable by any text editor, forever.
+  Write meeting notes, journal entries, task lists, project docs, and reference materials in a single searchable space. Plain Markdown keeps your notes readable by widely available text editors.
 symbolFallback: note.text
 iconURL: https://getlawn.app/images/apps/silverbullet.png
 category: Documents

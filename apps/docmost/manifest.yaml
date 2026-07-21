@@ -14,7 +14,7 @@ description: |
   Beyond just text: embed diagrams with Draw.io, Excalidraw, or Mermaid charts. Add tables, code blocks, images, and attachments. Include content from services like Airtable, Loom, and more.
 
   **Your data, your rules:**
-  Everything stays on your Mac. No cloud subscription, no data leaving your network. Full-text search, page history, and permission controls included.
+  Your workspace lives on your Mac and does not require a hosted Docmost subscription. External embeds and integrations still connect to the services that provide them.
 symbolFallback: doc.richtext.fill
 iconURL: https://getlawn.app/images/apps/docmost.png
 category: Documents

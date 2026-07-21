@@ -7,17 +7,17 @@ description: |
   **Your world, your rules:**
   Configure the game difficulty, enable or disable PvP, set a custom world name, and control who can join. With whitelist support, only the players you approve can connect.
 
-  **Always up to date:**
-  Supports the latest Minecraft Java Edition versions. You can pin a specific version to keep your world stable, or always run the latest release.
+  **Choose a server version:**
+  Run the current Minecraft Java Edition release or pin a specific supported version to keep your world stable.
 
   **Multiple server flavors:**
   Start with Vanilla for the pure Minecraft experience, or switch to Paper for better performance and plugin support. Forge and Fabric are also available for modded play.
 
   **Your world is safe:**
-  All world data, player data, and server settings are stored on your Mac. Updating or reinstalling the server never touches your world.
+  World data, player data, and server settings are stored in Lawn's persistent app data so routine server updates preserve your world. Keep separate backups before major version or mod changes.
 
   **How to connect:**
-  After starting the server, open Minecraft on any Mac on your local network and connect to `localhost:25565`. Share your Mac's local IP address with friends on the same network.
+  After starting the server, use the connection address Lawn displays. Other players on your local network must use your Mac's network address rather than `localhost`.
 symbolFallback: gamecontroller.fill
 iconURL: https://getlawn.app/images/apps/minecraft.svg
 category: Utilities

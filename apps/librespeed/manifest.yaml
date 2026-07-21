@@ -1,20 +1,20 @@
 id: librespeed
 name: LibreSpeed
-tagline: Self-hosted internet speed test for your home network
+tagline: Self-hosted connection speed test for your home network
 description: |
-  LibreSpeed is a simple, privacy-respecting speed test you can run on your own Mac. No Flash, no Java, no third-party services — just open your browser and test your internet speed.
+  LibreSpeed is a simple, privacy-respecting speed test you can run on your own Mac. Open it in a browser to measure the connection between that device and your self-hosted LibreSpeed server.
 
   **Instant Speed Testing:**
   Measure your download speed, upload speed, ping, and jitter in seconds. Results appear in a clean, animated gauge — no account needed, no setup required.
 
-  **Completely Private:**
-  Unlike Speedtest.net or similar services, LibreSpeed runs entirely on your Mac. Your test results never leave your home network — no data is sent to third-party servers.
+  **Self-Hosted Testing:**
+  LibreSpeed runs on your Mac without requiring a public speed-test provider. Test traffic stays between the browser and your server unless you expose the service or configure additional telemetry.
 
   **Works on Any Device:**
   Access your speed test from any browser on your network — computers, phones, tablets. Works with Safari, Chrome, Firefox, and all modern browsers.
 
   **Lightweight:**
-  LibreSpeed is tiny and efficient. It uses minimal resources while delivering accurate results, so it won't slow down the very connection you're testing.
+  LibreSpeed is small and efficient. Results reflect the path between the browser and your server, so a local installation measures local-network performance rather than your internet provider's full connection speed.
 symbolFallback: network
 iconURL: https://getlawn.app/images/apps/librespeed.png
 category: Networking
@@ -28,7 +28,7 @@ features:
   - Measures download speed, upload speed, ping, and jitter
   - Works on any device and browser on your network
   - No account required — just open and test
-  - Completely private — no data sent to third parties
+  - Self-hosted testing without a required public provider
   - Lightweight, won't interfere with test results
 links:
   - url: https://github.com/librespeed/speedtest

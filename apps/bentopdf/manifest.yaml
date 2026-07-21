@@ -2,7 +2,7 @@ id: bentopdf
 name: BentoPDF
 tagline: Privacy-first PDF toolkit with 50+ tools, all processed in your browser
 description: |
-  BentoPDF is a comprehensive PDF toolkit that puts privacy first — every file is processed entirely in your browser, never uploaded to any server. Install it once, use it forever, with no accounts, no subscriptions, and no data leaving your Mac.
+  BentoPDF is a comprehensive PDF toolkit that processes files locally in your browser instead of uploading them to the BentoPDF server. No account or subscription is required for the self-hosted app.
 
   **50+ PDF Tools:**
   Merge, split, compress, rotate, crop, reorder pages, extract images, add watermarks, headers and footers, and much more. Everything you need for day-to-day PDF work is included.
@@ -11,7 +11,7 @@ description: |
   Annotate PDFs with highlights, comments, and signatures. Convert from 30+ formats including Word, Excel, PowerPoint, images (JPG, PNG, HEIC), EPUB, Markdown, and HTML. Convert PDFs back to those same formats.
 
   **Complete Privacy:**
-  Your files never leave your computer. All processing happens locally in your browser using WebAssembly technology. Perfect for sensitive documents — tax returns, contracts, medical records — with no risk of data leakage.
+  Document processing happens locally in your browser using WebAssembly. As with any software handling sensitive files, protect access to your Mac and browser session and review any external resources you choose to load.
 
   **Works Offline:**
   Once loaded, the core tools work without internet access. Advanced features (OCR, compression) download processing libraries the first time they're used, then work offline afterward.
@@ -34,7 +34,7 @@ features:
   - Convert between PDF and 30+ file formats
   - OCR for extracting text from scanned documents
   - Visual workflow builder for automating repetitive tasks
-  - 100% client-side — files never leave your browser
+  - Client-side document processing in your browser
   - Works offline after initial load
 links:
   - url: https://github.com/alam00000/bentopdf

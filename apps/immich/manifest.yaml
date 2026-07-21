@@ -8,7 +8,7 @@ description: |
   Browse your photos on a familiar timeline, search by what's in the picture (like "sunset at the beach"), and let Immich automatically recognize faces and group them for you.
 
   **Your memories, your control:**
-  All your photos and videos stay on your Mac. Back up from your phone automatically using the free iOS and Android apps. No subscriptions, no cloud, no compromises.
+  Your self-hosted library is stored on your Mac. Back up from your phone using the iOS and Android apps, and choose which users or external services can connect to your deployment.
 symbolFallback: photo.on.rectangle.angled
 iconURL: https://getlawn.app/images/apps/immich.svg
 category: Media
