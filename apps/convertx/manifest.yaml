@@ -1,0 +1,42 @@
+id: convertx
+name: ConvertX
+tagline: Self-hosted file converter for 1000+ formats
+description: |
+  ConvertX is a self-hosted online file converter for documents, images, e-books, videos, archives, and many other formats. It wraps popular conversion tools like FFmpeg, LibreOffice, Pandoc, ImageMagick, and Calibre behind a simple browser interface.
+
+  **Convert Many File Types:**
+  Upload files from your browser and convert them between hundreds of supported input and output formats.
+
+  **Batch Friendly:**
+  Process multiple files at once and keep conversion results available in the local history.
+
+  **Private Local Utility:**
+  Run conversions on your own machine instead of uploading files to a third-party service. ConvertX supports user accounts, password protection, and optional guest access for trusted local networks.
+
+  **Automatic Cleanup:**
+  Configure how often ConvertX deletes old converted files so temporary conversion output does not grow forever.
+symbolFallback: arrow.triangle.2.circlepath
+iconURL: https://getlawn.app/images/apps/convertx.png
+category: Utilities
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - converter
+  - files
+  - documents
+  - media
+  - utilities
+features:
+  - Convert documents, images, e-books, video, and data files
+  - Batch file conversion
+  - User accounts and password protection
+  - Optional local-network guest access
+  - Automatic cleanup of old conversion files
+links:
+  - url: https://github.com/C4illin/ConvertX
+    type: github
+  - url: https://github.com/C4illin/ConvertX#readme
+    type: documentation
+  - url: https://hub.docker.com/r/c4illin/convertx
+    type: website
+webPort: 3000

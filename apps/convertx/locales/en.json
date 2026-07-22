@@ -1,0 +1,81 @@
+{
+  "config": {
+    "ACCOUNT_REGISTRATION": {
+      "displayName": "Account Registration",
+      "description": "Allow additional users to create accounts after the first account has been created."
+    },
+    "ALLOW_UNAUTHENTICATED": {
+      "displayName": "Guest Access",
+      "description": "Allow visitors to use ConvertX without signing in. Enable only when this app is reachable from a trusted local network."
+    },
+    "AUTO_DELETE_EVERY_N_HOURS": {
+      "displayName": "Auto-Delete Converted Files",
+      "description": "How often ConvertX removes old converted files from local storage.",
+      "options": {
+        "after-6-hours": { "label": "After 6 Hours" },
+        "after-24-hours": { "label": "After 24 Hours" },
+        "after-72-hours": { "label": "After 72 Hours" },
+        "never": { "label": "Never" }
+      }
+    },
+    "MAX_CONVERT_PROCESS": {
+      "displayName": "Concurrent Conversions",
+      "description": "Maximum number of conversion processes ConvertX may run at once. Use 0 for unlimited."
+    },
+    "HIDE_HISTORY": {
+      "displayName": "Hide History Page",
+      "description": "Hide the conversion history page from the web interface."
+    }
+  },
+  "services": {
+    "convertx": {
+      "environment": {
+        "JWT_SECRET": {
+          "description": "Secret used to sign ConvertX login tokens."
+        },
+        "TZ": {
+          "description": "Timezone used for timestamps and cleanup scheduling."
+        },
+        "HTTP_ALLOWED": {
+          "description": "Allows login over Lawn's local HTTP URLs."
+        },
+        "ACCOUNT_REGISTRATION": {
+          "description": "Allows additional users to create accounts."
+        },
+        "ALLOW_UNAUTHENTICATED": {
+          "description": "Allows users to convert files without signing in."
+        },
+        "AUTO_DELETE_EVERY_N_HOURS": {
+          "description": "Interval used to remove old converted files."
+        },
+        "MAX_CONVERT_PROCESS": {
+          "description": "Maximum number of concurrent conversion processes."
+        },
+        "HIDE_HISTORY": {
+          "description": "Hides the history page in the web interface."
+        },
+        "LANGUAGE": {
+          "description": "Language tag used for date formatting."
+        },
+        "UNAUTHENTICATED_USER_SHARING": {
+          "description": "Controls whether unauthenticated users share one conversion history."
+        }
+      },
+      "healthChecks": {
+        "web-ui": {
+          "description": "ConvertX web UI is accessible"
+        }
+      },
+      "notices": {
+        "first-account": {
+          "title": "First Account",
+          "elements": {
+            "setup-info": {
+              "content": "Create the first ConvertX account when the web interface opens. Keep account registration disabled unless you want additional local users to sign up."
+            }
+          }
+        }
+      }
+    }
+  }
+}
