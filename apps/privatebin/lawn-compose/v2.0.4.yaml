@@ -1,0 +1,37 @@
+x-lawn:
+  compatibility:
+    minLawnVersion: 0.2.0
+
+services:
+  privatebin:
+    image: privatebin/nginx-fpm-alpine:2.0.4
+    environment:
+      TZ: "${TIMEZONE:-UTC}"
+      PHP_TZ: "${TIMEZONE:-UTC}"
+    volumes:
+      - "./data:/srv/data"
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    x-lawn:
+      notices:
+        - id: transport-security
+          style: warning
+          elements:
+            - id: warning
+              type: text
+      healthChecks:
+        - id: web-ui
+          type: http
+          path: /
+          expectedStatus: 200
+          intervalSeconds: 10
+          timeoutSeconds: 5
+          retries: 6
+          startPeriodSeconds: 60
+      environment:
+        TZ:
+        PHP_TZ:

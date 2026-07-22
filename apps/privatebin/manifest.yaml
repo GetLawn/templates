@@ -1,0 +1,44 @@
+id: privatebin
+name: PrivateBin
+tagline: Zero-knowledge encrypted paste sharing
+description: |
+  PrivateBin is a minimalist paste and document sharing app where the server never sees the contents in plain text. Text is encrypted and decrypted in the browser, so the stored data remains unreadable to the server.
+
+  **Share sensitive snippets:**
+  Create encrypted notes, code samples, links, or short documents and share them with a generated URL. Optional paste passwords add another layer of protection.
+
+  **Set automatic expiration:**
+  Choose how long new documents should live, from a few minutes to never. PrivateBin also supports burn-after-reading documents for one-time sharing.
+
+  **Keep storage simple:**
+  This template uses PrivateBin's built-in filesystem storage, so there is no database to configure or maintain.
+
+  **Runs on upstream defaults:**
+  PrivateBin keeps most app settings in its own `conf.php` file. This template sticks to the upstream image defaults so the app behaves predictably and remains easy to update.
+symbolFallback: lock.doc
+iconURL: https://getlawn.app/images/apps/privatebin.png
+category: Documents
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - pastebin
+  - encrypted
+  - sharing
+  - privacy
+  - documents
+features:
+  - Browser-side encryption for paste contents
+  - Optional paste passwords
+  - Expiring and burn-after-reading documents
+  - Markdown and source-code formatting
+  - Filesystem storage with no database required
+links:
+  - url: https://github.com/PrivateBin/PrivateBin
+    type: github
+  - url: https://privatebin.info/
+    type: website
+  - url: https://github.com/PrivateBin/docker-nginx-fpm-alpine
+    type: documentation
+  - url: https://github.com/PrivateBin/PrivateBin/wiki/Configuration
+    type: documentation
+webPort: 8080

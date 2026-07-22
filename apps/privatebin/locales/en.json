@@ -1,0 +1,29 @@
+{
+  "services": {
+    "privatebin": {
+      "environment": {
+        "TZ": {
+          "description": "Timezone for container logs (e.g. America/New_York)."
+        },
+        "PHP_TZ": {
+          "description": "Timezone used by PHP when creating expiration timestamps."
+        }
+      },
+      "healthChecks": {
+        "web-ui": {
+          "description": "Web UI is accessible"
+        }
+      },
+      "notices": {
+        "transport-security": {
+          "title": "Transport Security",
+          "elements": {
+            "warning": {
+              "content": "PrivateBin relies on browser Web Crypto. Many browsers only enable it on HTTPS or localhost, so the .local address may show an insecure-context warning until app-domain HTTPS is available. Use the assigned localhost port for local testing."
+            }
+          }
+        }
+      }
+    }
+  }
+}
