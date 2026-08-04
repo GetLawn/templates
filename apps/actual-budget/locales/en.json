@@ -1,4 +1,18 @@
 {
+  "config": {
+    "GENERAL_UPLOAD_LIMIT_MB": {
+      "displayName": "General Upload Limit",
+      "description": "Maximum request size, in MB, for regular Actual API uploads."
+    },
+    "SYNC_UPLOAD_LIMIT_MB": {
+      "displayName": "Sync File Upload Limit",
+      "description": "Maximum request size, in MB, for standard Actual sync files."
+    },
+    "ENCRYPTED_SYNC_UPLOAD_LIMIT_MB": {
+      "displayName": "Encrypted Sync Upload Limit",
+      "description": "Maximum request size, in MB, for encrypted Actual sync files."
+    }
+  },
   "services": {
     "actual-budget": {
       "environment": {

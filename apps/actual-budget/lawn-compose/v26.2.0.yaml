@@ -1,11 +1,27 @@
 x-lawn:
   compatibility:
     minLawnVersion: 0.2.0
+  config:
+    GENERAL_UPLOAD_LIMIT_MB:
+      inputType: number
+      value: 20
+      weight: 10
+    SYNC_UPLOAD_LIMIT_MB:
+      inputType: number
+      value: 20
+      weight: 20
+    ENCRYPTED_SYNC_UPLOAD_LIMIT_MB:
+      inputType: number
+      value: 50
+      weight: 30
 
 services:
   actual-budget:
     image: docker.io/actualbudget/actual-server:26.2.0
     environment:
+      ACTUAL_UPLOAD_FILE_SIZE_LIMIT_MB: "${GENERAL_UPLOAD_LIMIT_MB}"
+      ACTUAL_UPLOAD_FILE_SYNC_SIZE_LIMIT_MB: "${SYNC_UPLOAD_LIMIT_MB}"
+      ACTUAL_UPLOAD_SYNC_ENCRYPTED_FILE_SYNC_SIZE_LIMIT_MB: "${ENCRYPTED_SYNC_UPLOAD_LIMIT_MB}"
       TZ: "${TIMEZONE:-UTC}"
     volumes:
       - "./data:/data"
