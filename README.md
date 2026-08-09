@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://getlawn.app/catalog/"><img src="https://img.shields.io/badge/apps-34-emerald" alt="34 Apps"></a>
+  <a href="https://getlawn.app/catalog/"><img src="https://img.shields.io/badge/apps-35-emerald" alt="35 Apps"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
   <a href="https://github.com/getlawn/templates/actions/workflows/validate.yml"><img src="https://github.com/getlawn/templates/actions/workflows/validate.yml/badge.svg" alt="Validate Templates"></a>
 </p>

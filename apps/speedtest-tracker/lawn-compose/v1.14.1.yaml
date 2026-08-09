@@ -1,0 +1,161 @@
+x-lawn:
+  compatibility:
+    minLawnVersion: 0.2.0
+  config:
+    APP_KEY:
+      source: generatedSecret
+      length: 43
+    ADMIN_PASSWORD:
+      source: generatedSecret
+      length: 32
+    SPEEDTEST_SCHEDULE:
+      inputType: text
+      value: ""
+      weight: 10
+    SPEEDTEST_SERVERS:
+      inputType: text
+      value: ""
+      weight: 20
+    PRUNE_RESULTS_OLDER_THAN:
+      inputType: number
+      value: 0
+      weight: 30
+    PUBLIC_DASHBOARD:
+      inputType: boolean
+      value: false
+      weight: 40
+      options:
+        "true":
+          compose:
+            services:
+              speedtest-tracker:
+                environment:
+                  PUBLIC_DASHBOARD: "true"
+        "false":
+          compose:
+            services:
+              speedtest-tracker:
+                environment:
+                  PUBLIC_DASHBOARD: "false"
+    DEFAULT_CHART_RANGE:
+      inputType: select
+      value: 24h
+      weight: 50
+      options:
+        24h:
+          weight: 10
+          compose:
+            services:
+              speedtest-tracker:
+                environment:
+                  DEFAULT_CHART_RANGE: 24h
+        week:
+          weight: 20
+          compose:
+            services:
+              speedtest-tracker:
+                environment:
+                  DEFAULT_CHART_RANGE: week
+        month:
+          weight: 30
+          compose:
+            services:
+              speedtest-tracker:
+                environment:
+                  DEFAULT_CHART_RANGE: month
+    CHART_BEGIN_AT_ZERO:
+      inputType: boolean
+      value: true
+      weight: 60
+      options:
+        "true":
+          compose:
+            services:
+              speedtest-tracker:
+                environment:
+                  CHART_BEGIN_AT_ZERO: "true"
+        "false":
+          compose:
+            services:
+              speedtest-tracker:
+                environment:
+                  CHART_BEGIN_AT_ZERO: "false"
+
+services:
+  speedtest-tracker:
+    image: lscr.io/linuxserver/speedtest-tracker:1.14.1
+    environment:
+      PUID: "${UID:-1000}"
+      PGID: "${GID:-1000}"
+      TZ: "${TIMEZONE:-UTC}"
+      APP_TIMEZONE: "${TIMEZONE:-UTC}"
+      DISPLAY_TIMEZONE: "${TIMEZONE:-UTC}"
+      APP_NAME: "Speedtest Tracker"
+      APP_KEY: "base64:${APP_KEY:?APP_KEY is required}"
+      APP_URL: "${LAWN_URL:-http://localhost:${HOST_PORT_80:-80}}"
+      ASSET_URL: "${LAWN_URL:-http://localhost:${HOST_PORT_80:-80}}"
+      ADMIN_NAME: Admin
+      ADMIN_EMAIL: admin@example.com
+      ADMIN_PASSWORD: "${ADMIN_PASSWORD:?ADMIN_PASSWORD is required}"
+      DB_CONNECTION: sqlite
+      SPEEDTEST_SCHEDULE: "${SPEEDTEST_SCHEDULE:-}"
+      SPEEDTEST_SERVERS: "${SPEEDTEST_SERVERS:-}"
+      PRUNE_RESULTS_OLDER_THAN: "${PRUNE_RESULTS_OLDER_THAN:-0}"
+      PUBLIC_DASHBOARD: "false"
+      DEFAULT_CHART_RANGE: 24h
+      CHART_BEGIN_AT_ZERO: "true"
+    volumes:
+      - "./config:/config"
+    ports:
+      - "80:80"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/api/healthcheck"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    x-lawn:
+      notices:
+        - id: login-credentials
+          style: info
+          elements:
+            - id: email
+              type: field
+              value: admin@example.com
+            - id: password
+              type: field
+              source: ADMIN_PASSWORD
+              container: speedtest-tracker
+      healthChecks:
+        - id: web-ui
+          type: http
+          path: /api/healthcheck
+          expectedStatus: 200
+          intervalSeconds: 15
+          timeoutSeconds: 10
+          retries: 8
+          startPeriodSeconds: 120
+      environment:
+        PUID:
+        PGID:
+        TZ:
+        APP_TIMEZONE:
+        DISPLAY_TIMEZONE:
+        APP_NAME:
+        APP_KEY:
+        APP_URL:
+        ASSET_URL:
+        ADMIN_NAME:
+        ADMIN_EMAIL:
+        ADMIN_PASSWORD:
+        DB_CONNECTION:
+        SPEEDTEST_SCHEDULE:
+        SPEEDTEST_SERVERS:
+        PRUNE_RESULTS_OLDER_THAN:
+        PUBLIC_DASHBOARD:
+        DEFAULT_CHART_RANGE:
+        CHART_BEGIN_AT_ZERO:

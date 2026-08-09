@@ -1,0 +1,130 @@
+{
+  "config": {
+    "APP_KEY": {
+      "displayName": "Application Key",
+      "description": "Base64-formatted secret key used by Speedtest Tracker to encrypt sessions and application data. Auto-generated during install."
+    },
+    "ADMIN_PASSWORD": {
+      "displayName": "Admin Password",
+      "description": "Password for the initial admin account. Auto-generated during install."
+    },
+    "SPEEDTEST_SCHEDULE": {
+      "displayName": "Speed Test Schedule",
+      "description": "Cron expression for automatic speed tests. Leave blank to run tests manually or configure the schedule in the app."
+    },
+    "SPEEDTEST_SERVERS": {
+      "displayName": "Preferred Servers",
+      "description": "Optional comma-separated Ookla server IDs to use for tests. Leave blank to let Speedtest Tracker choose automatically."
+    },
+    "PRUNE_RESULTS_OLDER_THAN": {
+      "displayName": "Result Retention",
+      "description": "Delete speed test results older than this many days. Use 0 to keep all results."
+    },
+    "PUBLIC_DASHBOARD": {
+      "displayName": "Public Dashboard",
+      "description": "Allow the dashboard to be viewed without signing in.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    },
+    "DEFAULT_CHART_RANGE": {
+      "displayName": "Default Chart Range",
+      "description": "Initial time range shown on the dashboard charts.",
+      "options": {
+        "24h": { "label": "Last 24 Hours" },
+        "week": { "label": "Last Week" },
+        "month": { "label": "Last Month" }
+      }
+    },
+    "CHART_BEGIN_AT_ZERO": {
+      "displayName": "Charts Begin at Zero",
+      "description": "Start chart axes at zero for easier at-a-glance comparisons.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    }
+  },
+  "services": {
+    "speedtest-tracker": {
+      "environment": {
+        "PUID": {
+          "description": "Host user ID used for files created in the config directory."
+        },
+        "PGID": {
+          "description": "Host group ID used for files created in the config directory."
+        },
+        "TZ": {
+          "description": "Timezone used by the container process."
+        },
+        "APP_TIMEZONE": {
+          "description": "Application timezone used for scheduled tasks."
+        },
+        "DISPLAY_TIMEZONE": {
+          "description": "Timezone used when displaying speed test timestamps."
+        },
+        "APP_NAME": {
+          "description": "Application name shown in Speedtest Tracker."
+        },
+        "APP_KEY": {
+          "description": "Application encryption key in base64 format. Auto-generated during install."
+        },
+        "APP_URL": {
+          "description": "Public URL used by Speedtest Tracker. Auto-configured from the Lawn hostname when available."
+        },
+        "ASSET_URL": {
+          "description": "Public URL used for generated asset links. Auto-configured from the Lawn hostname when available."
+        },
+        "ADMIN_NAME": {
+          "description": "Name for the initial admin account."
+        },
+        "ADMIN_EMAIL": {
+          "description": "Email address used to sign in to the initial admin account."
+        },
+        "ADMIN_PASSWORD": {
+          "description": "Password for the initial admin account. Auto-generated during install."
+        },
+        "DB_CONNECTION": {
+          "description": "Database backend. SQLite keeps Speedtest Tracker self-contained in the config volume."
+        },
+        "SPEEDTEST_SCHEDULE": {
+          "description": "Cron schedule for automatic speed tests."
+        },
+        "SPEEDTEST_SERVERS": {
+          "description": "Optional comma-separated Ookla server IDs."
+        },
+        "PRUNE_RESULTS_OLDER_THAN": {
+          "description": "Number of days of results to keep. 0 keeps all results."
+        },
+        "PUBLIC_DASHBOARD": {
+          "description": "Whether the dashboard can be viewed without signing in."
+        },
+        "DEFAULT_CHART_RANGE": {
+          "description": "Default chart time range."
+        },
+        "CHART_BEGIN_AT_ZERO": {
+          "description": "Whether dashboard chart axes start at zero."
+        }
+      },
+      "healthChecks": {
+        "web-ui": {
+          "description": "Health endpoint is reachable"
+        }
+      },
+      "notices": {
+        "login-credentials": {
+          "title": "Login Credentials",
+          "elements": {
+            "email": {
+              "label": "Email"
+            },
+            "password": {
+              "label": "Password"
+            }
+          }
+        }
+      }
+    }
+  }
+}
