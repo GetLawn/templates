@@ -1,0 +1,44 @@
+id: changedetection-io
+name: changedetection.io
+tagline: Website change detection and alerts for pages, prices, and feeds
+description: |
+  changedetection.io watches websites for updates and tells you when something changes. Track price drops, restocks, release notes, legal pages, job posts, RSS-like feeds, and any page where you want to know what changed without checking manually.
+
+  **Watch Any Page:**
+  Add a URL, choose what part of the page matters, and let changedetection.io keep checking it for you. It can monitor ordinary web pages, JSON APIs, PDFs, and pages with specific keywords.
+
+  **See Exactly What Changed:**
+  Review clean word-by-word and line-by-line diffs when a page updates. You can ignore noisy page sections and focus on the content that matters.
+
+  **Get Notified Your Way:**
+  Send alerts through Discord, Slack, Telegram, email, webhooks, Ntfy, and many other notification services powered by Apprise.
+
+  **Private Monitoring:**
+  Your watch list, snapshots, and notification settings stay on your Mac. Add password protection in the app settings for a private local setup.
+symbolFallback: eye
+iconURL: https://getlawn.app/images/apps/changedetection-io.png
+category: Monitoring
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - monitoring
+  - alerts
+  - websites
+  - price-tracking
+  - restock
+features:
+  - Monitor web pages, PDFs, JSON APIs, and RSS-like feeds
+  - Word, line, and character-level diff views
+  - Visual selector for focusing on specific page content
+  - Keyword and condition-based alerts
+  - Notifications through Discord, Slack, Telegram, email, webhooks, and more
+  - Import watch lists from spreadsheets or plain text
+links:
+  - url: https://github.com/dgtlmoon/changedetection.io
+    type: github
+  - url: https://changedetection.io/
+    type: website
+    label: Website
+  - url: https://github.com/dgtlmoon/changedetection.io/wiki
+    type: documentation
+webPort: 5000
