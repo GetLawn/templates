@@ -1,0 +1,45 @@
+id: upsnap
+name: UpSnap
+tagline: A simple Wake-on-LAN dashboard for your local network
+description: |
+  UpSnap is a self-hosted Wake-on-LAN web app for managing devices on your local network. It gives you a clean dashboard for waking machines, checking whether they are online, and organizing network devices for quick access.
+
+  **Wake Devices from One Place:**
+  Add desktops, servers, NAS devices, and other Wake-on-LAN capable hardware, then wake them from a browser with one click.
+
+  **Status Checks and Discovery:**
+  UpSnap can ping devices on a schedule and scan local network ranges to help discover hosts. The template includes configurable polling and scan timeout settings.
+
+  **Automation Friendly:**
+  Timed events use cron expressions, so devices can be checked or woken on a schedule. Device shutdown commands are supported by UpSnap, but should only be used on trusted local networks.
+
+  **Private Local Control:**
+  UpSnap stores its PocketBase data locally and is intended for private network use. For access away from home, use a VPN rather than exposing it directly to the open web.
+symbolFallback: power
+iconURL: https://getlawn.app/images/apps/upsnap.svg
+category: Utilities
+compatibility:
+  minLawnVersion: 0.2.0
+tags:
+  - wake-on-lan
+  - network
+  - devices
+  - automation
+  - wol
+features:
+  - Wake-on-LAN device dashboard
+  - Device status checks
+  - Local network scanning
+  - Timed events with cron
+  - PocketBase-backed user management
+  - Per-device user permissions
+  - Multiple themes and translations
+screenshots: []
+links:
+  - url: https://github.com/seriousm4x/UpSnap
+    type: github
+  - url: https://github.com/seriousm4x/UpSnap/wiki
+    type: documentation
+  - url: https://hub.docker.com/r/seriousm4x/upsnap
+    type: website
+webPort: 8090

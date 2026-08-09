@@ -1,0 +1,118 @@
+x-lawn:
+  compatibility:
+    minLawnVersion: 0.2.0
+  config:
+    WEBSITE_TITLE:
+      inputType: text
+      value: UpSnap
+      weight: 10
+    PING_INTERVAL:
+      inputType: select
+      value: every-10-seconds
+      weight: 20
+      options:
+        every-10-seconds:
+          weight: 10
+          compose:
+            services:
+              upsnap:
+                environment:
+                  UPSNAP_INTERVAL: "*/10 * * * * *"
+        every-30-seconds:
+          weight: 20
+          compose:
+            services:
+              upsnap:
+                environment:
+                  UPSNAP_INTERVAL: "*/30 * * * * *"
+        every-minute:
+          weight: 30
+          compose:
+            services:
+              upsnap:
+                environment:
+                  UPSNAP_INTERVAL: "0 */1 * * * *"
+        every-five-minutes:
+          weight: 40
+          compose:
+            services:
+              upsnap:
+                environment:
+                  UPSNAP_INTERVAL: "0 */5 * * * *"
+    SCAN_TIMEOUT:
+      inputType: select
+      value: 500ms
+      weight: 30
+      options:
+        500ms:
+          weight: 10
+          compose:
+            services:
+              upsnap:
+                environment:
+                  UPSNAP_SCAN_TIMEOUT: 500ms
+        1s:
+          weight: 20
+          compose:
+            services:
+              upsnap:
+                environment:
+                  UPSNAP_SCAN_TIMEOUT: 1s
+        3s:
+          weight: 30
+          compose:
+            services:
+              upsnap:
+                environment:
+                  UPSNAP_SCAN_TIMEOUT: 3s
+
+services:
+  upsnap:
+    image: seriousm4x/upsnap:5.3.5
+    cap_add:
+      - NET_RAW
+    cap_drop:
+      - ALL
+    environment:
+      TZ: "${TIMEZONE:-UTC}"
+      PUID: "${UID:-1000}"
+      PGID: "${GID:-1000}"
+      UPSNAP_HTTP_LISTEN: "0.0.0.0:8090"
+      UPSNAP_WEBSITE_TITLE: "${WEBSITE_TITLE:-UpSnap}"
+      UPSNAP_INTERVAL: "*/10 * * * * *"
+      UPSNAP_SCAN_TIMEOUT: 500ms
+      UPSNAP_PING_PRIVILEGED: "true"
+    volumes:
+      - "./data:/app/pb_data"
+    ports:
+      - "8090:8090"
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    x-lawn:
+      notices:
+        - id: first-time-setup
+          style: info
+          elements:
+            - id: setup-info
+              type: text
+        - id: local-network
+          style: warning
+          elements:
+            - id: local-network-info
+              type: text
+      healthChecks:
+        - id: web-ui
+          type: http
+          path: /api/health
+          expectedStatus: 200
+      environment:
+        TZ:
+        PUID:
+        PGID:
+        UPSNAP_HTTP_LISTEN:
+        UPSNAP_WEBSITE_TITLE:
+        UPSNAP_INTERVAL:
+        UPSNAP_SCAN_TIMEOUT:
+        UPSNAP_PING_PRIVILEGED:
