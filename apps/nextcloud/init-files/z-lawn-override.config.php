@@ -6,4 +6,5 @@ $CONFIG = array (
     'password' => '',
     'port' => 6379,
   ),
+  'default_phone_region' => getenv('NEXTCLOUD_DEFAULT_PHONE_REGION') ?: 'US',
 );
