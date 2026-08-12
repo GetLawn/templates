@@ -1,0 +1,89 @@
+x-lawn:
+  compatibility:
+    minLawnVersion: 0.4.0
+  config:
+    GARAGE_RPC_SECRET:
+      source: userProvided
+    GARAGE_ACCESS_KEY_ID:
+      source: generatedSecret
+      length: 24
+    GARAGE_SECRET_ACCESS_KEY:
+      source: generatedSecret
+      length: 64
+
+services:
+  garage:
+    image: docker.io/dxflrs/garage:v2.3.0@sha256:866bd13ed2038ba7e7190e840482bc27234c4afaf77be8cfa439ae088c1e4690
+    command: ["/garage", "server", "--single-node", "--default-bucket"]
+    environment:
+      GARAGE_CONFIG_FILE: /etc/garage/garage.toml
+      GARAGE_RPC_SECRET: "${GARAGE_RPC_SECRET}"
+      GARAGE_DEFAULT_ACCESS_KEY: "GK${GARAGE_ACCESS_KEY_ID:?GARAGE_ACCESS_KEY_ID is required}"
+      GARAGE_DEFAULT_SECRET_KEY: "${GARAGE_SECRET_ACCESS_KEY:?GARAGE_SECRET_ACCESS_KEY is required}"
+      GARAGE_DEFAULT_BUCKET: lawn-storage
+      LAWN_OBJECT_STORAGE_ENDPOINT: "http://localhost:${HOST_PORT_3900:-3900}"
+    volumes:
+      - "./config:/etc/garage"
+      - "./metadata:/var/lib/garage/meta"
+      - "./data:/var/lib/garage/data"
+    ports:
+      - "3900:3900"
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    x-lawn:
+      initFiles:
+        - source: garage.toml
+          containerPath: /etc/garage/garage.toml
+      notices:
+        - id: connection-details
+          style: info
+          elements:
+            - id: endpoint
+              type: field
+              source: LAWN_OBJECT_STORAGE_ENDPOINT
+              container: garage
+            - id: region
+              type: field
+              value: garage
+            - id: bucket
+              type: field
+              source: GARAGE_DEFAULT_BUCKET
+              container: garage
+            - id: access-key
+              type: field
+              source: GARAGE_DEFAULT_ACCESS_KEY
+              container: garage
+            - id: secret-key
+              type: field
+              source: GARAGE_DEFAULT_SECRET_KEY
+              container: garage
+            - id: client-guidance
+              type: text
+        - id: single-node-warning
+          style: warning
+          elements:
+            - id: backup-guidance
+              type: text
+      healthChecks:
+        - id: garage-status
+          type: command
+          command: ["/garage", "status"]
+          intervalSeconds: 10
+          timeoutSeconds: 5
+          retries: 12
+          startPeriodSeconds: 30
+        - id: object-storage-api
+          type: http
+          path: /
+          expectedStatus: 403
+          followRedirects: false
+          intervalSeconds: 10
+          timeoutSeconds: 5
+          retries: 12
+          startPeriodSeconds: 30
+      environment:
+        GARAGE_CONFIG_FILE:
+        GARAGE_DEFAULT_BUCKET:
+        LAWN_OBJECT_STORAGE_ENDPOINT:
