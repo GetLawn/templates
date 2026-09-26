@@ -1,5 +1,6 @@
 id: karakeep
 name: Karakeep
+version: "0.33.2"
 tagline: Save and organize links, notes, and files
 description: |
   Karakeep is a personal archive for links, notes, images, and files, with tools for finding saved material later.
@@ -20,7 +21,7 @@ iconURL: https://getlawn.app/images/apps/karakeep.svg
 iconIsTemplate: true
 category: Utilities
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.0
 tags:
   - bookmarks
   - read-later
