@@ -118,13 +118,9 @@ jobs:
           for file in apps/${{ matrix.app }}/lawn-compose/*.yaml; do
             BASENAME=$(basename "$file")
 
-            # Check versioned filename pattern: vX.Y.Z.yaml (also vX.Y.yaml,
-            # vX.yaml) or the literal "latest.yaml" for templates whose
-            # upstream image is a thin launcher that resolves the real
-            # version at runtime (e.g. minecraft — see comment inside its
-            # compose file).
-            if ! echo "$BASENAME" | grep -qE '^(v[0-9]+(\.[0-9]+)*|latest)\.yaml$'; then
-              echo "::error::Compose filename '$BASENAME' must match pattern vX.Y.Z.yaml or latest.yaml"
+            # Accept the current filename and legacy numbered or rolling-release files.
+            if ! echo "$BASENAME" | grep -qE '^(compose|v[0-9]+(\.[0-9]+)*|latest)\.yaml$'; then
+              echo "::error::Compose filename '$BASENAME' must be compose.yaml, vX.Y.Z.yaml, or latest.yaml"
               exit 1
             fi
 
