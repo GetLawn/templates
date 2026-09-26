@@ -41,7 +41,13 @@ jobs:
           fi
 
           CHANGED_APPS=$(git diff --name-only "$BASE" HEAD -- apps/ \
-            | cut -d/ -f2 | sort -u | jq -R -s -c 'split("\n") | map(select(. != ""))')
+            | cut -d/ -f2 | sort -u \
+            | while IFS= read -r app; do
+                if [ -d "apps/$app" ]; then
+                  printf '%s\n' "$app"
+                fi
+              done \
+            | jq -R -s -c 'split("\n") | map(select(. != ""))')
 
           echo "apps=$CHANGED_APPS" >> "$GITHUB_OUTPUT"
 
