@@ -5,15 +5,24 @@ x-lawn:
 services:
   adguardhome:
     image: adguard/adguardhome:v0.107.71
+    # Serve the setup wizard and dashboard on the same internal port.
+    # Preserve the image's config and work paths when adding --web-addr.
+    command:
+      - --no-check-update
+      - -c
+      - /opt/adguardhome/conf/AdGuardHome.yaml
+      - -w
+      - /opt/adguardhome/work
+      - --web-addr
+      - 0.0.0.0:80
     volumes:
       - "./conf:/opt/adguardhome/conf"
       - "./work:/opt/adguardhome/work"
     ports:
-      - "3000:3000"
       - "53:53"
       - "53:53/udp"
     healthcheck:
-      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://localhost:3000/"]
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:80/"]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -25,10 +34,8 @@ services:
     x-lawn:
       healthChecks:
         - id: web-ui
-          type: http
-          path: "/"
-          expectedStatus: 200
-          followRedirects: true
+          type: command
+          command: ["wget", "-q", "-O", "/dev/null", "http://127.0.0.1:80/"]
           intervalSeconds: 10
           timeoutSeconds: 5
           retries: 5

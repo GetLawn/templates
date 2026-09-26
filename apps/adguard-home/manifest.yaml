@@ -45,4 +45,4 @@ links:
     type: website
   - url: https://github.com/AdguardTeam/AdGuardHome/wiki
     type: documentation
-webPort: 3000
+webPort: 80
