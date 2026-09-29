@@ -1,0 +1,32 @@
+id: garage
+name: Garage
+tagline: Object storage compatible with Amazon S3
+description: |
+  Garage provides an object storage API for apps, backup tools, and other clients to save and retrieve files.
+
+  Installation requires a 64-character hexadecimal secret to secure Garage's internal communication. Lawn generates access credentials, and Garage creates a storage bucket on first start. After setup, use the connection details shown in Lawn with a compatible client. Garage does not include a browser dashboard.
+
+  Stored data survives Garage and Lawn restarts. This installation keeps one copy of each object. Keep a separate backup of anything you cannot replace.
+symbolFallback: externaldrive.fill.badge.icloud
+iconURL: https://getlawn.app/images/apps/garage.svg
+category: Utilities
+compatibility:
+  minLawnVersion: 0.4.0
+tags:
+  - object-storage
+  - storage
+  - backup
+features:
+  - Works with compatible apps and backup tools
+  - Creates a ready-to-use bucket during setup
+  - Keeps stored data across restarts
+screenshots: []
+links:
+  - url: https://garagehq.deuxfleurs.fr/documentation/
+    type: documentation
+  - url: https://garagehq.deuxfleurs.fr/
+    type: website
+  - url: https://github.com/deuxfleurs-org/garage
+    type: github
+webPort: 3900
+webScheme: http

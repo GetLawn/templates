@@ -1,0 +1,72 @@
+{
+  "config": {
+    "GARAGE_RPC_SECRET": {
+      "displayName": "Internal Node Secret",
+      "description": "Required 64-character hexadecimal secret used to secure Garage's internal communication."
+    },
+    "GARAGE_ACCESS_KEY_ID": {
+      "displayName": "Access Key",
+      "description": "Random identifier used to create the client access key during installation."
+    },
+    "GARAGE_SECRET_ACCESS_KEY": {
+      "displayName": "Secret Key",
+      "description": "Secret key generated during installation for compatible clients."
+    }
+  },
+  "services": {
+    "garage": {
+      "environment": {
+        "GARAGE_CONFIG_FILE": {
+          "description": "Path to Garage's configuration file."
+        },
+        "GARAGE_DEFAULT_BUCKET": {
+          "description": "Storage bucket created when Garage starts for the first time."
+        },
+        "LAWN_OBJECT_STORAGE_ENDPOINT": {
+          "description": "Address that compatible clients use to connect to Garage on this Mac."
+        }
+      },
+      "healthChecks": {
+        "garage-status": {
+          "description": "Garage's internal service is responding"
+        },
+        "object-storage-api": {
+          "description": "Garage is accepting object storage requests from this Mac"
+        }
+      },
+      "notices": {
+        "connection-details": {
+          "title": "Connection Details",
+          "elements": {
+            "endpoint": {
+              "label": "Endpoint"
+            },
+            "region": {
+              "label": "Region"
+            },
+            "bucket": {
+              "label": "Bucket"
+            },
+            "access-key": {
+              "label": "Access Key"
+            },
+            "secret-key": {
+              "label": "Secret Key"
+            },
+            "client-guidance": {
+              "content": "Use path-style addressing and plain HTTP when connecting a compatible client on this Mac."
+            }
+          }
+        },
+        "single-node-warning": {
+          "title": "Single-Node Storage",
+          "elements": {
+            "backup-guidance": {
+              "content": "Garage stores one copy of each object. Keep a separate backup of files you cannot replace."
+            }
+          }
+        }
+      }
+    }
+  }
+}
