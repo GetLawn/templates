@@ -1,4 +1,14 @@
 {
+  "config": {
+    "ALLOW_SIGNUP": {
+      "displayName": "Allow Public Signups",
+      "description": "Let new users register without an invite link. Keep off for a private household instance; turn on temporarily to add family members.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    }
+  },
   "services": {
     "mealie": {
       "environment": {
@@ -10,9 +20,6 @@
         },
         "TZ": {
           "description": "Timezone for Mealie (e.g. America/New_York)."
-        },
-        "ALLOW_SIGNUP": {
-          "description": "Allow new users to sign up without an invite link."
         },
         "BASE_URL": {
           "description": "Base URL for notifications and links. Auto-configured from mDNS hostname when available."

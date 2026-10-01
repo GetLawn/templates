@@ -1,6 +1,24 @@
 x-lawn:
   compatibility:
     minLawnVersion: 0.2.0
+  config:
+    ALLOW_SIGNUP:
+      inputType: boolean
+      value: false
+      weight: 10
+      options:
+        "true":
+          compose:
+            services:
+              mealie:
+                environment:
+                  ALLOW_SIGNUP: "true"
+        "false":
+          compose:
+            services:
+              mealie:
+                environment:
+                  ALLOW_SIGNUP: "false"
 
 services:
   mealie:
@@ -9,7 +27,6 @@ services:
       PUID: "${UID:-1000}"
       PGID: "${GID:-1000}"
       TZ: "${TIMEZONE:-UTC}"
-      ALLOW_SIGNUP: "false"
       BASE_URL: "${LAWN_URL:-}"
     volumes:
       - "./data:/app/data"
@@ -30,5 +47,4 @@ services:
         PUID:
         PGID:
         TZ:
-        ALLOW_SIGNUP:
         BASE_URL:
