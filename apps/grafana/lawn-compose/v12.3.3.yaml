@@ -5,6 +5,101 @@ x-lawn:
     ADMIN_PASSWORD:
       source: generatedSecret
       length: 32
+    ANONYMOUS_MODE:
+      inputType: boolean
+      value: false
+      weight: 10
+      options:
+        "true":
+          compose:
+            services:
+              grafana:
+                environment:
+                  GF_AUTH_ANONYMOUS_ENABLED: "true"
+        "false":
+          compose:
+            services:
+              grafana:
+                environment:
+                  GF_AUTH_ANONYMOUS_ENABLED: "false"
+    ALLOW_SIGN_UP:
+      inputType: boolean
+      value: false
+      weight: 20
+      options:
+        "true":
+          compose:
+            services:
+              grafana:
+                environment:
+                  GF_USERS_ALLOW_SIGN_UP: "true"
+        "false":
+          compose:
+            services:
+              grafana:
+                environment:
+                  GF_USERS_ALLOW_SIGN_UP: "false"
+    DEFAULT_THEME:
+      value: system
+      weight: 30
+      options:
+        system:
+          weight: 10
+          compose:
+            services:
+              grafana:
+                environment:
+                  GF_USERS_DEFAULT_THEME: "system"
+        dark:
+          weight: 20
+          compose:
+            services:
+              grafana:
+                environment:
+                  GF_USERS_DEFAULT_THEME: "dark"
+        light:
+          weight: 30
+          compose:
+            services:
+              grafana:
+                environment:
+                  GF_USERS_DEFAULT_THEME: "light"
+    ANALYTICS_REPORTING:
+      inputType: boolean
+      value: true
+      weight: 40
+      options:
+        "true":
+          compose:
+            services:
+              grafana:
+                environment:
+                  GF_ANALYTICS_REPORTING_ENABLED: "true"
+        "false":
+          compose:
+            services:
+              grafana:
+                environment:
+                  GF_ANALYTICS_REPORTING_ENABLED: "false"
+    CHECK_FOR_UPDATES:
+      inputType: boolean
+      value: true
+      weight: 50
+      options:
+        "true":
+          compose:
+            services:
+              grafana:
+                environment:
+                  GF_ANALYTICS_CHECK_FOR_UPDATES: "true"
+                  GF_ANALYTICS_CHECK_FOR_PLUGIN_UPDATES: "true"
+        "false":
+          compose:
+            services:
+              grafana:
+                environment:
+                  GF_ANALYTICS_CHECK_FOR_UPDATES: "false"
+                  GF_ANALYTICS_CHECK_FOR_PLUGIN_UPDATES: "false"
 
 services:
   grafana:
@@ -12,7 +107,6 @@ services:
     environment:
       GF_SECURITY_ADMIN_USER: admin
       GF_SECURITY_ADMIN_PASSWORD: "${ADMIN_PASSWORD:?ADMIN_PASSWORD is required}"
-      GF_USERS_ALLOW_SIGN_UP: "false"
       TZ: "${TIMEZONE:-UTC}"
     volumes:
       - "./data:/var/lib/grafana"
@@ -47,5 +141,4 @@ services:
           expectedStatus: 200
       environment:
         GF_SECURITY_ADMIN_USER:
-        GF_USERS_ALLOW_SIGN_UP:
         TZ:
