@@ -1,4 +1,22 @@
 {
+  "config": {
+    "ALLOW_EMBEDDING": {
+      "displayName": "Allow Embedding in Dashboards",
+      "description": "Allow Uptime Kuma's status page to be embedded as an iframe in other dashboards (e.g. Homarr, Homepage).",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    },
+    "BYPASS_WS_ORIGIN_CHECK": {
+      "displayName": "Bypass WebSocket Origin Check",
+      "description": "Disable the WebSocket origin check. Enable only if you access Uptime Kuma through a reverse proxy that rewrites the Origin header and the dashboard fails to connect.",
+      "options": {
+        "true": { "label": "On" },
+        "false": { "label": "Off" }
+      }
+    }
+  },
   "services": {
     "uptime-kuma": {
       "environment": {

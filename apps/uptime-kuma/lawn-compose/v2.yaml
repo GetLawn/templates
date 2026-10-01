@@ -1,6 +1,41 @@
 x-lawn:
   compatibility:
     minLawnVersion: 0.2.0
+  config:
+    ALLOW_EMBEDDING:
+      inputType: boolean
+      value: false
+      weight: 10
+      options:
+        "true":
+          compose:
+            services:
+              uptime-kuma:
+                environment:
+                  UPTIME_KUMA_DISABLE_FRAME_SAMEORIGIN: "1"
+        "false":
+          compose:
+            services:
+              uptime-kuma:
+                environment:
+                  UPTIME_KUMA_DISABLE_FRAME_SAMEORIGIN: ""
+    BYPASS_WS_ORIGIN_CHECK:
+      inputType: boolean
+      value: false
+      weight: 20
+      options:
+        "true":
+          compose:
+            services:
+              uptime-kuma:
+                environment:
+                  UPTIME_KUMA_WS_ORIGIN_CHECK: "bypass"
+        "false":
+          compose:
+            services:
+              uptime-kuma:
+                environment:
+                  UPTIME_KUMA_WS_ORIGIN_CHECK: "cors-like"
 
 services:
   uptime-kuma:
