@@ -1,5 +1,6 @@
 id: github-actions-runner
 name: GitHub Actions Runner
+version: "2.337.0"
 tagline: Run your GitHub Actions workflows on your own hardware
 description: |
   Run CI/CD workflows on your Mac instead of a GitHub-hosted runner, with direct control over the local environment, tools, and resources.

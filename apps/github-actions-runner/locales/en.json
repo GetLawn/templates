@@ -63,7 +63,7 @@
           "description": "Working directory for workflow job execution inside the container."
         },
         "DISABLE_AUTO_UPDATE": {
-          "description": "Prevents the runner binary from self-updating, keeping the pinned image version in use."
+          "description": "Prevents the runner binary from self-updating. Update the runner image through Lawn's Updates view."
         },
         "DISABLE_AUTOMATIC_DEREGISTRATION": {
           "description": "Keeps the registered runner attached to GitHub when Lawn stops or restarts it."
