@@ -1,6 +1,6 @@
 x-lawn:
   compatibility:
-    minLawnVersion: 0.4.0
+    minLawnVersion: 0.6.1
   config:
     RUNNER_TOKEN:
       source: userProvided
@@ -65,9 +65,11 @@ x-lawn:
                 ORG_NAME: !reset {}
     REPO_URL:
       source: userProvided
+      required: true
       weight: 50
     ORG_NAME:
       source: userProvided
+      required: true
       weight: 50
 
 services:

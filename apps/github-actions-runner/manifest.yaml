@@ -23,7 +23,7 @@ symbolFallback: terminal.fill
 iconURL: https://getlawn.app/images/apps/github-actions-runner.svg
 category: Development
 compatibility:
-  minLawnVersion: 0.4.0
+  minLawnVersion: 0.6.1
 tags:
   - ci-cd
   - github
