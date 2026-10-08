@@ -25,6 +25,7 @@ try {
     if ($CONFIG['dbtype'] !== 'pgsql') {
         throw new RuntimeException('This template requires PostgreSQL.');
     }
+    // Use Nextcloud's connection so database addresses can include a port or socket.
     require '/var/www/html/lib/base.php';
     $db = \OCP\Server::get(\OCP\IDBConnection::class);
     $locked = $db->executeQuery("SELECT pg_try_advisory_lock_shared(hashtext('lawn-nextcloud-background-jobs'))::integer")->fetchOne();
