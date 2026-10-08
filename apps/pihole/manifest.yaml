@@ -19,7 +19,7 @@ symbolFallback: checkmark.shield.fill
 iconURL: https://getlawn.app/images/apps/pihole.svg
 category: Networking
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.1
 tags:
   - dns
   - ad-blocking
@@ -45,3 +45,4 @@ links:
     label: Website
 webPort: 80
 webPath: /admin/
+version: "2025.11.1"
