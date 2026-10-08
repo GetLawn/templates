@@ -1,6 +1,6 @@
 x-lawn:
   compatibility:
-    minLawnVersion: 0.2.0
+    minLawnVersion: 0.6.0
   config:
     POSTGRES_PASSWORD:
       source: generatedSecret
@@ -11,7 +11,7 @@ x-lawn:
 
 services:
   postgres:
-    image: postgres:15
+    image: postgres:15.19-trixie
     environment:
       POSTGRES_DB: nextcloud
       POSTGRES_USER: nextcloud
@@ -28,7 +28,7 @@ services:
       environment:
 
   redis:
-    image: redis:7
+    image: redis:7.4.11-bookworm
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 10s
@@ -36,7 +36,10 @@ services:
       retries: 5
 
   nextcloud:
-    image: nextcloud:32
+    image: nextcloud:32.0.15-apache
+    # Keep the image's setup, then start background jobs with this service's settings.
+    entrypoint: [/bin/sh, /var/www/lawn-entrypoint.sh]
+    command: [apache2-foreground]
     depends_on:
       - postgres
       - redis
@@ -49,17 +52,18 @@ services:
       NEXTCLOUD_ADMIN_PASSWORD: "${ADMIN_PASSWORD:?ADMIN_PASSWORD is required}"
       NEXTCLOUD_TRUSTED_DOMAINS: "localhost${LAWN_DOMAIN:+ ${LAWN_DOMAIN}}"
       REDIS_HOST: redis
+      LAWN_URL: "${LAWN_URL:-http://localhost}"
       TZ: "${TIMEZONE:-UTC}"
     volumes:
       - "./www:/var/www"
     ports:
-      - "8080:80"
+      - "80"
     healthcheck:
       test: ["CMD", "curl", "-f", "--max-time", "5", "http://localhost/status.php"]
       interval: 30s
       timeout: 30s
       retries: 10
-      start_period: 180s
+      start_period: 600s
     deploy:
       resources:
         limits:
@@ -81,6 +85,20 @@ services:
       initFiles:
         - source: "z-lawn-override.config.php"
           containerPath: "/var/www/html/config/z-lawn-override.config.php"
+        - source: "check-migrations.php"
+          containerPath: "/var/www/check-migrations.php"
+        - source: "cron.sh"
+          containerPath: "/var/www/lawn-cron.sh"
+        - source: "run-jobs.php"
+          containerPath: "/var/www/run-jobs.php"
+        - source: "entrypoint.sh"
+          containerPath: "/var/www/lawn-entrypoint.sh"
+      migrationCheck:
+        command: [php, /var/www/check-migrations.php]
+        user: www-data
+        interval: 30s
+        timeout: 30s
+        retries: 3
       environment:
         POSTGRES_HOST:
         POSTGRES_DB:

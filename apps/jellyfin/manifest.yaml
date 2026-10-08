@@ -22,7 +22,7 @@ symbolFallback: play.rectangle.fill
 iconURL: https://getlawn.app/images/apps/jellyfin.svg
 category: Media
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.0
 tags:
   - media
   - streaming
@@ -47,3 +47,4 @@ links:
   - url: https://jellyfin.org
     type: website
 webPort: 8096
+version: "10.10.7"
