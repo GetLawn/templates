@@ -11,7 +11,7 @@
           "title": "Setup Wizard",
           "elements": {
             "port-config-info": {
-              "content": "During initial setup, keep the default web interface port **80** and DNS port **53**. Changing these ports will break connectivity."
+              "content": "Keep the setup wizard defaults: web interface port 80 and DNS port 53. DNS also needs port 53 free on the Mac."
             }
           }
         }
