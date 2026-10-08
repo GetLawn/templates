@@ -19,7 +19,7 @@ symbolFallback: chart.bar.xaxis
 iconURL: https://getlawn.app/images/apps/grafana.svg
 category: Monitoring
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.0
 tags:
   - monitoring
   - dashboards
@@ -44,3 +44,4 @@ links:
     type: website
     label: Website
 webPort: 3000
+version: "13.2.3"

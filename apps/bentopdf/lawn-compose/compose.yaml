@@ -1,12 +1,12 @@
 x-lawn:
   compatibility:
-    minLawnVersion: 0.2.0
+    minLawnVersion: 0.6.0
 
 services:
   bentopdf:
-    image: ghcr.io/alam00000/bentopdf:2.2.1
+    image: ghcr.io/alam00000/bentopdf:2.8.8
     ports:
-      - "8080:8080"
+      - "8080"
     x-lawn:
       healthChecks:
         - id: web-ui

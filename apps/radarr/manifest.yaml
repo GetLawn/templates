@@ -22,7 +22,7 @@ symbolFallback: film.fill
 iconURL: https://getlawn.app/images/apps/radarr.png
 category: Media
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.0
 tags:
   - media
   - movies
@@ -46,3 +46,4 @@ links:
   - url: https://radarr.video
     type: website
 webPort: 7878
+version: "6.4.4.10685"

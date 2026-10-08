@@ -16,7 +16,7 @@ symbolFallback: chevron.left.forwardslash.chevron.right
 iconURL: https://getlawn.app/images/apps/forgejo.svg
 category: Development
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.0
 tags:
   - git
   - code
@@ -40,3 +40,4 @@ links:
     type: website
     label: Website
 webPort: 3000
+version: "16.0.5"

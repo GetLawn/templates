@@ -1,10 +1,10 @@
 x-lawn:
   compatibility:
-    minLawnVersion: 0.2.0
+    minLawnVersion: 0.6.0
 
 services:
   mealie:
-    image: ghcr.io/mealie-recipes/mealie:v3.10.2
+    image: ghcr.io/mealie-recipes/mealie:v3.28.0
     environment:
       PUID: "${UID:-1000}"
       PGID: "${GID:-1000}"
@@ -14,7 +14,7 @@ services:
     volumes:
       - "./data:/app/data"
     ports:
-      - "9925:9000"
+      - "9000"
     deploy:
       resources:
         limits:

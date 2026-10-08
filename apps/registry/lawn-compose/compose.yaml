@@ -1,16 +1,17 @@
 x-lawn:
   compatibility:
-    minLawnVersion: 0.2.0
+    minLawnVersion: 0.6.0
 
 services:
   registry:
-    image: registry:2
+    image: registry:3.1.2
     environment:
       REGISTRY_STORAGE_DELETE_ENABLED: "true"
+      REGISTRY_HTTP_RELATIVEURLS: "true"
     volumes:
       - "./registry:/var/lib/registry"
     ports:
-      - "5000:5000"
+      - "5000"
     healthcheck:
       test: ["CMD", "wget", "--spider", "-q", "http://localhost:5000/v2/"]
       interval: 10s

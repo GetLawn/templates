@@ -1,6 +1,6 @@
 x-lawn:
   compatibility:
-    minLawnVersion: 0.2.0
+    minLawnVersion: 0.6.0
   config:
     POSTGRES_PASSWORD:
       source: generatedSecret
@@ -11,7 +11,7 @@ x-lawn:
 
 services:
   postgres:
-    image: postgres:16-alpine
+    image: postgres:16.15-alpine
     environment:
       POSTGRES_DB: linkwarden
       POSTGRES_USER: linkwarden
@@ -30,7 +30,7 @@ services:
       environment:
 
   meilisearch:
-    image: getmeili/meilisearch:v1.12
+    image: getmeili/meilisearch:v1.12.8
     environment:
       MEILI_MASTER_KEY: "${SECRET_KEY:?SECRET_KEY is required}"
       MEILI_NO_ANALYTICS: "true"
@@ -49,14 +49,14 @@ services:
       environment:
 
   linkwarden:
-    image: ghcr.io/linkwarden/linkwarden:v2.13.5
+    image: ghcr.io/linkwarden/linkwarden:v2.16.3
     depends_on:
       - postgres
       - meilisearch
     environment:
       DATABASE_URL: "postgresql://linkwarden:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}@postgres:5432/linkwarden"
       NEXTAUTH_SECRET: "${SECRET_KEY:?SECRET_KEY is required}"
-      NEXTAUTH_URL: "${LAWN_URL:-http://localhost:${HOST_PORT_3000:-3000}}/api/v1/auth"
+      NEXTAUTH_URL: "${LAWN_URL:-http://localhost:3000}/api/v1/auth"
       MEILI_MASTER_KEY: "${SECRET_KEY:?SECRET_KEY is required}"
       MEILI_HOST: "http://meilisearch:7700"
       NEXT_PUBLIC_DISABLE_REGISTRATION: "false"
@@ -64,7 +64,7 @@ services:
     volumes:
       - "./data:/data/data"
     ports:
-      - "3000:3000"
+      - "3000"
     deploy:
       resources:
         limits:

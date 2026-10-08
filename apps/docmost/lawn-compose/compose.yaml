@@ -1,6 +1,6 @@
 x-lawn:
   compatibility:
-    minLawnVersion: 0.2.0
+    minLawnVersion: 0.6.0
   config:
     POSTGRES_PASSWORD:
       source: generatedSecret
@@ -11,7 +11,7 @@ x-lawn:
 
 services:
   postgres:
-    image: postgres:16-alpine
+    image: postgres:16.15-alpine
     environment:
       POSTGRES_DB: docmost
       POSTGRES_USER: docmost
@@ -33,7 +33,7 @@ services:
     # Note: No volume mount - Redis is used for real-time collaboration and task
     # queues, not document storage. Active sessions are lost on restart, but all
     # documents and user data are safe in PostgreSQL.
-    image: redis:7.4-alpine
+    image: redis:7.4.11-alpine
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 10s
@@ -41,19 +41,19 @@ services:
       retries: 5
 
   docmost:
-    image: docmost/docmost:0.25.3
+    image: docmost/docmost:0.96.0
     depends_on:
       - postgres
       - redis
     environment:
-      APP_URL: "${LAWN_URL:-http://localhost:${HOST_PORT_3000:-3000}}"
+      APP_URL: "${LAWN_URL:-http://localhost:3000}"
       APP_SECRET: "${SECRET_KEY:?SECRET_KEY is required}"
       DATABASE_URL: "postgresql://docmost:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}@postgres:5432/docmost"
       REDIS_URL: "redis://redis:6379"
     volumes:
       - "./storage:/app/data/storage"
     ports:
-      - "3000:3000"
+      - "3000"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000"]
       interval: 30s

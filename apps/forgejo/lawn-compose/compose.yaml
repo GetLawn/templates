@@ -1,6 +1,6 @@
 x-lawn:
   compatibility:
-    minLawnVersion: 0.2.0
+    minLawnVersion: 0.6.0
   config:
     SECRET_KEY:
       source: generatedSecret
@@ -8,12 +8,12 @@ x-lawn:
 
 services:
   forgejo:
-    image: codeberg.org/forgejo/forgejo:14-rootless
+    image: codeberg.org/forgejo/forgejo:16.0.5-rootless
     environment:
       FORGEJO__database__DB_TYPE: "sqlite3"
       FORGEJO__server__HTTP_PORT: "3000"
       FORGEJO__server__DOMAIN: "${LAWN_DOMAIN:-localhost}"
-      FORGEJO__server__ROOT_URL: "${LAWN_URL:-http://localhost:${HOST_PORT_3000:-3000}}/"
+      FORGEJO__server__ROOT_URL: "${LAWN_URL:-http://localhost:3000}/"
       FORGEJO__server__OFFLINE_MODE: "true"
       FORGEJO__security__INSTALL_LOCK: "true"
       FORGEJO__security__SECRET_KEY: "${SECRET_KEY:?SECRET_KEY is required}"
@@ -25,7 +25,7 @@ services:
       - "./data:/var/lib/gitea"
       - "./config:/etc/gitea"
     ports:
-      - "3000:3000"
+      - "3000"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/api/healthz"]
       interval: 30s

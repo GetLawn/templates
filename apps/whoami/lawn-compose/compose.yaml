@@ -1,12 +1,12 @@
 x-lawn:
   compatibility:
-    minLawnVersion: 0.2.0
+    minLawnVersion: 0.6.0
 
 services:
   whoami:
-    image: traefik/whoami:v1.11.0
+    image: traefik/whoami:v1.12.0
     ports:
-      - "8080:80"
+      - "80"
     x-lawn:
       healthChecks:
         - id: http-api

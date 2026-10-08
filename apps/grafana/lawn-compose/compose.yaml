@@ -1,6 +1,6 @@
 x-lawn:
   compatibility:
-    minLawnVersion: 0.2.0
+    minLawnVersion: 0.6.0
   config:
     ADMIN_PASSWORD:
       source: generatedSecret
@@ -8,16 +8,17 @@ x-lawn:
 
 services:
   grafana:
-    image: grafana/grafana-oss:12.3.3
+    image: grafana/grafana:13.2.3
     environment:
       GF_SECURITY_ADMIN_USER: admin
       GF_SECURITY_ADMIN_PASSWORD: "${ADMIN_PASSWORD:?ADMIN_PASSWORD is required}"
       GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_SERVER_ROOT_URL: "${LAWN_URL:-http://localhost:3000}"
       TZ: "${TIMEZONE:-UTC}"
     volumes:
       - "./data:/var/lib/grafana"
     ports:
-      - "3000:3000"
+      - "3000"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
       interval: 30s

@@ -21,7 +21,7 @@ description: |
 symbolFallback: shippingbox.fill
 category: Development
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.0
 tags:
   - docker
   - containers
@@ -35,3 +35,5 @@ links:
     type: documentation
   - url: https://github.com/distribution/distribution
     type: github
+version: "3.1.2"
+webPort: 5000

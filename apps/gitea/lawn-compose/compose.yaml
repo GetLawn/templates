@@ -1,6 +1,6 @@
 x-lawn:
   compatibility:
-    minLawnVersion: 0.2.0
+    minLawnVersion: 0.6.0
   config:
     SECRET_KEY:
       source: generatedSecret
@@ -8,12 +8,12 @@ x-lawn:
 
 services:
   gitea:
-    image: gitea/gitea:1-rootless
+    image: gitea/gitea:28.1.0-rootless
     environment:
       GITEA__database__DB_TYPE: "sqlite3"
       GITEA__server__HTTP_PORT: "3000"
       GITEA__server__DOMAIN: "${LAWN_DOMAIN:-localhost}"
-      GITEA__server__ROOT_URL: "${LAWN_URL:-http://localhost:${HOST_PORT_3000:-3000}}/"
+      GITEA__server__ROOT_URL: "${LAWN_URL:-http://localhost:3000}/"
       GITEA__security__INSTALL_LOCK: "true"
       GITEA__security__SECRET_KEY: "${SECRET_KEY:?SECRET_KEY is required}"
       GITEA__service__DISABLE_REGISTRATION: "false"
@@ -24,7 +24,7 @@ services:
       - "./data:/var/lib/gitea"
       - "./config:/etc/gitea"
     ports:
-      - "3000:3000"
+      - "3000"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/api/healthz"]
       interval: 30s

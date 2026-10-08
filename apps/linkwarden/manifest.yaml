@@ -16,7 +16,7 @@ symbolFallback: link.circle.fill
 iconURL: https://getlawn.app/images/apps/linkwarden.png
 category: Utilities
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.0
 tags:
   - bookmarks
   - archiving
@@ -39,3 +39,4 @@ links:
   - url: https://linkwarden.app
     type: website
 webPort: 3000
+version: "2.16.3"

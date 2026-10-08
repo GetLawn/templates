@@ -13,7 +13,7 @@ symbolFallback: doc.text.magnifyingglass
 iconURL: https://getlawn.app/images/apps/paperless-ngx.png
 category: Documents
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.0
 tags:
   - documents
   - ocr
@@ -32,3 +32,4 @@ links:
   - url: https://github.com/paperless-ngx/paperless-ngx
     type: github
 webPort: 8000
+version: "3.3.0"

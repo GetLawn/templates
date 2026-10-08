@@ -22,7 +22,7 @@ symbolFallback: checklist
 iconURL: https://getlawn.app/images/apps/vikunja.svg
 category: Utilities
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.0
 tags:
   - todo
   - tasks
@@ -45,3 +45,4 @@ links:
   - url: https://vikunja.io/docs/
     type: documentation
 webPort: 3456
+version: "2.7.0"

@@ -19,7 +19,7 @@ symbolFallback: fork.knife
 iconURL: https://getlawn.app/images/apps/mealie.png
 category: Utilities
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.0
 tags:
   - recipes
   - cooking
@@ -41,3 +41,4 @@ links:
   - url: https://docs.mealie.io
     type: documentation
 webPort: 9000
+version: "3.28.0"

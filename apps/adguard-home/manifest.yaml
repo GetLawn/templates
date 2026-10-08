@@ -22,7 +22,7 @@ symbolFallback: shield.fill
 iconURL: https://getlawn.app/images/apps/adguard-home.svg
 category: Networking
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.0
 tags:
   - dns
   - ad-blocking
@@ -46,3 +46,4 @@ links:
   - url: https://github.com/AdguardTeam/AdGuardHome/wiki
     type: documentation
 webPort: 80
+version: "0.107.79"

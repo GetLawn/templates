@@ -1,6 +1,6 @@
 x-lawn:
   compatibility:
-    minLawnVersion: 0.2.0
+    minLawnVersion: 0.6.0
   config:
     POSTGRES_PASSWORD:
       source: generatedSecret
@@ -11,7 +11,7 @@ x-lawn:
 
 services:
   db:
-    image: postgres:16-alpine
+    image: postgres:16.15-alpine
     environment:
       POSTGRES_DB: vikunja
       POSTGRES_USER: vikunja
@@ -31,7 +31,7 @@ services:
       environment:
 
   vikunja:
-    image: vikunja/vikunja:1.1.0
+    image: vikunja/vikunja:2.7.0
     depends_on:
       - db
     environment:
@@ -41,12 +41,12 @@ services:
       VIKUNJA_DATABASE_USER: vikunja
       VIKUNJA_DATABASE_PASSWORD: "${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}"
       VIKUNJA_SERVICE_JWTSECRET: "${SECRET_KEY:?SECRET_KEY is required}"
-      VIKUNJA_SERVICE_PUBLICURL: "${LAWN_URL:-http://localhost:${HOST_PORT_3456:-3456}}/"
+      VIKUNJA_SERVICE_PUBLICURL: "${LAWN_URL:-http://localhost:3456}/"
       VIKUNJA_SERVICE_TIMEZONE: "${TIMEZONE:-UTC}"
     volumes:
       - "./files:/app/vikunja/files"
     ports:
-      - "3456:3456"
+      - "3456"
     x-lawn:
       notices:
         - id: first-time-setup

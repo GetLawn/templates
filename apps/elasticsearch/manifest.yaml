@@ -22,7 +22,7 @@ symbolFallback: magnifyingglass.circle.fill
 iconURL: https://getlawn.app/images/apps/elasticsearch.svg
 category: Databases
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.0
 webPort: 9200
 tags:
   - search
@@ -43,3 +43,4 @@ links:
     type: documentation
   - url: https://www.elastic.co
     type: website
+version: "9.5.5"

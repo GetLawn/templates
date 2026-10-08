@@ -1,21 +1,19 @@
 x-lawn:
   compatibility:
-    minLawnVersion: 0.2.0
+    minLawnVersion: 0.6.0
 
 services:
-  audiobookshelf:
-    image: ghcr.io/advplyr/audiobookshelf:2.32.1
+  uptime-kuma:
+    image: louislam/uptime-kuma:2.5.5
     environment:
       TZ: "${TIMEZONE:-UTC}"
+      UPTIME_KUMA_DB_TYPE: "sqlite"
     volumes:
-      - "./config:/config"
-      - "./metadata:/metadata"
-      - "./audiobooks:/audiobooks"
-      - "./podcasts:/podcasts"
+      - "./data:/app/data"
     ports:
-      - "80:80"
+      - "3001"
     healthcheck:
-      test: ["CMD", "wget", "--spider", "-q", "http://localhost:80/healthcheck"]
+      test: ["CMD", "curl", "-f", "http://localhost:3001"]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -28,7 +26,8 @@ services:
       healthChecks:
         - id: web-ui
           type: http
-          path: /healthcheck
+          path: /
           expectedStatus: 200
       environment:
         TZ:
+        UPTIME_KUMA_DB_TYPE:

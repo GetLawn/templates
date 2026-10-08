@@ -1,23 +1,21 @@
 x-lawn:
   compatibility:
-    minLawnVersion: 0.2.0
+    minLawnVersion: 0.6.0
 
 services:
-  syncthing:
-    image: syncthing/syncthing:1
+  navidrome:
+    image: deluan/navidrome:0.64.2
     environment:
-      PUID: "${UID:-1000}"
-      PGID: "${GID:-1000}"
-      STGUIADDRESS: "http://0.0.0.0:8384"
+      ND_MUSICFOLDER: "/music"
+      ND_DATAFOLDER: "/data"
+      ND_SCANNER_SCHEDULE: "0 */12 * * *"
     volumes:
-      - "./data:/var/syncthing"
+      - "./data:/data"
+      - "./music:/music:ro"
     ports:
-      - "8384:8384"
-      - "22000:22000"
-      - "22000:22000/udp"
-      - "21027:21027/udp"
+      - "4533"
     healthcheck:
-      test: ["CMD", "curl", "-fkLsS", "-m", "2", "http://127.0.0.1:8384/rest/noauth/health"]
+      test: ["CMD", "wget", "-nv", "-t1", "--spider", "http://localhost:4533/ping"]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -36,9 +34,9 @@ services:
       healthChecks:
         - id: web-ui
           type: http
-          path: /rest/noauth/health
+          path: /ping
           expectedStatus: 200
       environment:
-        PUID:
-        PGID:
-        STGUIADDRESS:
+        ND_MUSICFOLDER:
+        ND_DATAFOLDER:
+        ND_SCANNER_SCHEDULE:

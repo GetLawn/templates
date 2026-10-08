@@ -49,13 +49,13 @@ services:
       MEILI_MASTER_KEY: "${SECRET_KEY:?SECRET_KEY is required}"
       BROWSER_WEB_URL: "http://chrome:9222"
       NEXTAUTH_SECRET: "${SECRET_KEY:?SECRET_KEY is required}"
-      NEXTAUTH_URL: "${LAWN_URL:-http://localhost:${HOST_PORT_3000:-3000}}"
+      NEXTAUTH_URL: "${LAWN_URL:-http://localhost:3000}"
       DB_WAL_MODE: "true"
       DISABLE_SIGNUPS: "${DISABLE_SIGNUPS:-false}"
     volumes:
       - "./data:/data"
     ports:
-      - "3000:3000"
+      - "3000"
     deploy:
       resources:
         limits:

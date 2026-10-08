@@ -22,7 +22,7 @@ symbolFallback: doc.fill
 iconURL: https://getlawn.app/images/apps/bentopdf.svg
 category: Documents
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.0
 tags:
   - pdf
   - documents
@@ -43,3 +43,4 @@ links:
     type: website
     label: Website
 webPort: 8080
+version: "2.8.8"

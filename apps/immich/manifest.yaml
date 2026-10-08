@@ -13,7 +13,7 @@ symbolFallback: photo.on.rectangle.angled
 iconURL: https://getlawn.app/images/apps/immich.svg
 category: Media
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.0
 tags:
   - photos
   - videos
@@ -37,3 +37,4 @@ links:
   - url: https://immich.app/docs/overview/introduction
     type: documentation
 webPort: 2283
+version: "3.3.0"

@@ -1,17 +1,17 @@
 x-lawn:
   compatibility:
-    minLawnVersion: 0.2.0
+    minLawnVersion: 0.6.0
 
 services:
   nzbget:
-    image: nzbgetcom/nzbget:v26.0
+    image: nzbgetcom/nzbget:v26.3
     environment:
       TZ: "${TIMEZONE:-UTC}"
     volumes:
       - "./config:/config"
       - "./downloads:/downloads"
     ports:
-      - "6789:6789"
+      - "6789"
     deploy:
       resources:
         limits:

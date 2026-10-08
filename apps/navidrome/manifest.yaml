@@ -19,7 +19,7 @@ symbolFallback: music.note.house.fill
 iconURL: https://getlawn.app/images/apps/navidrome.svg
 category: Media
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.0
 tags:
   - music
   - streaming
@@ -41,3 +41,4 @@ links:
   - url: https://www.navidrome.org/
     type: website
 webPort: 4533
+version: "0.64.2"

@@ -19,7 +19,7 @@ symbolFallback: network
 iconURL: https://getlawn.app/images/apps/librespeed.png
 category: Networking
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.0
 tags:
   - speed-test
   - network
@@ -37,3 +37,4 @@ links:
     type: website
     label: Website
 webPort: 8080
+version: "6.3.0"

@@ -1,10 +1,10 @@
 x-lawn:
   compatibility:
-    minLawnVersion: 0.2.0
+    minLawnVersion: 0.6.0
 
 services:
   adguardhome:
-    image: adguard/adguardhome:v0.107.71
+    image: adguard/adguardhome:v0.107.79
     # Serve the setup wizard and dashboard on the same internal port.
     # Preserve the image's config and work paths when adding --web-addr.
     command:
@@ -21,6 +21,7 @@ services:
     ports:
       - "53:53"
       - "53:53/udp"
+      - "80"
     healthcheck:
       test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:80/"]
       interval: 30s

@@ -19,7 +19,7 @@ symbolFallback: arrow.triangle.branch
 iconURL: https://getlawn.app/images/apps/n8n.png
 category: Utilities
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.0
 tags:
   - automation
   - workflows
@@ -43,3 +43,4 @@ links:
   - url: https://n8n.io
     type: website
 webPort: 5678
+version: "2.42.4"

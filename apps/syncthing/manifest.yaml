@@ -22,7 +22,7 @@ symbolFallback: arrow.triangle.2.circlepath
 iconURL: https://getlawn.app/images/apps/syncthing.svg
 category: Utilities
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.0
 tags:
   - file-sync
   - backup
@@ -45,3 +45,4 @@ links:
   - url: https://syncthing.net
     type: website
 webPort: 8384
+version: "2.1.6"

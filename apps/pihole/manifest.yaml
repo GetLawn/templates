@@ -45,4 +45,5 @@ links:
     label: Website
 webPort: 80
 webPath: /admin/
-version: "2025.11.1"
+version: "2026.09.0"
+updateThrough: ["2025.11.1"]
