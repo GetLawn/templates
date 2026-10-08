@@ -1,5 +1,6 @@
 id: affine
 name: AFFiNE
+version: "0.27.4"
 tagline: The all-in-one workspace for your notes, docs, and plans
 description: |
   An open-source workspace that combines a document editor, infinite whiteboard, and project management — all in one place. Think of it as a privacy-first alternative to Notion and Miro.
@@ -17,7 +18,7 @@ iconURL: https://getlawn.app/images/apps/affine.svg
 iconIsTemplate: true
 category: Documents
 compatibility:
-  minLawnVersion: 0.2.0
+  minLawnVersion: 0.6.1
 tags:
   - notes
   - documents

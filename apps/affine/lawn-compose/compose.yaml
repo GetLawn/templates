@@ -1,6 +1,6 @@
 x-lawn:
   compatibility:
-    minLawnVersion: 0.2.0
+    minLawnVersion: 0.6.1
   config:
     POSTGRES_PASSWORD:
       source: generatedSecret
@@ -34,30 +34,15 @@ services:
       timeout: 5s
       retries: 5
 
-  affine_migration:
-    image: ghcr.io/toeverything/affine:0.26.2
-    # Run database migrations using the same image as the main service.
-    # AFFiNE does not provide an environment variable to trigger migration mode —
-    # this one-shot command is the only supported way to run pre-deploy migrations.
-    command: ["sh", "-c", "node ./scripts/self-host-predeploy.js"]
-    depends_on:
-      - postgres
-      - redis
-    environment:
-      REDIS_SERVER_HOST: redis
-      DATABASE_URL: "postgresql://affine:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}@postgres:5432/affine"
-    volumes:
-      - "./storage:/root/.affine/storage"
-      - "./config:/root/.affine/config"
-    x-lawn:
-      environment:
-
   affine:
-    image: ghcr.io/toeverything/affine:0.26.2
+    image: ghcr.io/toeverything/affine:0.27.4
     depends_on:
       - postgres
       - redis
-      - affine_migration
+    # Configure Lawn's defaults before AFFiNE's required pre-deploy migrations.
+    pre_start:
+      - command: ["node", "/root/.affine/config/lawn-defaults.cjs"]
+      - command: ["sh", "-c", "node ./scripts/self-host-predeploy.js"]
     environment:
       REDIS_SERVER_HOST: redis
       DATABASE_URL: "postgresql://affine:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}@postgres:5432/affine"
@@ -67,24 +52,21 @@ services:
       - "./storage:/root/.affine/storage"
       - "./config:/root/.affine/config"
     ports:
-      - "3010:3010"
+      - "3010"
     deploy:
       resources:
         limits:
           memory: 2048M
     x-lawn:
+      initFiles:
+        - source: "lawn-defaults.cjs"
+          containerPath: "/root/.affine/config/lawn-defaults.cjs"
       healthChecks:
         - id: web-ui
           type: http
           path: /
           expectedStatus: 200
           followRedirects: true
-      notices:
-        - id: server-setup-guide
-          style: info
-          elements:
-            - id: cloud-setup-guide
-              type: text
       environment:
         REDIS_SERVER_HOST:
         DATABASE_URL:

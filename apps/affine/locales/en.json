@@ -19,16 +19,6 @@
         }
       }
     },
-    "affine_migration": {
-      "environment": {
-        "REDIS_SERVER_HOST": {
-          "description": "Hostname of the Redis server."
-        },
-        "DATABASE_URL": {
-          "description": "PostgreSQL connection URL for database migrations."
-        }
-      }
-    },
     "affine": {
       "environment": {
         "REDIS_SERVER_HOST": {
@@ -47,16 +37,6 @@
       "healthChecks": {
         "web-ui": {
           "description": "Web UI is accessible"
-        }
-      },
-      "notices": {
-        "server-setup-guide": {
-          "title": "Finish Setting Up AFFiNE",
-          "elements": {
-            "cloud-setup-guide": {
-              "content": "After signing up, AFFiNE opens a **local** workspace stored only in your browser. To use your self-hosted server, click **Enable AFFiNE Cloud** in the banner inside any document — this connects to YOUR server, not AFFiNE's paid cloud service."
-            }
-          }
         }
       }
     }
