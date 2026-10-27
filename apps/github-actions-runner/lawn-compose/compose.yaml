@@ -1,6 +1,6 @@
 x-lawn:
   compatibility:
-    minLawnVersion: 0.6.1
+    minLawnVersion: 0.8.1
   config:
     RUNNER_TOKEN:
       source: userProvided
@@ -28,6 +28,8 @@ x-lawn:
               runner:
                 environment:
                   START_DOCKER_SERVICE: "true"
+                x-lawn:
+                  writableSysctls: true
         "false":
           weight: 20
           compose:
@@ -74,7 +76,10 @@ x-lawn:
 
 services:
   runner:
-    image: myoung34/github-runner:2.337.0-ubuntu-noble
+    image: myoung34/github-runner:2.338.2-ubuntu-noble
+    # Remove leftover daemon PID files before the original image entrypoint.
+    entrypoint: ["/bin/bash", "/runner/startup/start.sh"]
+    command: ["./bin/Runner.Listener", "run", "--startuptype", "service"]
     environment:
       RUNNER_TOKEN: "${RUNNER_TOKEN}"
       LABELS: "${LABELS}"
@@ -88,11 +93,15 @@ services:
       TZ: "${TIMEZONE:-UTC}"
     volumes:
       - "./data:/runner/data"
+      - "./startup:/runner/startup"
     deploy:
       resources:
         limits:
           memory: 4G
     x-lawn:
+      initFiles:
+        - source: start.sh
+          containerPath: /runner/startup/start.sh
       notices:
         - id: github-credentials-required
           style: warning
